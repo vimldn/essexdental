@@ -10,10 +10,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://savvydentalimplants.com'),
+  metadataBase: new URL('https://www.essexdentalimplants.com'),
   title: {
-    default: 'Savvy Dental Implants | Find Elite Dental Implant Specialists',
-    template: '%s | Savvy Dental Implants',
+    default: 'Essex Dental Implants | Find Elite Dental Implant Specialists',
+    template: '%s | Essex Dental Implants',
   },
   description:
     'Connecting patients with verified dental implant specialists for permanent tooth replacement solutions across the UK.',
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     'full arch implants',
     'all-on-4 implants',
   ],
-  authors: [{ name: 'Savvy Dental Implants' }],
-  creator: 'Savvy Dental Implants',
-  publisher: 'Savvy Dental Implants',
+  authors: [{ name: 'Essex Dental Implants' }],
+  creator: 'Essex Dental Implants',
+  publisher: 'Essex Dental Implants',
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-icon.png',
@@ -49,23 +49,23 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://savvydentalimplants.com',
-    title: 'Savvy Dental Implants | Elite Dental Implant Specialist Network',
+    url: 'https://www.essexdentalimplants.com',
+    title: 'Essex Dental Implants | Elite Dental Implant Specialist Network',
     description:
       'Find verified dental implant specialists across the UK. Permanent solutions. Trusted experts.',
-    siteName: 'Savvy Dental Implants',
+    siteName: 'Essex Dental Implants',
     images: [
       {
         url: '/icon-512x512.png',
         width: 512,
         height: 512,
-        alt: 'Savvy Dental Implants Logo',
+        alt: 'Essex Dental Implants Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Savvy Dental Implants | Dental Implant Specialists',
+    title: 'Essex Dental Implants | Dental Implant Specialists',
     description:
       'Connecting patients with the top dental implant specialists across the UK.',
     images: ['/icon-512x512.png'],
