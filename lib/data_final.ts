@@ -1,4 +1,4 @@
-// Savvy Dental Implants - Data File
+// Essex Dental Implants - Data File
 // Blog Posts
 
 export const BLOG_POSTS = [
