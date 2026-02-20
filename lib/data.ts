@@ -98,7 +98,7 @@ export const BLOG_POSTS = [
 ];
 
 export const LOCATIONS: Record<string, string[]> = {
-  "Essex": [
+  "UK": [
     "Basildon", "Billericay", "Braintree", "Brentwood", "Burnham-on-Crouch",
     "Canvey Island", "Chelmsford", "Chigwell", "Clacton-on-Sea", "Colchester",
     "Epping", "Frinton-on-Sea", "Grays", "Harlow", "Harwich",
