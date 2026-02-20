@@ -30,12 +30,12 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
       <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled || !isHome ? 'glass-effect py-3 shadow-xl' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           
-          {/* Logo + Brand - TODO: Change "Savvy Dental Implants" to your final brand name */}
+          {/* Logo + Brand - TODO: Change "Essex Dental Implants" to your final brand name */}
           <Link href="/" className="flex items-center gap-3 cursor-pointer group">
             <div className="w-10 h-10 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center">
               <Image
                 src="/logo.png"
-                alt="Savvy Dental Implants"
+                alt="Essex Dental Implants"
                 width={40}
                 height={40}
                 priority
@@ -43,7 +43,7 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
               />
             </div>
             <span className="text-2xl font-black text-white tracking-tight">
-              Savvy Dental Implants
+              Essex Dental Implants
             </span>
           </Link>
 
