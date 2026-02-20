@@ -10,7 +10,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://savvydentalimplants.com'),
+  metadataBase: new URL('https://www.savvydentalimplants.co.uk'),
   title: {
     default: 'Savvy Dental Implants | Find Elite Dental Implant Specialists',
     template: '%s | Savvy Dental Implants',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://savvydentalimplants.com',
+    url: 'https://www.savvydentalimplants.co.uk',
     title: 'Savvy Dental Implants | Elite Dental Implant Specialist Network',
     description:
       'Find verified dental implant specialists across the UK. Permanent solutions. Trusted experts.',
