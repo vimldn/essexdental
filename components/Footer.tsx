@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 text-white mb-8">
               <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-black">ID</div>
-              <span className="text-2xl font-black">Savvy Dental Implants</span>
+              <span className="text-2xl font-black">Essex Dental Implants</span>
             </div>
             <p>Independent referral facilitator connecting consumers with top-rated orthodontic specialists across the UK.</p>
           </div>
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="text-center text-[10px] uppercase font-black tracking-widest opacity-50">
-          © 2024 Savvy Dental Implants Referral Network. We are a facilitator, not a dental provider.
+          © 2024 Essex Dental Implants Referral Network. We are a facilitator, not a dental provider.
         </p>
       </div>
     </footer>
