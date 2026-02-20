@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({ 
@@ -10,16 +11,13 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://savvydentalimplants.com'),  // TODO: Update to your actual domain
-
+  metadataBase: new URL('https://savvydentalimplants.com'),
   title: {
     default: 'Savvy Dental Implants | Find Elite Dental Implant Specialists',
     template: '%s | Savvy Dental Implants',
   },
-
   description:
     'Connecting patients with verified dental implant specialists for permanent tooth replacement solutions across the UK.',
-
   keywords: [
     'dental implants',
     'dental implant specialist',
@@ -29,11 +27,9 @@ export const metadata: Metadata = {
     'full arch implants',
     'all-on-4 implants',
   ],
-
   authors: [{ name: 'Savvy Dental Implants' }],
   creator: 'Savvy Dental Implants',
   publisher: 'Savvy Dental Implants',
-
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-icon.png',
@@ -52,10 +48,9 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   openGraph: {
     type: 'website',
-    url: 'https://savvydentalimplants.com',  // TODO: Update to your actual domain
+    url: 'https://savvydentalimplants.com',
     title: 'Savvy Dental Implants | Elite Dental Implant Specialist Network',
     description:
       'Find verified dental implant specialists across the UK. Permanent solutions. Trusted experts.',
@@ -69,7 +64,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: 'summary_large_image',
     title: 'Savvy Dental Implants | Dental Implant Specialists',
@@ -77,7 +71,6 @@ export const metadata: Metadata = {
       'Connecting patients with the top dental implant specialists across the UK.',
     images: ['/icon-512x512.png'],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -91,6 +84,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BPLXLSCSS6"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BPLXLSCSS6');
+          `}
+        </Script>
+      </head>
       <body className={`${plusJakartaSans.className} antialiased`}>
         {children}
       </body>
