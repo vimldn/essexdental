@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Elite Mint Color Scheme for Savvy Dental Implants
+        // Elite Mint Color Scheme for Essex Dental Implants
         'brand': {
           primary: '#10b981',    // emerald-500
           secondary: '#22c55e',  // green-500
