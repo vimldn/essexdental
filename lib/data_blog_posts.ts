@@ -1,4 +1,4 @@
-// Updated blog posts for Savvy Dental Implants
+// Updated blog posts for Essex Dental Implants
 
 export const BLOG_POSTS = [
   {
