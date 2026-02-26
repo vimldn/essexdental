@@ -19,7 +19,7 @@ const SERVICE_IMAGES: Record<string, string> = {
   'implant-dentures': 'https://images.pexels.com/photos/3779699/pexels-photo-3779699.jpeg',
 };
 
-function HeroLeadForm({ cityName, serviceName }: { cityName: string; serviceName: string }) {
+function HeroLeadForm({ cityName }: { cityName: string }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -41,7 +41,7 @@ function HeroLeadForm({ cityName, serviceName }: { cityName: string; serviceName
         treatment,
         location: cityName,
         page: typeof window !== 'undefined' ? window.location.href : '',
-        source: 'Essex Dental Implants',
+        source: 'Essex Dental Implants - Hero Form',
       };
 
       const res = await fetch(
@@ -64,80 +64,84 @@ function HeroLeadForm({ cityName, serviceName }: { cityName: string; serviceName
   };
 
   return (
-    <div className="w-full bg-white rounded-[2rem] shadow-[0_32px_80px_-8px_rgba(0,0,0,0.5)] overflow-hidden">
+    <div className="w-full rounded-[1.75rem] border border-white/10 bg-slate-900/80 backdrop-blur-xl shadow-[0_32px_80px_-8px_rgba(0,0,0,0.6)] overflow-hidden">
       <div className="p-8 md:p-10">
         {isSuccess ? (
           <div className="flex flex-col items-center text-center py-10 space-y-5">
-            <div className="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/10">
+            <div className="w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center border border-emerald-500/20">
               <CheckCircle className="w-12 h-12" />
             </div>
             <div>
-              <h3 className="text-2xl font-black text-slate-900 mb-2">Request Received!</h3>
-              <p className="text-slate-500 font-medium leading-relaxed text-sm">
+              <h3 className="text-2xl font-black text-white mb-2">Request Received!</h3>
+              <p className="text-slate-400 font-medium leading-relaxed text-sm">
                 We&apos;ve matched you with a Platinum Partner in {cityName}. Check your email for next steps.
               </p>
             </div>
           </div>
         ) : (
           <>
+            {/* Form header */}
             <div className="mb-6">
-              <div className="inline-block px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-widest rounded-full mb-3">
+              <div className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-widest rounded-full mb-3 border border-emerald-500/20">
                 Free Matching Service
               </div>
-              <h3 className="text-2xl font-black text-slate-900 leading-tight">
+              <h3 className="text-2xl font-black text-white leading-tight">
                 Get Matched in {cityName}
               </h3>
-              <p className="text-slate-500 text-sm mt-1 font-medium">
+              <p className="text-slate-400 text-sm mt-1 font-medium">
                 Top local clinics will contact you within 2 hours
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
+              {/* Full Name */}
               <input
                 required
                 name="fullName"
                 type="text"
                 placeholder="Full Name *"
-                className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all placeholder:text-slate-400"
+                className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all placeholder:text-slate-500"
               />
 
+              {/* Phone + Email */}
               <div className="grid grid-cols-2 gap-3">
                 <input
                   required
                   name="phone"
                   type="tel"
                   placeholder="Phone Number *"
-                  className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all placeholder:text-slate-400"
+                  className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all placeholder:text-slate-500"
                 />
                 <input
                   required
                   name="email"
                   type="email"
                   placeholder="Email Address *"
-                  className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all placeholder:text-slate-400"
+                  className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all placeholder:text-slate-500"
                 />
               </div>
 
+              {/* Treatment — dynamically from SERVICES */}
               <select
                 required
                 name="treatment"
                 defaultValue=""
-                className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all appearance-none cursor-pointer"
+                className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all appearance-none cursor-pointer"
               >
-                <option value="" disabled>Select Treatment *</option>
-                <option value="Single Tooth Implant">Single Tooth Implant</option>
-                <option value="Multiple Teeth Implants">Multiple Teeth Implants</option>
-                <option value="Full Arch (All-on-4)">Full Arch (All-on-4)</option>
-                <option value="Bone Grafting">Bone Grafting</option>
-                <option value="Immediate Implants">Immediate Implants</option>
-                <option value="Implant Dentures">Implant Dentures</option>
-                <option value="Not Sure">Not Sure Yet</option>
+                <option value="" disabled className="bg-slate-800 text-slate-400">Select Treatment *</option>
+                {SERVICES.map(s => (
+                  <option key={s.id} value={s.title} className="bg-slate-800 text-slate-200">
+                    {s.title}
+                  </option>
+                ))}
+                <option value="Not Sure Yet" className="bg-slate-800 text-slate-400">Not Sure Yet</option>
               </select>
 
+              {/* Submit */}
               <button
                 disabled={isSubmitting}
                 type="submit"
-                className="w-full py-4 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-black text-base rounded-xl shadow-lg shadow-sky-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group/btn"
+                className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-black text-base rounded-xl shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group/btn mt-1"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
                 {isSubmitting ? (
@@ -152,9 +156,10 @@ function HeroLeadForm({ cityName, serviceName }: { cityName: string; serviceName
                 )}
               </button>
 
+              {/* Trust signals */}
               <div className="flex items-center justify-center gap-4 pt-1">
                 {['100% Free', 'No Spam', '2hr Response'].map((label) => (
-                  <span key={label} className="flex items-center gap-1 text-[11px] text-slate-500 font-semibold">
+                  <span key={label} className="flex items-center gap-1.5 text-[11px] text-slate-400 font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
                     {label}
                   </span>
@@ -225,7 +230,8 @@ export default function ServiceCityPage({ params }: { params: { service: string;
       </button>
 
       {/* HERO */}
-      <div className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24">
+      <div className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28">
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -235,9 +241,9 @@ export default function ServiceCityPage({ params }: { params: { service: string;
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/70 to-slate-950" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           {/* Breadcrumb */}
-          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400 mb-12">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400 mb-10">
             <Link href="/services" className="hover:text-emerald-400 transition-colors">Services</Link>
             <span>/</span>
             <Link href={`/services/${params.service}`} className="hover:text-emerald-400 transition-colors">{service.title}</Link>
@@ -245,20 +251,20 @@ export default function ServiceCityPage({ params }: { params: { service: string;
             <span className="text-white">{cityName}</span>
           </div>
 
-          {/* Two-column hero */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — copy */}
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-500/20 text-sm text-emerald-400 backdrop-blur-sm">
-                <MapPin className="w-4 h-4" />
+          {/* Two-column */}
+          <div className="grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start">
+
+            {/* LEFT */}
+            <div className="space-y-6 pt-2">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-500/20 text-sm text-emerald-400">
+                <MapPin className="w-4 h-4 flex-shrink-0" />
                 <span>Elite Platinum Providers Available</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-black text-white leading-tight tracking-tight">
-                {service.title} in
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400 italic">
-                  {cityName}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
+                {service.title}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400 italic mt-1">
+                  in {cityName}
                 </span>
               </h1>
 
@@ -267,19 +273,19 @@ export default function ServiceCityPage({ params }: { params: { service: string;
                 Choose from our comprehensive treatment options below.
               </p>
 
-              <div className="flex flex-wrap gap-5 pt-2">
+              <div className="flex flex-wrap gap-5 pt-1">
                 {['Free Consultation', 'No Obligation', 'Same-week Appointments'].map((label) => (
                   <div key={label} className="flex items-center gap-2 text-sm text-slate-300 font-semibold">
-                    <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">✓</span>
+                    <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black flex-shrink-0">✓</span>
                     {label}
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right — inline form */}
-            <div className="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
-              <HeroLeadForm cityName={cityName} serviceName={service.title} />
+            {/* RIGHT — form */}
+            <div className="w-full">
+              <HeroLeadForm cityName={cityName} />
             </div>
           </div>
         </div>
@@ -287,7 +293,7 @@ export default function ServiceCityPage({ params }: { params: { service: string;
 
       {/* REST OF PAGE */}
       <div className="pb-24 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, idx) => (
               <div key={idx} className="dark-card p-6 rounded-3xl border border-white/5">
@@ -345,7 +351,7 @@ export default function ServiceCityPage({ params }: { params: { service: string;
               <ul className="space-y-3 mb-8">
                 {['Free initial consultation', 'No obligation assessment', 'Transparent pricing from the start'].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-slate-300">
-                    <CheckCircle className="w-5 h-5 text-emerald-400" />
+                    <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -375,7 +381,6 @@ export default function ServiceCityPage({ params }: { params: { service: string;
                   ))}
                 </div>
               </div>
-
               <div>
                 <h3 className="text-xl font-bold text-white mb-4">{service.title} in Other Cities</h3>
                 <div className="space-y-2">
