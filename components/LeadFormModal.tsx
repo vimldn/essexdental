@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -136,7 +135,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <input 
                     required 
                     type="text" 
-                    className="w-full px-5 py-4 bg-slate-50 rounded-2xl border-2 border-slate-100 text-slate-700 focus:border-emerald-400 focus:bg-white focus:ring-8 focus:ring-emerald-400/5 outline-none transition-all placeholder:text-slate-300" 
+                    className="w-full px-5 py-4 bg-white rounded-2xl border-2 border-slate-200 text-slate-700 focus:border-emerald-400 focus:bg-white focus:ring-8 focus:ring-emerald-400/5 outline-none transition-all placeholder:text-slate-300" 
                     placeholder="E.g. Alexander Hamilton" 
                   />
                 </div>
@@ -145,7 +144,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <input 
                     required 
                     type="email" 
-                    className="w-full px-5 py-4 bg-slate-50 rounded-2xl border-2 border-slate-100 text-slate-700 focus:border-emerald-400 focus:bg-white focus:ring-8 focus:ring-emerald-400/5 outline-none transition-all placeholder:text-slate-300" 
+                    className="w-full px-5 py-4 bg-white rounded-2xl border-2 border-slate-200 text-slate-700 focus:border-emerald-400 focus:bg-white focus:ring-8 focus:ring-emerald-400/5 outline-none transition-all placeholder:text-slate-300" 
                     placeholder="alex@example.com" 
                   />
                 </div>
@@ -154,7 +153,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <input 
                     required 
                     type="text" 
-                    className="w-full px-5 py-4 bg-slate-50 rounded-2xl border-2 border-slate-100 text-slate-700 focus:border-emerald-400 focus:bg-white focus:ring-8 focus:ring-emerald-400/5 outline-none transition-all placeholder:text-slate-300" 
+                    className="w-full px-5 py-4 bg-white rounded-2xl border-2 border-slate-200 text-slate-700 focus:border-emerald-400 focus:bg-white focus:ring-8 focus:ring-emerald-400/5 outline-none transition-all placeholder:text-slate-300" 
                     placeholder="e.g. Manchester, UK" 
                   />
                 </div>
