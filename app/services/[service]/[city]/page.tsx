@@ -64,16 +64,16 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
   };
 
   return (
-    <div className="w-full rounded-[1.75rem] border border-white/10 bg-slate-900/80 backdrop-blur-xl shadow-[0_32px_80px_-8px_rgba(0,0,0,0.6)] overflow-hidden">
+    <div className="w-full rounded-[2rem] bg-white shadow-[0_32px_80px_-8px_rgba(0,0,0,0.5)] overflow-hidden">
       <div className="p-8 md:p-10">
         {isSuccess ? (
           <div className="flex flex-col items-center text-center py-10 space-y-5">
-            <div className="w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center border border-emerald-500/20">
+            <div className="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/10">
               <CheckCircle className="w-12 h-12" />
             </div>
             <div>
-              <h3 className="text-2xl font-black text-white mb-2">Request Received!</h3>
-              <p className="text-slate-400 font-medium leading-relaxed text-sm">
+              <h3 className="text-2xl font-black text-slate-900 mb-2">Request Received!</h3>
+              <p className="text-slate-500 font-medium leading-relaxed text-sm">
                 We&apos;ve matched you with a Platinum Partner in {cityName}. Check your email for next steps.
               </p>
             </div>
@@ -82,13 +82,13 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
           <>
             {/* Form header */}
             <div className="mb-6">
-              <div className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-widest rounded-full mb-3 border border-emerald-500/20">
+              <div className="inline-block px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-widest rounded-full mb-3">
                 Free Matching Service
               </div>
-              <h3 className="text-2xl font-black text-white leading-tight">
+              <h3 className="text-2xl font-black text-slate-900 leading-tight">
                 Get Matched in {cityName}
               </h3>
-              <p className="text-slate-400 text-sm mt-1 font-medium">
+              <p className="text-slate-500 text-sm mt-1 font-medium">
                 Top local clinics will contact you within 2 hours
               </p>
             </div>
@@ -100,7 +100,7 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
                 name="fullName"
                 type="text"
                 placeholder="Full Name *"
-                className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all placeholder:text-slate-500"
+                className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all placeholder:text-slate-300"
               />
 
               {/* Phone + Email */}
@@ -110,14 +110,14 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
                   name="phone"
                   type="tel"
                   placeholder="Phone Number *"
-                  className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all placeholder:text-slate-500"
+                  className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all placeholder:text-slate-300"
                 />
                 <input
                   required
                   name="email"
                   type="email"
                   placeholder="Email Address *"
-                  className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all placeholder:text-slate-500"
+                  className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all placeholder:text-slate-300"
                 />
               </div>
 
@@ -126,22 +126,20 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
                 required
                 name="treatment"
                 defaultValue=""
-                className="w-full px-4 py-3.5 bg-slate-800/60 rounded-xl border border-white/10 text-slate-200 text-sm focus:border-emerald-500/50 focus:bg-slate-800 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all appearance-none cursor-pointer"
+                className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all appearance-none cursor-pointer"
               >
-                <option value="" disabled className="bg-slate-800 text-slate-400">Select Treatment *</option>
+                <option value="" disabled>Select Treatment *</option>
                 {SERVICES.map(s => (
-                  <option key={s.id} value={s.title} className="bg-slate-800 text-slate-200">
-                    {s.title}
-                  </option>
+                  <option key={s.id} value={s.title}>{s.title}</option>
                 ))}
-                <option value="Not Sure Yet" className="bg-slate-800 text-slate-400">Not Sure Yet</option>
+                <option value="Not Sure Yet">Not Sure Yet</option>
               </select>
 
               {/* Submit */}
               <button
                 disabled={isSubmitting}
                 type="submit"
-                className="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-black text-base rounded-xl shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group/btn mt-1"
+                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-base rounded-xl shadow-xl shadow-emerald-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group/btn mt-1"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
                 {isSubmitting ? (
@@ -159,7 +157,7 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
               {/* Trust signals */}
               <div className="flex items-center justify-center gap-4 pt-1">
                 {['100% Free', 'No Spam', '2hr Response'].map((label) => (
-                  <span key={label} className="flex items-center gap-1.5 text-[11px] text-slate-400 font-semibold">
+                  <span key={label} className="flex items-center gap-1.5 text-[11px] text-slate-500 font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
                     {label}
                   </span>
