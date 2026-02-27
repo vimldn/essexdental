@@ -10,10 +10,6 @@ import Footer from '@/components/Footer';
 import LeadFormModal from '@/components/LeadFormModal';
 import BlogCtaBanner from '@/components/BlogCtaBanner';
 
-/* =======================
-   TYPES
-======================= */
-
 interface Article {
   'Article Title': string;
   'Article Content': string;
@@ -33,22 +29,10 @@ interface ArticleWithDate extends Article {
   cleanedHtml?: string;
 }
 
-type ReadingLink = {
-  url: string;
-  label: string;
-};
-
-/* =======================
-   SLUG HELPERS
-======================= */
+type ReadingLink = { url: string; label: string };
 
 const slugify = (s: string) =>
-  (s || '')
-    .toLowerCase()
-    .trim()
-    .replace(/['"]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+  (s || '').toLowerCase().trim().replace(/['"]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 const makeUniqueSlug = (base: string, used: Set<string>) => {
   const cleanBase = base && base.length ? base : 'post';
@@ -59,74 +43,36 @@ const makeUniqueSlug = (base: string, used: Set<string>) => {
   return slug;
 };
 
-/* =======================
-   IMAGE + HTML CLEANUP
-======================= */
-
 const extractImageUrls = (html: string): string[] => {
   const out: string[] = [];
   const s = html || '';
-
   const srcRe = /<img[^>]+src=["']([^"']+)["'][^>]*>/gi;
   let m: RegExpExecArray | null;
   while ((m = srcRe.exec(s))) out.push(m[1]);
-
   const urlRe = /(https?:\/\/[^\s"']+\.(?:png|jpe?g|webp|gif))(?:\?[^\s"']*)?/gi;
   while ((m = urlRe.exec(s))) out.push(m[1]);
-
   return Array.from(new Set(out));
 };
 
 const cleanArticleHtml = (html: string) => {
   let h = html || '';
-
-  // remove <strong> / <b>
   h = h.replace(/<\/?(strong|b)\b[^>]*>/gi, '');
-
-  // strip inline styles
   h = h.replace(/\sstyle=["'][^"']*["']/gi, '');
-
-  // remove width/height attrs on images
   h = h.replace(/\s(width|height)=["'][^"']*["']/gi, '');
-
   return h;
 };
 
-// If CSV content is mostly plain text / line breaks (no <p> tags), wrap into paragraphs
-// so spacing + typography styles apply consistently.
 const ensureParagraphs = (html: string) => {
   let h = (html || '').trim();
   if (!h) return '';
-
-  // If it already has block-level structure, leave it alone.
-  const hasBlocks =
-    /<\s*p\b/i.test(h) ||
-    /<\s*h[1-6]\b/i.test(h) ||
-    /<\s*(ul|ol|table|blockquote|pre)\b/i.test(h);
+  const hasBlocks = /<\s*p\b/i.test(h) || /<\s*h[1-6]\b/i.test(h) || /<\s*(ul|ol|table|blockquote|pre)\b/i.test(h);
   if (hasBlocks) return h;
-
-  // Split into paragraphs based on double <br> or blank lines.
   const brSplit = h.split(/<br\s*\/?>\s*<br\s*\/?>/i).map((s) => s.trim()).filter(Boolean);
-  if (brSplit.length > 1) {
-    return brSplit
-      .map((p) => `<p>${p.replace(/\n/g, '<br />')}</p>`)
-      .join('');
-  }
-
+  if (brSplit.length > 1) return brSplit.map((p) => `<p>${p.replace(/\n/g, '<br />')}</p>`).join('');
   const nlSplit = h.split(/\n\s*\n+/).map((s) => s.trim()).filter(Boolean);
-  if (nlSplit.length > 1) {
-    return nlSplit
-      .map((p) => `<p>${p.replace(/\n/g, '<br />')}</p>`)
-      .join('');
-  }
-
-  // Fallback: single paragraph, preserve single newlines as <br />.
+  if (nlSplit.length > 1) return nlSplit.map((p) => `<p>${p.replace(/\n/g, '<br />')}</p>`).join('');
   return `<p>${h.replace(/\n/g, '<br />')}</p>`;
 };
-
-/* =======================
-   FURTHER READING
-======================= */
 
 const FURTHER_READING_POOL: ReadingLink[] = [
   { url: 'https://www.dental implants.com', label: 'Dental Implants (official site)' },
@@ -139,13 +85,9 @@ const FURTHER_READING_POOL: ReadingLink[] = [
   { url: 'https://www.ajodo.org', label: 'AJODO (orthodontic journal)' },
 ];
 
-// Simple deterministic hash so each article gets a stable, different set.
 const hashString = (s: string) => {
   let h = 2166136261;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
   return h >>> 0;
 };
 
@@ -153,40 +95,21 @@ const pickFurtherReading = (key: string, count: number = 3): ReadingLink[] => {
   const pool = FURTHER_READING_POOL;
   if (!pool.length) return [];
   const start = hashString(key || 'post') % pool.length;
-
   const out: ReadingLink[] = [];
-  for (let i = 0; i < pool.length && out.length < Math.min(count, pool.length); i++) {
-    out.push(pool[(start + i) % pool.length]);
-  }
+  for (let i = 0; i < pool.length && out.length < Math.min(count, pool.length); i++) out.push(pool[(start + i) % pool.length]);
   return out;
 };
 
-/* =======================
-   CTA BANNER INJECTION
-   Splits HTML into two parts: everything up to (and including) the content
-   after the first <h2>, then the remainder. The banner is inserted between them.
-======================= */
-
 const splitHtmlAfterFirstH2Section = (html: string): [string, string] => {
   if (!html) return ['', ''];
-
-  // Find the position of the first <h2 ...>
   const firstH2Match = html.match(/<h2[\s>]/i);
   if (!firstH2Match || firstH2Match.index === undefined) return [html, ''];
-
   const afterFirstH2 = html.slice(firstH2Match.index + firstH2Match[0].length);
-
-  // Find the next <h2 or <h3 after the first h2's content
   const nextHeadingMatch = afterFirstH2.match(/<h[23][\s>]/i);
   if (!nextHeadingMatch || nextHeadingMatch.index === undefined) return [html, ''];
-
   const splitPoint = firstH2Match.index + firstH2Match[0].length + nextHeadingMatch.index;
   return [html.slice(0, splitPoint), html.slice(splitPoint)];
 };
-
-/* =======================
-   PAGE
-======================= */
 
 export default function ArticlePage() {
   const params = useParams();
@@ -199,22 +122,20 @@ export default function ArticlePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  /* Scroll */
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   useEffect(() => {
     const handleScroll = () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setShowScrollTop(h > 0 && window.scrollY / h > 0.3);
+      const scrollPos = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      setShowScrollTop(height > 0 ? scrollPos / height > 0.3 : false);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  /* Load article */
   useEffect(() => {
     if (!slug) return;
-
     fetch('/articles.csv')
       .then((r) => r.text())
       .then((csvText) => {
@@ -225,49 +146,26 @@ export default function ArticlePage() {
             const startDate = new Date('2026-02-10T00:00:00');
             const articlesPerDay = 3;
             const usedSlugs = new Set<string>();
-
             const all: ArticleWithDate[] = (results.data || [])
-              .filter((a) => a?.['Article Title'])
+              .filter((a) => a && a['Article Title'] && a['Article Title'].trim())
               .map((a, index) => {
+                const dayOffset = Math.floor(index / articlesPerDay);
                 const publishDate = new Date(startDate);
-                publishDate.setDate(
-                  publishDate.getDate() + Math.floor(index / articlesPerDay)
-                );
-
-                const uniqueSlug = makeUniqueSlug(
-                  (a['Slug'] || '').trim() || slugify(a['Article Title']),
-                  usedSlugs
-                );
-
-                const images = extractImageUrls(a['Article Content']);
-                const featuredImage =
-                  images.length > 0 ? images[images.length - 1] : undefined;
-
-                return {
-                  ...a,
-                  Slug: uniqueSlug,
-                  publishDate,
-                  index,
-                  featuredImage,
-                  cleanedHtml: ensureParagraphs(cleanArticleHtml(a['Article Content'])),
-                };
+                publishDate.setDate(publishDate.getDate() + dayOffset);
+                const baseSlug = (a['Slug'] || '').trim() || slugify(a['Article Title']);
+                const uniqueSlug = makeUniqueSlug(baseSlug, usedSlugs);
+                const imgs = extractImageUrls(a['Article Content'] || '');
+                const featuredImage = imgs.length ? imgs[imgs.length - 1] : undefined;
+                const cleanedHtml = ensureParagraphs(cleanArticleHtml(a['Article Content'] || ''));
+                return { ...a, Slug: uniqueSlug, publishDate, index, featuredImage, cleanedHtml };
               });
 
-            // NOTE: We do not gate article visibility by publishDate on the article page,
-            // so "Related articles" can always render 3 internal links.
             const found = all.find((a) => a.Slug === slug) || null;
-
             setArticle(found);
-
             if (found) {
               setFurtherReading(pickFurtherReading(found.Slug, 3));
-
-              const sameCategory = all.filter(
-                (a) => a.Slug !== slug && a.wp_category === found.wp_category
-              );
-              const fill = all.filter(
-                (a) => a.Slug !== slug && a.wp_category !== found.wp_category
-              );
+              const sameCategory = all.filter((a) => a.Slug !== slug && a.wp_category === found.wp_category);
+              const fill = all.filter((a) => a.Slug !== slug && a.wp_category !== found.wp_category);
               setRelatedArticles([...sameCategory, ...fill].slice(0, 3));
             }
           },
@@ -277,149 +175,108 @@ export default function ArticlePage() {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-200">
+      <div className="min-h-screen bg-white text-slate-700">
         <Navigation onOpenModal={() => setIsModalOpen(true)} />
         <div className="pt-32 px-6 max-w-5xl mx-auto">
-          <h1 className="text-3xl font-black text-white">Article not found</h1>
-          <Link href="/blog" className="text-emerald-400 underline mt-6 inline-block">
-            Back to blog
-          </Link>
+          <h1 className="text-3xl font-black text-slate-900">Article not found</h1>
+          <Link href="/blog" className="text-emerald-500 underline mt-6 inline-block">Back to blog</Link>
         </div>
         <Footer />
       </div>
     );
   }
 
-  /* =======================
-     RENDER
-  ======================= */
+  const articleClasses = [
+    'p-10 max-w-none',
+    '[&_h1]:text-4xl [&_h1]:md:text-5xl [&_h1]:font-black [&_h1]:tracking-tight [&_h1]:text-slate-900 [&_h1]:mt-10 [&_h1]:mb-5',
+    '[&_h2]:text-3xl [&_h2]:md:text-4xl [&_h2]:font-black [&_h2]:tracking-tight [&_h2]:text-slate-900 [&_h2]:mt-10 [&_h2]:mb-4',
+    '[&_h3]:text-2xl [&_h3]:md:text-3xl [&_h3]:font-black [&_h3]:tracking-tight [&_h3]:text-slate-900 [&_h3]:mt-8 [&_h3]:mb-3',
+    '[&_h4]:text-xl [&_h4]:font-black [&_h4]:text-slate-900 [&_h4]:mt-7 [&_h4]:mb-3',
+    '[&_p]:text-slate-600 [&_p]:font-medium [&_p]:leading-relaxed [&_p]:mb-5',
+    '[&_a]:text-emerald-500 [&_a]:font-black [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-emerald-600',
+    '[&_ul]:my-6 [&_ul]:pl-7 [&_ul]:list-disc [&_ul]:list-outside [&_ul]:space-y-3 [&_ul]:text-slate-600 [&_ul]:font-medium',
+    '[&_ol]:my-6 [&_ol]:pl-7 [&_ol]:list-decimal [&_ol]:list-outside [&_ol]:space-y-3 [&_ol]:text-slate-600 [&_ol]:font-medium',
+    '[&_li]:leading-relaxed [&_li]:pl-1 [&_li]:marker:text-emerald-500',
+    '[&_blockquote]:my-8 [&_blockquote]:rounded-3xl [&_blockquote]:border [&_blockquote]:border-slate-200 [&_blockquote]:bg-slate-50 [&_blockquote]:p-6 [&_blockquote]:text-slate-700 [&_blockquote]:font-medium',
+    '[&_blockquote_p]:mb-0',
+    '[&_hr]:my-10 [&_hr]:border-slate-200',
+    '[&_img]:w-full [&_img]:h-auto [&_img]:rounded-3xl [&_img]:border [&_img]:border-slate-200 [&_img]:shadow-lg [&_img]:my-8',
+    '[&_table]:w-full [&_table]:my-10 [&_table]:overflow-hidden [&_table]:rounded-3xl [&_table]:border [&_table]:border-slate-200 [&_table]:bg-white [&_table]:shadow-lg',
+    '[&_thead]:bg-slate-50',
+    '[&_th]:text-left [&_th]:px-5 [&_th]:py-4 [&_th]:text-slate-900 [&_th]:text-sm [&_th]:font-black [&_th]:tracking-wide',
+    '[&_td]:px-5 [&_td]:py-4 [&_td]:text-slate-600 [&_td]:text-sm [&_td]:font-medium [&_td]:border-t [&_td]:border-slate-200',
+    'hover:[&_tbody_tr]:bg-slate-50',
+    '[&_code]:px-2 [&_code]:py-1 [&_code]:rounded-lg [&_code]:bg-slate-100 [&_code]:text-slate-800 [&_code]:text-[0.95em]',
+    '[&_pre]:my-8 [&_pre]:p-6 [&_pre]:rounded-3xl [&_pre]:bg-slate-50 [&_pre]:border [&_pre]:border-slate-200 [&_pre]:overflow-x-auto',
+  ].join(' ');
+
+  const [htmlBefore, htmlAfter] = splitHtmlAfterFirstH2Section(article.cleanedHtml || '');
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
+    <div className="min-h-screen bg-white text-slate-700">
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
       {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-white/5 border border-white/10"
-        >
+        <button onClick={scrollToTop}
+          className="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-slate-100 border border-slate-200 shadow-lg flex items-center justify-center text-slate-500">
           <ChevronUp />
         </button>
       )}
 
       <div className="pt-32 px-6 max-w-5xl mx-auto">
-        <Link href="/blog" className="text-emerald-400 uppercase text-xs font-black">
-          ← Back to blog
-        </Link>
+        <Link href="/blog" className="text-emerald-500 uppercase text-xs font-black">← Back to blog</Link>
 
-        <div className="mt-10 rounded-[2.5rem] overflow-hidden border border-white/10">
+        <div className="mt-10 rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-lg">
           <div className="relative h-[420px] md:h-[520px]">
             {article.featuredImage && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={article.featuredImage}
-                alt={article['Article Title']}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+              <img src={article.featuredImage} alt={article['Article Title']}
+                className="absolute inset-0 w-full h-full object-cover" />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
-              <div className="text-sm text-slate-300">
-                {article.publishDate.toDateString()}
-              </div>
-              <h1 className="text-4xl md:text-5xl font-black text-white">
-                {article['Article Title']}
-              </h1>
+              <div className="text-sm text-slate-500">{article.publishDate.toDateString()}</div>
+              <h1 className="text-4xl md:text-5xl font-black text-slate-900">{article['Article Title']}</h1>
             </div>
           </div>
 
-          {(() => {
-            const articleClasses = [
-              'p-10 max-w-none',
-              // Headings
-              '[&_h1]:text-4xl [&_h1]:md:text-5xl [&_h1]:font-black [&_h1]:tracking-tight [&_h1]:text-white [&_h1]:mt-10 [&_h1]:mb-5',
-              '[&_h2]:text-3xl [&_h2]:md:text-4xl [&_h2]:font-black [&_h2]:tracking-tight [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4',
-              '[&_h3]:text-2xl [&_h3]:md:text-3xl [&_h3]:font-black [&_h3]:tracking-tight [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3',
-              '[&_h4]:text-xl [&_h4]:font-black [&_h4]:text-white [&_h4]:mt-7 [&_h4]:mb-3',
-              // Paragraphs
-              '[&_p]:text-slate-300 [&_p]:font-medium [&_p]:leading-relaxed [&_p]:mb-5',
-              // Links
-              '[&_a]:text-emerald-400 [&_a]:font-black [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-emerald-300',
-              // Lists
-              '[&_ul]:my-6 [&_ul]:pl-7 [&_ul]:list-disc [&_ul]:list-outside [&_ul]:space-y-3 [&_ul]:text-slate-300 [&_ul]:font-medium',
-              '[&_ol]:my-6 [&_ol]:pl-7 [&_ol]:list-decimal [&_ol]:list-outside [&_ol]:space-y-3 [&_ol]:text-slate-300 [&_ol]:font-medium',
-              '[&_li]:leading-relaxed [&_li]:pl-1 [&_li]:marker:text-emerald-400',
-              // Blockquotes
-              '[&_blockquote]:my-8 [&_blockquote]:rounded-3xl [&_blockquote]:border [&_blockquote]:border-white/10 [&_blockquote]:bg-white/5 [&_blockquote]:p-6 [&_blockquote]:text-slate-200 [&_blockquote]:font-medium',
-              '[&_blockquote_p]:mb-0',
-              // Horizontal rules
-              '[&_hr]:my-10 [&_hr]:border-white/10',
-              // Images
-              '[&_img]:w-full [&_img]:h-auto [&_img]:rounded-3xl [&_img]:border [&_img]:border-white/10 [&_img]:shadow-2xl [&_img]:my-8',
-              // Tables
-              '[&_table]:w-full [&_table]:my-10 [&_table]:overflow-hidden [&_table]:rounded-3xl [&_table]:border [&_table]:border-white/10 [&_table]:bg-white/5 [&_table]:shadow-2xl',
-              '[&_thead]:bg-white/10',
-              '[&_th]:text-left [&_th]:px-5 [&_th]:py-4 [&_th]:text-white [&_th]:text-sm [&_th]:font-black [&_th]:tracking-wide',
-              '[&_td]:px-5 [&_td]:py-4 [&_td]:text-slate-200 [&_td]:text-sm [&_td]:font-medium [&_td]:border-t [&_td]:border-white/10',
-              'hover:[&_tbody_tr]:bg-white/5',
-              // Code
-              '[&_code]:px-2 [&_code]:py-1 [&_code]:rounded-lg [&_code]:bg-white/10 [&_code]:text-slate-100 [&_code]:text-[0.95em]',
-              '[&_pre]:my-8 [&_pre]:p-6 [&_pre]:rounded-3xl [&_pre]:bg-white/5 [&_pre]:border [&_pre]:border-white/10 [&_pre]:overflow-x-auto',
-            ].join(' ');
-
-            const [htmlBefore, htmlAfter] = splitHtmlAfterFirstH2Section(article.cleanedHtml || '');
-
-            return htmlAfter ? (
-              <>
-                <div className={articleClasses} dangerouslySetInnerHTML={{ __html: htmlBefore }} />
-                <div className="px-10 pb-2">
-                  <BlogCtaBanner onOpenModal={() => setIsModalOpen(true)} />
-                </div>
-                <div className={articleClasses} dangerouslySetInnerHTML={{ __html: htmlAfter }} />
-              </>
-            ) : (
-              <div className={articleClasses} dangerouslySetInnerHTML={{ __html: article.cleanedHtml || '' }} />
-            );
-          })()}
+          {htmlAfter ? (
+            <>
+              <div className={articleClasses} dangerouslySetInnerHTML={{ __html: htmlBefore }} />
+              <div className="px-10 pb-2">
+                <BlogCtaBanner onOpenModal={() => setIsModalOpen(true)} />
+              </div>
+              <div className={articleClasses} dangerouslySetInnerHTML={{ __html: htmlAfter }} />
+            </>
+          ) : (
+            <div className={articleClasses} dangerouslySetInnerHTML={{ __html: article.cleanedHtml || '' }} />
+          )}
         </div>
 
         {relatedArticles.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-2xl font-black text-white">Related articles</h2>
-
+            <h2 className="text-2xl font-black text-slate-900">Related articles</h2>
             <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
               {relatedArticles.map((a) => (
-                <Link
-                  key={a.Slug}
-                  href={`/blog/${a.Slug}`}
-                  className="group rounded-[2.5rem] border border-white/10 overflow-hidden flex flex-col hover:border-emerald-500/30 transition-all duration-500 shadow-2xl bg-slate-950"
-                >
-                  <div className="relative h-44 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
+                <Link key={a.Slug} href={`/blog/${a.Slug}`}
+                  className="group rounded-[2.5rem] border border-slate-200 overflow-hidden flex flex-col hover:border-emerald-300 transition-all duration-500 shadow-sm hover:shadow-lg bg-white">
+                  <div className="relative h-44 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-50">
                     {a.featuredImage ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={a.featuredImage}
-                        alt={a['Article Title']}
-                        className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                        loading="lazy"
-                      />
+                      <img src={a.featuredImage} alt={a['Article Title']}
+                        className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" loading="lazy" />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-6xl opacity-10">📝</div>
-                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center"><div className="text-6xl opacity-10">📝</div></div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
-                    <div className="absolute top-5 left-5 px-4 py-1.5 bg-emerald-500/90 backdrop-blur-md text-white text-[10px] font-black uppercase rounded-full">
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-white/10 to-transparent" />
+                    <div className="absolute top-5 left-5 px-4 py-1.5 bg-emerald-500 text-white text-[10px] font-black uppercase rounded-full">
                       {a.wp_category}
                     </div>
                   </div>
-
                   <div className="p-8 flex-1 flex flex-col">
-                    <h3 className="text-xl font-black text-white mb-4 group-hover:text-emerald-400 transition-colors">
+                    <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-emerald-500 transition-colors">
                       {a['Article Title']}
                     </h3>
-                    <div className="flex items-center gap-2 text-emerald-400 font-black uppercase tracking-widest text-[10px] mt-auto">
+                    <div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px] mt-auto">
                       Read Article <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -431,18 +288,12 @@ export default function ArticlePage() {
 
         {furtherReading.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-2xl font-black text-white">Further Reading</h2>
+            <h2 className="text-2xl font-black text-slate-900">Further Reading</h2>
             <ul className="mt-6 space-y-3">
               {furtherReading.map((l) => (
                 <li key={l.url}>
-                  <a
-                    href={l.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-emerald-400 underline underline-offset-4"
-                  >
-                    {l.label}
-                  </a>
+                  <a href={l.url} target="_blank" rel="noopener noreferrer"
+                    className="text-emerald-500 underline underline-offset-4 hover:text-emerald-600">{l.label}</a>
                 </li>
               ))}
             </ul>
