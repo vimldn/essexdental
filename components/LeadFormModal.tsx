@@ -23,7 +23,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
       const timer = setTimeout(() => {
         setShouldRender(false);
         setAnimationState('idle');
-      }, 300); // Match exit animation duration
+      }, 300);
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -52,12 +52,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       'https://script.google.com/macros/s/AKfycbz-B9H0JTI7a9Cgyn9z-pZXKnuiNm6acAn8Zb13N21qGRcpxy7EtVvlPAjpl6f7Hj3-RQ/exec',
       {
         method: 'POST',
-        // IMPORTANT: do NOT set Content-Type: application/json (causes CORS preflight)
         body: JSON.stringify(payload),
       }
     );
 
-    // Apps Script sometimes returns text; parse safely
     const text = await res.text();
     let data: any = {};
     try { data = JSON.parse(text); } catch {}
@@ -80,20 +78,18 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   }
 };
 
-
-
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) onClose();
   };
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md 
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md 
         ${animationState === 'entering' ? 'animate-backdrop-in' : animationState === 'exiting' ? 'animate-backdrop-out' : 'opacity-100'}`}
       onClick={handleBackdropClick}
     >
       <div 
-        className={`relative w-full max-w-lg overflow-hidden bg-white rounded-[2.5rem] shadow-[0_48px_96px_-12px_rgba(0,0,0,0.9)] 
+        className={`relative w-full max-w-lg overflow-hidden bg-white rounded-[2.5rem] shadow-[0_48px_96px_-12px_rgba(0,0,0,0.25)] 
           ${animationState === 'entering' ? 'animate-modal-in' : 'animate-modal-out'}`}
       >
         <button 
