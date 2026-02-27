@@ -57,7 +57,7 @@ export default function ServiceCitiesPage({ params }: { params: { service: strin
   const allCities = Object.values(LOCATIONS).flat();
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
+    <div className="min-h-screen bg-white text-slate-700">
       <LeadFormModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -67,7 +67,7 @@ export default function ServiceCitiesPage({ params }: { params: { service: strin
 
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-white/5 backdrop-blur-md border border-white/10 text-slate-400 rounded-full flex items-center justify-center transition-all duration-500 ${
+        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-slate-100 border border-slate-200 text-slate-500 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg ${
           showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -80,54 +80,54 @@ export default function ServiceCitiesPage({ params }: { params: { service: strin
           <img
             src={heroImage}
             alt={service.title}
-            className="w-full h-full object-cover object-center opacity-40"
+            className="w-full h-full object-cover object-center opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/60 to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 space-y-12">
           <div className="text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm text-slate-400 mb-4 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full border border-slate-200 text-sm text-slate-500 mb-4 backdrop-blur-sm">
               <Link
                 href="/services"
-                className="hover:text-emerald-400 transition-colors"
+                className="hover:text-emerald-500 transition-colors"
               >
                 All Services
               </Link>
               <span>/</span>
-              <span className="text-white">{service.title}</span>
+              <span className="text-slate-900">{service.title}</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight px-4 overflow-visible">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-tight tracking-tight px-4 overflow-visible">
               {service.title} in{' '}
-              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400 inline-block pr-2">
+              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500 inline-block pr-2">
                 {allCities.length}+ UK Locations
               </span>
             </h1>
 
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
               {service.desc} Find implant specialists near you.
             </p>
 
             <div className="max-w-xl mx-auto relative mt-8 flex items-center">
-              <Globe className="absolute left-6 text-slate-500 w-6 h-6 z-10" />
+              <Globe className="absolute left-6 text-slate-400 w-6 h-6 z-10" />
               <input
                 type="text"
                 placeholder="Search your city or town..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-5 pl-16 text-white focus:border-emerald-500 outline-none transition-all shadow-2xl backdrop-blur-sm"
+                className="w-full bg-white border border-slate-200 rounded-2xl px-6 py-5 pl-16 text-slate-900 focus:border-emerald-500 outline-none transition-all shadow-lg"
               />
             </div>
           </div>
 
-          <div className="dark-card p-8 md:p-12 rounded-[2.5rem] border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-sm">
+          <div className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-emerald-200 bg-emerald-50/30 shadow-lg">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="space-y-4 text-center md:text-left">
-                <h2 className="text-3xl font-bold text-white">
+                <h2 className="text-3xl font-bold text-slate-900">
                   Ready to Start Your Treatment?
                 </h2>
-                <p className="text-slate-400 max-w-xl font-medium">
+                <p className="text-slate-500 max-w-xl font-medium">
                   Connect with elite implant specialists specialising in{' '}
                   {service.title.toLowerCase()}.
                 </p>
@@ -145,12 +145,12 @@ export default function ServiceCitiesPage({ params }: { params: { service: strin
       </div>
 
       {/* Cities */}
-      <div className="pb-24 bg-slate-950">
+      <div className="pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col gap-16">
             {Object.entries(filteredLocations).map(([region, cities]) => (
               <div key={region}>
-                <h2 className="text-2xl md:text-3xl font-black text-white mb-6 px-2">
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6 px-2">
                   {region}
                 </h2>
 
@@ -164,7 +164,7 @@ export default function ServiceCitiesPage({ params }: { params: { service: strin
                       <Link
                         key={city}
                         href={`/services/${params.service}/${citySlug}`}
-                        className="text-left px-6 py-5 rounded-2xl border transition-all font-bold text-base sm:text-lg leading-relaxed flex items-center justify-between group bg-slate-900/40 border-white/5 text-slate-300 hover:border-emerald-500/30 hover:text-white hover:bg-slate-800/40"
+                        className="text-left px-6 py-5 rounded-2xl border transition-all font-bold text-base sm:text-lg leading-relaxed flex items-center justify-between group bg-slate-50 border-slate-100 text-slate-600 hover:border-emerald-300 hover:text-slate-900 hover:bg-white hover:shadow-md"
                       >
                         <span className="leading-snug">{city}</span>
                         <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
