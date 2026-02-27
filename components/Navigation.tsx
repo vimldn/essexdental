@@ -27,12 +27,11 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled || !isHome ? 'glass-effect py-3 shadow-xl' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled || !isHome ? 'glass-effect py-3 shadow-md' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           
-          {/* Logo + Brand - TODO: Change "Essex Dental Implants" to your final brand name */}
           <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center">
               <Image
                 src="/logo.png"
                 alt="Essex Dental Implants"
@@ -42,16 +41,16 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
                 className="object-contain"
               />
             </div>
-            <span className="text-2xl font-black text-white tracking-tight">
+            <span className="text-2xl font-black text-slate-900 tracking-tight">
               Essex Dental Implants
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10 text-sm font-semibold">
-            <Link href="/services" className={pathname === '/services' ? 'text-emerald-400' : 'hover:text-emerald-400'}>Services</Link>
-            <Link href="/location" className={pathname === '/location' ? 'text-emerald-400' : 'hover:text-emerald-400'}>Location</Link>
-            <Link href="/blog" className={pathname === '/blog' ? 'text-emerald-400' : 'hover:text-emerald-400'}>Blog</Link>
+          <div className="hidden md:flex items-center space-x-10 text-sm font-semibold text-slate-600">
+            <Link href="/services" className={pathname === '/services' ? 'text-emerald-500' : 'hover:text-emerald-500'}>Services</Link>
+            <Link href="/location" className={pathname === '/location' ? 'text-emerald-500' : 'hover:text-emerald-500'}>Location</Link>
+            <Link href="/blog" className={pathname === '/blog' ? 'text-emerald-500' : 'hover:text-emerald-500'}>Blog</Link>
             <button onClick={onOpenModal} className="px-7 py-2.5 bg-emerald-500 text-white rounded-full font-bold shadow-lg shadow-emerald-500/20">
               Find a Specialist
             </button>
@@ -60,7 +59,7 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
           {/* Mobile Button */}
           <button 
             onClick={() => setIsMobileMenuOpen(true)} 
-            className="md:hidden p-2 bg-white/5 rounded-xl"
+            className="md:hidden p-2 bg-slate-100 rounded-xl text-slate-600"
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -69,23 +68,23 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-0 z-[60] bg-slate-950/40 backdrop-blur-sm transition-opacity duration-500 md:hidden ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} 
+        className={`fixed inset-0 z-[60] bg-slate-900/30 backdrop-blur-sm transition-opacity duration-500 md:hidden ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} 
         onClick={() => setIsMobileMenuOpen(false)}
       >
         <div 
-          className={`absolute top-0 right-0 h-full w-[65%] bg-slate-900 border-l border-white/5 p-6 pt-20 flex flex-col space-y-4 transition-transform duration-500 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`} 
+          className={`absolute top-0 right-0 h-full w-[65%] bg-white border-l border-slate-200 p-6 pt-20 flex flex-col space-y-4 transition-transform duration-500 shadow-2xl ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`} 
           onClick={(e) => e.stopPropagation()}
         >
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold">Home</Link>
-          <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold">Services</Link>
-          <Link href="/location" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold">Location</Link>
-          <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold">Blog</Link>
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold text-slate-700">Home</Link>
+          <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold text-slate-700">Services</Link>
+          <Link href="/location" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold text-slate-700">Location</Link>
+          <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-left px-4 py-3 font-bold text-slate-700">Blog</Link>
           <button 
             onClick={() => { 
               onOpenModal(); 
               setIsMobileMenuOpen(false); 
             }} 
-            className="text-left px-4 py-3 font-bold text-emerald-400"
+            className="text-left px-4 py-3 font-bold text-emerald-500"
           >
             Find a Specialist
           </button>
