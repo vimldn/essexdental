@@ -1,12 +1,67 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Papa from 'papaparse';
 import { SERVICES, LOCATIONS } from '@/lib/data';
+
+interface Article {
+  'Article Title': string;
+  'Slug': string;
+  'Article Content': string;
+  'wp_category': string;
+}
+
+const slugify = (s: string) =>
+  (s || '').toLowerCase().trim().replace(/['"]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+const makeUniqueSlug = (base: string, used: Set<string>) => {
+  const cleanBase = base && base.length ? base : 'post';
+  let slug = cleanBase;
+  let i = 2;
+  while (used.has(slug)) slug = `${cleanBase}-${i++}`;
+  used.add(slug);
+  return slug;
+};
 
 export default function Footer() {
   const allCities = Object.values(LOCATIONS).flat();
   const topCities = allCities.slice(0, 12);
+  const [latestArticles, setLatestArticles] = useState<{ title: string; slug: string }[]>([]);
+
+  useEffect(() => {
+    fetch('/articles.csv')
+      .then((r) => r.text())
+      .then((csvText) => {
+        Papa.parse<Article>(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            const usedSlugs = new Set<string>();
+            const today = new Date();
+            const startDate = new Date('2026-02-10T00:00:00');
+            const articlesPerDay = 3;
+
+            const published = (results.data || [])
+              .filter((a) => a && a['Article Title'] && a['Article Title'].trim())
+              .map((a, index) => {
+                const dayOffset = Math.floor(index / articlesPerDay);
+                const publishDate = new Date(startDate);
+                publishDate.setDate(publishDate.getDate() + dayOffset);
+                const baseSlug = (a['Slug'] || '').trim() || slugify(a['Article Title']);
+                const uniqueSlug = makeUniqueSlug(baseSlug, usedSlugs);
+                return { title: a['Article Title'], slug: uniqueSlug, publishDate };
+              })
+              .filter((a) => a.publishDate <= today);
+
+            // Latest 3
+            const latest = published.slice(-3).reverse();
+            setLatestArticles(latest.map((a) => ({ title: a.title, slug: a.slug })));
+          },
+        });
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <footer className="bg-slate-50 pt-20 pb-10 border-t border-slate-200">
@@ -60,7 +115,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Resources + Latest Articles */}
           <div>
             <h4 className="text-slate-900 font-bold mb-5 uppercase tracking-widest text-[10px]">Resources</h4>
             <ul className="space-y-3">
@@ -70,11 +125,15 @@ export default function Footer() {
               <li><Link href="/#faq" className="text-sm text-slate-400 hover:text-emerald-500 transition-colors">FAQ</Link></li>
             </ul>
 
-            <h4 className="text-slate-900 font-bold mt-8 mb-5 uppercase tracking-widest text-[10px]">Quick Links</h4>
+            <h4 className="text-slate-900 font-bold mt-8 mb-5 uppercase tracking-widest text-[10px]">Latest Articles</h4>
             <ul className="space-y-3">
-              <li><Link href="/services/single-tooth" className="text-sm text-slate-400 hover:text-emerald-500 transition-colors">Single Tooth Cost UK</Link></li>
-              <li><Link href="/services/full-arch" className="text-sm text-slate-400 hover:text-emerald-500 transition-colors">All-on-4 Implants Essex</Link></li>
-              <li><Link href="/services/immediate-implants" className="text-sm text-slate-400 hover:text-emerald-500 transition-colors">Same Day Implants</Link></li>
+              {latestArticles.map((article) => (
+                <li key={article.slug}>
+                  <Link href={`/blog/${article.slug}`} className="text-sm text-slate-400 hover:text-emerald-500 transition-colors line-clamp-2 leading-snug">
+                    {article.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -100,15 +159,9 @@ export default function Footer() {
             © {new Date().getFullYear()} Essex Dental Implants. Independent referral facilitator — not a dental provider.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/" className="text-[10px] uppercase font-bold tracking-widest text-slate-300 hover:text-emerald-500 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/" className="text-[10px] uppercase font-bold tracking-widest text-slate-300 hover:text-emerald-500 transition-colors">
-              Terms
-            </Link>
-            <Link href="/blog" className="text-[10px] uppercase font-bold tracking-widest text-slate-300 hover:text-emerald-500 transition-colors">
-              Sitemap
-            </Link>
+            <Link href="/" className="text-[10px] uppercase font-bold tracking-widest text-slate-300 hover:text-emerald-500 transition-colors">Privacy Policy</Link>
+            <Link href="/" className="text-[10px] uppercase font-bold tracking-widest text-slate-300 hover:text-emerald-500 transition-colors">Terms</Link>
+            <Link href="/blog" className="text-[10px] uppercase font-bold tracking-widest text-slate-300 hover:text-emerald-500 transition-colors">Sitemap</Link>
           </div>
         </div>
 
