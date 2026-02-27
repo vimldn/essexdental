@@ -80,54 +80,54 @@ export default function ServiceCitiesPage({ params }: { params: { service: strin
           <img
             src={heroImage}
             alt={service.title}
-            className="w-full h-full object-cover object-center opacity-30"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/90" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 space-y-12">
           <div className="text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full border border-slate-200 text-sm text-slate-500 mb-4 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm text-white/70 mb-4 backdrop-blur-sm">
               <Link
                 href="/services"
-                className="hover:text-emerald-500 transition-colors"
+                className="hover:text-emerald-400 transition-colors"
               >
                 All Services
               </Link>
               <span>/</span>
-              <span className="text-slate-900">{service.title}</span>
+              <span className="text-white">{service.title}</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-tight tracking-tight px-4 overflow-visible">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight px-4 overflow-visible drop-shadow-lg">
               {service.title} in{' '}
-              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500 inline-block pr-2">
+              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400 inline-block pr-2">
                 {allCities.length}+ UK Locations
               </span>
             </h1>
 
-            <p className="text-xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto font-medium leading-relaxed">
               {service.desc} Find implant specialists near you.
             </p>
 
             <div className="max-w-xl mx-auto relative mt-8 flex items-center">
-              <Globe className="absolute left-6 text-slate-400 w-6 h-6 z-10" />
+              <Globe className="absolute left-6 text-white/50 w-6 h-6 z-10" />
               <input
                 type="text"
                 placeholder="Search your city or town..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-2xl px-6 py-5 pl-16 text-slate-900 focus:border-emerald-500 outline-none transition-all shadow-lg"
+                className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-5 pl-16 text-white placeholder:text-white/40 focus:border-emerald-400 outline-none transition-all shadow-lg"
               />
             </div>
           </div>
 
-          <div className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-emerald-200 bg-emerald-50/30 shadow-lg">
+          <div className="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] border border-white/20 shadow-lg">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="space-y-4 text-center md:text-left">
-                <h2 className="text-3xl font-bold text-slate-900">
+                <h2 className="text-3xl font-bold text-white">
                   Ready to Start Your Treatment?
                 </h2>
-                <p className="text-slate-500 max-w-xl font-medium">
+                <p className="text-white/70 max-w-xl font-medium">
                   Connect with elite implant specialists specialising in{' '}
                   {service.title.toLowerCase()}.
                 </p>
