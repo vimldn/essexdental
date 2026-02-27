@@ -36,24 +36,24 @@ service.id === 'crossbite' ? <Globe className="w-8 h-8" /> :
 }));
 
 return (
-<div className="min-h-screen bg-slate-950 text-slate-200">
+<div className="min-h-screen bg-white text-slate-700">
 <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
 <button
 onClick={scrollToTop}
-className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-white/5 backdrop-blur-md border border-white/10 text-slate-400 rounded-full flex items-center justify-center transition-all duration-500 ${showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-slate-100 border border-slate-200 text-slate-500 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg ${showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
 >
 <ChevronUp className="w-6 h-6" />
 </button>
 
-<div className="pt-32 pb-24 min-h-screen bg-slate-950">
+<div className="pt-32 pb-24 min-h-screen bg-white">
 <div className="max-w-7xl mx-auto px-4 space-y-16">
 <div className="text-center space-y-6">
-<h1 className="text-4xl md:text-7xl font-black text-white leading-tight">
-Elite Dental Implants <span className="text-emerald-400 italic">Treatments</span>
+<h1 className="text-4xl md:text-7xl font-black text-slate-900 leading-tight">
+Elite Dental Implants <span className="text-emerald-500 italic">Treatments</span>
 </h1>
-<p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium">
+<p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium">
 Customised dental implant solutions for every clinical challenge, from complex bite issues to lifestyle-focused adult treatment.
 </p>
 </div>
@@ -63,16 +63,16 @@ Customised dental implant solutions for every clinical challenge, from complex b
 <Link
 key={service.id}
 href={`/services/${service.id}`}
-className="group dark-card p-10 rounded-[2.5rem] border border-white/5 hover:border-emerald-500/30 transition-all flex flex-col shadow-xl"
+className="group bg-white p-10 rounded-[2.5rem] border border-slate-100 hover:border-emerald-300 hover:shadow-lg transition-all flex flex-col shadow-sm"
 >
-<div className={`mb-6 p-4 rounded-2xl bg-${service.color}-500/10 text-${service.color}-400 inline-flex self-start`}>
+<div className={`mb-6 p-4 rounded-2xl bg-emerald-50 text-emerald-500 inline-flex self-start`}>
 {service.icon}
 </div>
-<h2 className="text-2xl font-black text-white mb-4 group-hover:text-emerald-400 transition-colors">
+<h2 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-emerald-500 transition-colors">
 {service.title}
 </h2>
-<p className="text-slate-400 font-medium mb-8 flex-1">{service.desc}</p>
-<div className="flex items-center gap-2 text-emerald-400 font-black uppercase tracking-widest text-[10px]">
+<p className="text-slate-500 font-medium mb-8 flex-1">{service.desc}</p>
+<div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px]">
 View All Locations <ArrowUpRight className="w-4 h-4" />
 </div>
 </Link>
