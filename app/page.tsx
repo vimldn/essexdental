@@ -65,40 +65,40 @@ export default function Home() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
+    <div className="min-h-screen bg-white text-slate-700">
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
       
       <button 
         onClick={scrollToTop} 
-        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-white/5 backdrop-blur-md border border-white/10 text-slate-400 rounded-full flex items-center justify-center transition-all duration-500 ${showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-slate-100 border border-slate-200 text-slate-500 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg ${showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronUp className="w-6 h-6" />
       </button>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 px-4">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white px-4">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.pexels.com/photos/4687905/pexels-photo-4687905.jpeg" 
             className="w-full h-full object-cover opacity-90 animate-slow-zoom brightness-110" 
             alt="Dental Implants UK" 
           />
-          <div className="absolute inset-0 bg-slate-950/30"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-transparent to-slate-950/70"></div>
+          <div className="absolute inset-0 bg-white/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/70"></div>
         </div>
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 text-sm font-bold">
             <Sparkles className="w-4 h-4" />
             <span>Premium Dental Implant Specialists</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black text-white leading-tight">
+          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black text-slate-900 leading-tight">
             The Network For <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-400 animate-gradient">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-500 animate-gradient">
               Dental Implants In Essex.
             </span>
           </h1>
-          <p className="text-lg lg:text-2xl text-slate-300 max-w-3xl mx-auto font-medium">
+          <p className="text-lg lg:text-2xl text-slate-600 max-w-3xl mx-auto font-medium">
             Connecting patients with elite dental implant specialists for natural-looking, long-lasting tooth replacement solutions.
           </p>
           <button 
@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <div className="bg-slate-900 border-y border-white/5 py-12">
+      <div className="bg-slate-50 border-y border-slate-200 py-12">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { val: 350, suffix: '+', label: 'Verified Partners' },
@@ -120,21 +120,21 @@ export default function Home() {
             { val: 0, suffix: 'Free', label: 'Service', special: true }
           ].map((s, i) => (
             <div key={i}>
-              <p className="text-3xl font-black text-white">
+              <p className="text-3xl font-black text-slate-900">
                 {s.special ? 'FREE' : <CountUp end={s.val} suffix={s.suffix} decimals={s.decimals || 0} />}
               </p>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{s.label}</p>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{s.label}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Why Choose Dental Implants Section */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black text-white">Why Choose Dental Implants?</h2>
-            <p className="text-slate-400 text-lg max-w-3xl mx-auto font-medium">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900">Why Choose Dental Implants?</h2>
+            <p className="text-slate-500 text-lg max-w-3xl mx-auto font-medium">
               The gold standard for tooth replacement. Permanent, natural-looking, and designed to last a lifetime.
             </p>
           </div>
@@ -167,90 +167,64 @@ export default function Home() {
               },
               {
                 icon: <Globe className="w-8 h-8" />,
-                title: 'Proven Success Rate',
-                desc: 'Over 95% success rate backed by decades of research. Trusted by millions worldwide as the superior tooth replacement method.'
+                title: 'Confidence Restored',
+                desc: 'Smile, laugh, and speak without worrying about gaps, loose dentures, or damaged teeth. Feel truly confident again.'
               }
             ].map((item, i) => (
-              <div key={i} className="dark-card p-8 rounded-[2rem] border border-white/5 hover:border-emerald-500/30 transition-all">
-                <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6">
+              <div key={i} className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-lg hover:border-emerald-200 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-6">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-black text-white mb-3">{item.title}</h3>
-                <p className="text-slate-400 font-medium leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-black text-slate-900 mb-3">{item.title}</h3>
+                <p className="text-slate-500 font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Results That Inspire - Marquee Section */}
-      <section className="py-16 bg-slate-950 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 mb-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-2">
-            Results That <span className="text-emerald-500">Inspire</span>
-          </h2>
-          <p className="text-slate-400 text-sm font-medium">Verified outcomes from our specialist network.</p>
-        </div>
-        
-        <div className="flex animate-marquee gap-6 whitespace-nowrap">
-          {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((img, i) => (
-            <div 
-              key={i} 
-              className="w-[180px] md:w-[280px] aspect-[4/5] flex-shrink-0 rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl hover:border-emerald-500/30 transition-all group"
-            >
-              <img 
-                src={img} 
-                loading="lazy"
-                className="block w-full h-full object-cover object-center grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
-                alt="Dental Implant Result" 
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* How We Advocate Section */}
-      <section className="py-24 bg-slate-950">
+      {/* How It Works Section */}
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-20 space-y-6">
-            <h2 className="text-4xl md:text-5xl font-black text-white">How We Advocate For You</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg font-medium">
-              We ensure you are matched with the specialist best suited for your specific dental needs and clinical profile.
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900">How It Works</h2>
+            <p className="text-slate-500 text-lg max-w-3xl mx-auto font-medium">
+              Three simple steps to your perfect smile. We make finding the right specialist effortless.
             </p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 num: '01',
-                title: 'Analysis',
-                desc: 'We evaluate your tooth replacement needs to determine the ideal specialist and treatment approach.',
+                title: 'Assessment',
+                desc: 'Share your needs through our quick form. Tell us about your dental situation and location preferences.',
                 icon: <Calendar className="w-8 h-8" />,
-                color: 'text-emerald-400'
+                color: 'text-emerald-500'
               },
               {
                 num: '02',
-                title: 'Matching',
-                desc: 'We filter our database of verified implant specialists to find your perfect clinical match.',
+                title: 'Match',
+                desc: 'Our system identifies the best-qualified specialists in your area based on your specific requirements.',
                 icon: <Shield className="w-8 h-8" />,
-                color: 'text-green-400'
+                color: 'text-green-500'
               },
               {
                 num: '03',
                 title: 'Referral',
                 desc: 'Receive a direct referral for a free consultation and comprehensive treatment plan.',
                 icon: <Sparkles className="w-8 h-8" />,
-                color: 'text-lime-400'
+                color: 'text-lime-500'
               }
             ].map((s, i) => (
-              <div key={i} className="dark-card p-10 rounded-[2.5rem] hover:bg-slate-800/80 transition-all">
+              <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex justify-between items-start mb-10">
-                  <div className={`w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center ${s.color}`}>
+                  <div className={`w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center ${s.color}`}>
                     {s.icon}
                   </div>
-                  <span className="text-5xl font-black text-slate-800">{s.num}</span>
+                  <span className="text-5xl font-black text-slate-100">{s.num}</span>
                 </div>
-                <h3 className="text-2xl font-black text-white mb-4">{s.title}</h3>
-                <p className="text-slate-400 font-medium">{s.desc}</p>
+                <h3 className="text-2xl font-black text-slate-900 mb-4">{s.title}</h3>
+                <p className="text-slate-500 font-medium">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -258,11 +232,11 @@ export default function Home() {
       </section>
 
       {/* Conditions We Treat Section */}
-      <section className="py-24 bg-slate-900">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black text-white">When You Need Dental Implants</h2>
-            <p className="text-slate-400 text-lg max-w-3xl mx-auto font-medium">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900">When You Need Dental Implants</h2>
+            <p className="text-slate-500 text-lg max-w-3xl mx-auto font-medium">
               From single tooth replacement to full arch restoration, our specialists handle every case with precision and care.
             </p>
           </div>
@@ -301,9 +275,9 @@ export default function Home() {
                 desc: 'Replace teeth that never developed with permanent implant solutions for complete smile restoration.'
               }
             ].map((condition, i) => (
-              <div key={i} className="dark-card p-6 rounded-2xl border border-white/5 hover:border-emerald-500/30 transition-all">
-                <h3 className="text-lg font-black text-white mb-2">{condition.title}</h3>
-                <p className="text-slate-400 text-sm font-medium leading-relaxed">{condition.desc}</p>
+              <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:border-emerald-300 hover:shadow-md transition-all">
+                <h3 className="text-lg font-black text-slate-900 mb-2">{condition.title}</h3>
+                <p className="text-slate-500 text-sm font-medium leading-relaxed">{condition.desc}</p>
               </div>
             ))}
           </div>
@@ -311,17 +285,17 @@ export default function Home() {
       </section>
 
       {/* The Specialist Difference Section */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-black uppercase tracking-widest rounded-full">
+              <div className="inline-block px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-600 text-xs font-black uppercase tracking-widest rounded-full">
                 Elite Specialist Network
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
-                The <span className="text-emerald-400">Specialist</span> Difference
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                The <span className="text-emerald-500">Specialist</span> Difference
               </h2>
-              <p className="text-slate-400 text-lg font-medium leading-relaxed">
+              <p className="text-slate-500 text-lg font-medium leading-relaxed">
                 Not all dentists place implants. Our network consists exclusively of verified specialists with advanced training and extensive experience.
               </p>
               <div className="space-y-4 pt-4">
@@ -333,8 +307,8 @@ export default function Home() {
                   'Continuous education on latest implant systems and techniques'
                 ].map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-slate-300 font-medium">{point}</p>
+                    <CheckCircle className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <p className="text-slate-600 font-medium">{point}</p>
                   </div>
                 ))}
               </div>
@@ -346,18 +320,18 @@ export default function Home() {
               </button>
             </div>
             <div className="relative">
-              <div className="dark-card p-8 rounded-[2.5rem] border border-white/5">
+              <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop"
                   alt="Dental Implant Specialist"
                   className="w-full h-[500px] object-cover rounded-2xl"
                 />
               </div>
-              <div className="absolute -bottom-8 -right-8 dark-card p-6 rounded-2xl border border-emerald-500/30 bg-slate-900/90 backdrop-blur-md max-w-xs">
+              <div className="absolute -bottom-8 -right-8 p-6 rounded-2xl border border-emerald-200 bg-white shadow-xl max-w-xs">
                 <div className="flex items-center gap-3 mb-2">
-                  <Medal className="w-8 h-8 text-emerald-400" />
+                  <Medal className="w-8 h-8 text-emerald-500" />
                   <div>
-                    <p className="text-2xl font-black text-white">350+</p>
+                    <p className="text-2xl font-black text-slate-900">350+</p>
                     <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Vetted Specialists</p>
                   </div>
                 </div>
@@ -371,12 +345,12 @@ export default function Home() {
       <FAQSection faqs={FAQS_HOME} />
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-slate-900">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
-          <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight">
             Ready for Your Permanent Smile?
           </h2>
-          <p className="text-xl text-slate-400 font-medium max-w-2xl mx-auto">
+          <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto">
             Connect with a verified dental implant specialist in your area. Free consultation, expert care, and results that last a lifetime.
           </p>
           <button 
@@ -385,7 +359,7 @@ export default function Home() {
           >
             Get Matched with a Specialist
           </button>
-          <p className="text-sm text-slate-500 font-medium">
+          <p className="text-sm text-slate-400 font-medium">
             No cost to use our service • Verified specialists only • Free consultation matching
           </p>
         </div>
