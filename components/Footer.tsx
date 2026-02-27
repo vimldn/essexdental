@@ -29,11 +29,6 @@ export default function Footer() {
               <li><Link href="/" className="hover:text-emerald-500 transition-colors">FAQ</Link></li>
             </ul>
           </div>
-          <div>
-            <h4 className="text-slate-900 font-bold mb-8 uppercase tracking-widest text-[10px]">Contact</h4>
-            <p className="text-slate-900 font-black text-xl">800-SMILE-MATCH</p>
-            <p className="text-emerald-500 mt-2 font-bold">support@dental implantsdentists.com</p>
-          </div>
         </div>
         <p className="text-center text-[10px] uppercase font-black tracking-widest text-slate-300">
           © 2024 Essex Dental Implants Referral Network. We are a facilitator, not a dental provider.
