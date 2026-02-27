@@ -81,11 +81,11 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.pexels.com/photos/4687905/pexels-photo-4687905.jpeg" 
-            className="w-full h-full object-cover opacity-90 animate-slow-zoom brightness-110" 
+            className="w-full h-full object-cover opacity-20 animate-slow-zoom" 
             alt="Dental Implants UK" 
           />
-          <div className="absolute inset-0 bg-white/30"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/70"></div>
+          <div className="absolute inset-0 bg-white/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white"></div>
         </div>
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 text-sm font-bold">
