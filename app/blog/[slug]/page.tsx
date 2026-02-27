@@ -233,10 +233,10 @@ export default function ArticlePage() {
               <img src={article.featuredImage} alt={article['Article Title']}
                 className="absolute inset-0 w-full h-full object-cover" />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
-              <div className="text-sm text-slate-500">{article.publishDate.toDateString()}</div>
-              <h1 className="text-4xl md:text-5xl font-black text-slate-900">{article['Article Title']}</h1>
+              <div className="text-sm text-white/60">{article.publishDate.toDateString()}</div>
+              <h1 className="text-4xl md:text-5xl font-black text-white drop-shadow-lg">{article['Article Title']}</h1>
             </div>
           </div>
 
