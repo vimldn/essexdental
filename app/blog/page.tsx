@@ -42,21 +42,14 @@ const makeUniqueSlug = (base: string, used: Set<string>) => {
   return slug;
 };
 
-// Extract image URLs from HTML. We’ll use the LAST one as featured image.
 const extractImageUrls = (html: string): string[] => {
   const out: string[] = [];
   const s = html || '';
-
-  // src="..."
   const srcRe = /<img[^>]+src=["']([^"']+)["'][^>]*>/gi;
   let m: RegExpExecArray | null;
   while ((m = srcRe.exec(s))) out.push(m[1]);
-
-  // bare URLs (fallback): https://...jpg/png/webp etc
   const urlRe = /(https?:\/\/[^\s"']+\.(?:png|jpe?g|webp|gif))(?:\?[^\s"']*)?/gi;
   while ((m = urlRe.exec(s))) out.push(m[1]);
-
-  // de-dupe while preserving order
   return Array.from(new Set(out));
 };
 
@@ -70,7 +63,6 @@ export default function BlogPage() {
 
   useEffect(() => {
     let cancelled = false;
-
     fetch('/articles.csv')
       .then((response) => response.text())
       .then((csvText) => {
@@ -81,41 +73,24 @@ export default function BlogPage() {
             const startDate = new Date('2026-02-10T00:00:00');
             const articlesPerDay = 3;
             const usedSlugs = new Set<string>();
-
             const articlesWithDates: ArticleWithDate[] = (results.data || [])
               .filter((a: Article) => a && a['Article Title'] && a['Article Title'].trim())
               .map((a: Article, index: number) => {
                 const dayOffset = Math.floor(index / articlesPerDay);
                 const publishDate = new Date(startDate);
                 publishDate.setDate(publishDate.getDate() + dayOffset);
-
-                const baseSlug =
-                  (a['Slug'] || '').trim() || slugify(a['Article Title']);
+                const baseSlug = (a['Slug'] || '').trim() || slugify(a['Article Title']);
                 const uniqueSlug = makeUniqueSlug(baseSlug, usedSlugs);
-
                 const imgs = extractImageUrls(a['Article Content'] || '');
                 const featuredImage = imgs.length ? imgs[imgs.length - 1] : undefined;
-
-                return {
-                  ...a,
-                  Slug: uniqueSlug,
-                  publishDate,
-                  index,
-                  featuredImage,
-                };
+                return { ...a, Slug: uniqueSlug, publishDate, index, featuredImage };
               });
-
             if (!cancelled) setArticles(articlesWithDates);
           },
         });
       })
-      .catch(() => {
-        if (!cancelled) setArticles([]);
-      });
-
-    return () => {
-      cancelled = true;
-    };
+      .catch(() => { if (!cancelled) setArticles([]); });
+    return () => { cancelled = true; };
   }, []);
 
   useEffect(() => {
@@ -135,16 +110,14 @@ export default function BlogPage() {
     return articles.filter((article) => article.publishDate <= today);
   }, [articles]);
 
-const filteredPosts = useMemo(() => {
-  if (!blogSearchQuery) return publishedArticles;
-
-  const q = blogSearchQuery.toLowerCase().trim();
-
-  return publishedArticles.filter((post) => {
-    const title = (post['Article Title'] || '').toLowerCase();
-    return title.includes(q);
-  });
-}, [blogSearchQuery, publishedArticles]);
+  const filteredPosts = useMemo(() => {
+    if (!blogSearchQuery) return publishedArticles;
+    const q = blogSearchQuery.toLowerCase().trim();
+    return publishedArticles.filter((post) => {
+      const title = (post['Article Title'] || '').toLowerCase();
+      return title.includes(q);
+    });
+  }, [blogSearchQuery, publishedArticles]);
 
   const paginatedPosts = useMemo(() => {
     const start = (blogPage - 1) * postsPerPage;
@@ -159,81 +132,53 @@ const filteredPosts = useMemo(() => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
+    <div className="min-h-screen bg-white text-slate-700">
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
-
-      <button
-        onClick={scrollToTop}
-        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-white/5 backdrop-blur-md border border-white/10 text-slate-400 rounded-full flex items-center justify-center transition-all duration-500 ${
-          showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-      >
+      <button onClick={scrollToTop}
+        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-slate-100 border border-slate-200 text-slate-500 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg ${showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <ChevronUp className="w-6 h-6" />
       </button>
 
-      <div className="pt-32 pb-24 px-4 min-h-screen bg-slate-950">
+      <div className="pt-32 pb-24 px-4 min-h-screen bg-white">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-7xl font-black text-white leading-tight tracking-tight">
-              Dental Implants <span className="text-emerald-400 italic">Insights</span>
+            <h1 className="text-4xl md:text-7xl font-black text-slate-900 leading-tight tracking-tight">
+              Dental Implants <span className="text-emerald-500 italic">Insights</span>
             </h1>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
               Expert clinical advice, pricing updates, and patient success stories.
             </p>
-
             <div className="max-w-xl mx-auto relative pt-8">
-              <input
-                type="text"
-                placeholder="Search articles by topic..."
-                value={blogSearchQuery}
-                onChange={(e) => {
-                  setBlogSearchQuery(e.target.value);
-                  setBlogPage(1);
-                }}
-                className="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-emerald-500 outline-none transition-all pl-14 shadow-2xl"
-              />
-              <Search className="absolute left-5 top-[3.2rem] text-slate-500 w-6 h-6" />
+              <input type="text" placeholder="Search articles by topic..." value={blogSearchQuery}
+                onChange={(e) => { setBlogSearchQuery(e.target.value); setBlogPage(1); }}
+                className="w-full bg-white border border-slate-200 rounded-2xl px-6 py-4 text-slate-900 focus:border-emerald-500 outline-none transition-all pl-14 shadow-lg" />
+              <Search className="absolute left-5 top-[3.2rem] text-slate-400 w-6 h-6" />
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {paginatedPosts.map((post) => (
-              <Link
-                key={post.Slug}
-                href={`/blog/${post.Slug}`}
-                className="group dark-card rounded-[2.5rem] border border-white/5 overflow-hidden flex flex-col hover:border-emerald-500/30 transition-all duration-500 shadow-2xl"
-              >
-                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
+              <Link key={post.Slug} href={`/blog/${post.Slug}`}
+                className="group bg-white rounded-[2.5rem] border border-slate-100 overflow-hidden flex flex-col hover:border-emerald-300 hover:shadow-xl transition-all duration-500 shadow-sm">
+                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-50">
                   {post.featuredImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={post.featuredImage}
-                      alt={post['Article Title']}
-                      className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                      loading="lazy"
-                    />
+                    <img src={post.featuredImage} alt={post['Article Title']}
+                      className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" loading="lazy" />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-6xl opacity-10">📝</div>
-                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center"><div className="text-6xl opacity-10">📝</div></div>
                   )}
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
-
-                  <div className="absolute top-6 left-6 px-4 py-1.5 bg-emerald-500/90 backdrop-blur-md text-white text-[10px] font-black uppercase rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-white/10 to-transparent" />
+                  <div className="absolute top-6 left-6 px-4 py-1.5 bg-emerald-500 text-white text-[10px] font-black uppercase rounded-full">
                     {post.wp_category}
                   </div>
                 </div>
-
                 <div className="p-8 flex-1 flex flex-col">
-                  <h2 className="text-2xl font-black text-white mb-4 group-hover:text-emerald-400 transition-colors">
+                  <h2 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-emerald-500 transition-colors">
                     {post['Article Title']}
                   </h2>
-                  <p className="text-slate-400 font-medium mb-8 flex-1">
-                    {getExcerpt(post['Article Content'])}
-                  </p>
-                  <div className="flex items-center gap-2 text-emerald-400 font-black uppercase tracking-widest text-[10px]">
+                  <p className="text-slate-500 font-medium mb-8 flex-1">{getExcerpt(post['Article Content'])}</p>
+                  <div className="flex items-center gap-2 text-emerald-500 font-black uppercase tracking-widest text-[10px]">
                     Read Article <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -242,23 +187,14 @@ const filteredPosts = useMemo(() => {
           </div>
 
           {filteredPosts.length === 0 && (
-            <div className="text-center text-slate-400 font-medium">
-              No articles found.
-            </div>
+            <div className="text-center text-slate-400 font-medium">No articles found.</div>
           )}
 
           {totalPages > 1 && (
             <div className="flex justify-center gap-2 pt-8">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setBlogPage(page)}
-                  className={`px-4 py-2 rounded-xl font-bold transition-all ${
-                    blogPage === page
-                      ? 'bg-emerald-500 text-white'
-                      : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                  }`}
-                >
+                <button key={page} onClick={() => setBlogPage(page)}
+                  className={`px-4 py-2 rounded-xl font-bold transition-all ${blogPage === page ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>
                   {page}
                 </button>
               ))}
@@ -266,7 +202,6 @@ const filteredPosts = useMemo(() => {
           )}
         </div>
       </div>
-
       <Footer />
     </div>
   );
