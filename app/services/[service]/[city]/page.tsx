@@ -51,7 +51,7 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
 
       const text = await res.text();
       let data: Record<string, unknown> = {};
-      try { data = JSON.parse(text); } catch { /* non-JSON is fine */ }
+      try { data = JSON.parse(text); } catch {}
       if (data && data.ok === false) throw new Error((data.error as string) || 'Submission failed');
 
       setIsSubmitting(false);
@@ -64,7 +64,7 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
   };
 
   return (
-    <div className="w-full rounded-[2rem] bg-white shadow-[0_32px_80px_-8px_rgba(0,0,0,0.5)] overflow-hidden">
+    <div className="w-full rounded-[2rem] bg-white shadow-[0_32px_80px_-8px_rgba(0,0,0,0.12)] border border-slate-100 overflow-hidden">
       <div className="p-8 md:p-10">
         {isSuccess ? (
           <div className="flex flex-col items-center text-center py-10 space-y-5">
@@ -80,7 +80,6 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
           </div>
         ) : (
           <>
-            {/* Form header */}
             <div className="mb-6">
               <div className="inline-block px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-widest rounded-full mb-3">
                 Free Matching Service
@@ -94,7 +93,6 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-3">
-              {/* Full Name */}
               <input
                 required
                 name="fullName"
@@ -103,7 +101,6 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
                 className="w-full px-4 py-3.5 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-sm focus:border-emerald-400 focus:bg-white focus:ring-4 focus:ring-emerald-400/10 outline-none transition-all placeholder:text-slate-300"
               />
 
-              {/* Phone + Email */}
               <div className="grid grid-cols-2 gap-3">
                 <input
                   required
@@ -121,7 +118,6 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
                 />
               </div>
 
-              {/* Treatment — dynamically from SERVICES */}
               <select
                 required
                 name="treatment"
@@ -135,7 +131,6 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
                 <option value="Not Sure Yet">Not Sure Yet</option>
               </select>
 
-              {/* Submit */}
               <button
                 disabled={isSubmitting}
                 type="submit"
@@ -154,7 +149,6 @@ function HeroLeadForm({ cityName }: { cityName: string }) {
                 )}
               </button>
 
-              {/* Trust signals */}
               <div className="flex items-center justify-center gap-4 pt-1">
                 {['100% Free', 'No Spam', '2hr Response'].map((label) => (
                   <span key={label} className="flex items-center gap-1.5 text-[11px] text-slate-500 font-semibold">
@@ -176,7 +170,6 @@ export default function ServiceCityPage({ params }: { params: { service: string;
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   const service = SERVICES.find(s => s.id === params.service);
-
   const allCities = Object.values(LOCATIONS).flat();
   const cityName = allCities.find(city =>
     city.toLowerCase().replace(/\s+/g, '-') === params.city
@@ -199,28 +192,28 @@ export default function ServiceCityPage({ params }: { params: { service: string;
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const benefits = [
-    { icon: <Award className="w-6 h-6" />, title: 'Implant Specialists', desc: 'Only the top 1% of UK Dental Implant specialists' },
-    { icon: <Clock className="w-6 h-6" />, title: 'Fast Track Consultations', desc: 'Priority appointments available within 7 days' },
-    { icon: <Shield className="w-6 h-6" />, title: 'Guaranteed Results', desc: 'Treatment backed by thousands of successful cases' },
-    { icon: <Users className="w-6 h-6" />, title: 'Expert Matching', desc: 'Personalised provider selection for your case' },
+    { icon: <Shield className="w-6 h-6" />, title: 'Verified Specialists', desc: 'Every provider in our network is vetted for qualifications and patient outcomes.' },
+    { icon: <Clock className="w-6 h-6" />, title: 'Fast Response', desc: 'Receive your personalised match within 2 hours of submission.' },
+    { icon: <Award className="w-6 h-6" />, title: 'Free Service', desc: 'Our matching service is completely free. No hidden fees or obligations.' },
+    { icon: <Users className="w-6 h-6" />, title: 'Multiple Options', desc: 'Compare quotes from up to 3 top-rated specialists in your area.' },
   ];
 
   const treatmentSteps = [
-    'Free initial consultation with a vetted specialist',
-    '3D digital scan and personalised treatment planning',
-    'Receive your custom implants manufactured to precision',
-    'Regular progress monitoring and refinement if needed',
-    'Achieve your perfect smile with permanent retention',
+    'Submit your details through our quick matching form above',
+    'Our team reviews your case and identifies the best local specialists',
+    'Receive up to 3 personalised quotes from verified providers within 2 hours',
+    'Book your free consultation with your chosen specialist',
+    'Begin your treatment journey with expert guidance every step of the way',
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
+    <div className="min-h-screen bg-white text-slate-700">
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-white/5 backdrop-blur-md border border-white/10 text-slate-400 rounded-full flex items-center justify-center transition-all duration-500 ${
+        className={`fixed bottom-6 left-6 z-[70] w-12 h-12 bg-slate-100 border border-slate-200 text-slate-500 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg ${
           showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -228,60 +221,50 @@ export default function ServiceCityPage({ params }: { params: { service: string;
       </button>
 
       {/* HERO */}
-      <div className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28">
-        {/* Background */}
+      <div className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 min-h-[640px] sm:min-h-[680px] md:min-h-[720px]">
         <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt={`${service.title} in ${cityName}`}
-            className="w-full h-full object-cover object-center opacity-30"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/70 to-slate-950" />
+          <img src={heroImage} alt={service.title} className="w-full h-full object-cover object-center opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Breadcrumb */}
-          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400 mb-10">
-            <Link href="/services" className="hover:text-emerald-400 transition-colors">Services</Link>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full border border-slate-200 text-sm text-slate-500">
+            <Link href="/services" className="hover:text-emerald-500 transition-colors">All Services</Link>
             <span>/</span>
-            <Link href={`/services/${params.service}`} className="hover:text-emerald-400 transition-colors">{service.title}</Link>
+            <Link href={`/services/${params.service}`} className="hover:text-emerald-500 transition-colors">{service.title}</Link>
             <span>/</span>
-            <span className="text-white">{cityName}</span>
+            <span className="text-slate-900">{cityName}</span>
           </div>
 
-          {/* Two-column */}
           <div className="grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start">
-
-            {/* LEFT */}
             <div className="space-y-6 pt-2">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-500/20 text-sm text-emerald-400">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-full border border-emerald-200 text-sm text-emerald-600">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
                 <span>Elite Platinum Providers Available</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
                 {service.title}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400 italic mt-1">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500 italic mt-1">
                   in {cityName}
                 </span>
               </h1>
 
-              <p className="text-lg text-slate-400 leading-relaxed font-medium max-w-lg">
+              <p className="text-lg text-slate-500 leading-relaxed font-medium max-w-lg">
                 Access {cityName}&apos;s most experienced {service.title.toLowerCase()} specialists.
                 Choose from our comprehensive treatment options below.
               </p>
 
               <div className="flex flex-wrap gap-5 pt-1">
                 {['Free Consultation', 'No Obligation', 'Same-week Appointments'].map((label) => (
-                  <div key={label} className="flex items-center gap-2 text-sm text-slate-300 font-semibold">
-                    <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black flex-shrink-0">✓</span>
+                  <div key={label} className="flex items-center gap-2 text-sm text-slate-600 font-semibold">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-xs font-black flex-shrink-0">✓</span>
                     {label}
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* RIGHT — form */}
             <div className="w-full">
               <HeroLeadForm cityName={cityName} />
             </div>
@@ -290,39 +273,39 @@ export default function ServiceCityPage({ params }: { params: { service: string;
       </div>
 
       {/* REST OF PAGE */}
-      <div className="pb-24 bg-slate-950">
+      <div className="pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="dark-card p-6 rounded-3xl border border-white/5">
-                <div className="mb-4 p-3 rounded-xl bg-emerald-500/10 text-emerald-400 inline-flex">
+              <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+                <div className="mb-4 p-3 rounded-xl bg-emerald-50 text-emerald-500 inline-flex">
                   {benefit.icon}
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{benefit.title}</h3>
-                <p className="text-sm text-slate-400">{benefit.desc}</p>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{benefit.title}</h3>
+                <p className="text-sm text-slate-500">{benefit.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="dark-card p-10 md:p-14 rounded-[2.5rem] border border-white/5">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-8 text-center">
+          <div className="bg-white p-10 md:p-14 rounded-[2.5rem] border border-slate-100 shadow-sm">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-8 text-center">
               Your Treatment Journey in {cityName}
             </h2>
             <div className="space-y-4 max-w-3xl mx-auto">
               {treatmentSteps.map((step, idx) => (
-                <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/40 border border-white/5">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-sm">
+                <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 font-bold text-sm">
                     {idx + 1}
                   </div>
-                  <p className="text-slate-300 font-medium pt-1">{step}</p>
+                  <p className="text-slate-600 font-medium pt-1">{step}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="dark-card p-10 rounded-[2.5rem] border border-white/5">
-              <h3 className="text-2xl font-black text-white mb-6">
+            <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
+              <h3 className="text-2xl font-black text-slate-900 mb-6">
                 Why Choose {service.title} in {cityName}?
               </h3>
               <div className="space-y-4">
@@ -333,23 +316,23 @@ export default function ServiceCityPage({ params }: { params: { service: string;
                   'Comprehensive aftercare and retention planning included',
                 ].map((text, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
-                    <p className="text-slate-300">{text}</p>
+                    <CheckCircle className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" />
+                    <p className="text-slate-600">{text}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="dark-card p-10 rounded-[2.5rem] border border-emerald-500/20 bg-emerald-500/5">
-              <h3 className="text-2xl font-black text-white mb-6">Ready to Transform Your Smile?</h3>
-              <p className="text-slate-300 mb-6 leading-relaxed">
+            <div className="bg-emerald-50/50 p-10 rounded-[2.5rem] border border-emerald-200">
+              <h3 className="text-2xl font-black text-slate-900 mb-6">Ready to Transform Your Smile?</h3>
+              <p className="text-slate-600 mb-6 leading-relaxed">
                 Our {cityName} network is ready to assess your case and create a personalised treatment plan. Get matched with the perfect provider for your{' '}
                 {service.title.toLowerCase()} needs.
               </p>
               <ul className="space-y-3 mb-8">
                 {['Free initial consultation', 'No obligation assessment', 'Transparent pricing from the start'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-slate-300">
-                    <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <li key={item} className="flex items-center gap-2 text-slate-600">
+                    <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -363,16 +346,16 @@ export default function ServiceCityPage({ params }: { params: { service: string;
             </div>
           </div>
 
-          <div className="dark-card p-10 rounded-[2.5rem] border border-white/5">
+          <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-white mb-4">Other Treatments in {cityName}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">Other Treatments in {cityName}</h3>
                 <div className="space-y-2">
                   {SERVICES.filter(s => s.id !== params.service).slice(0, 5).map(s => (
                     <Link
                       key={s.id}
                       href={`/services/${s.id}/${params.city}`}
-                      className="block px-4 py-3 rounded-xl bg-slate-900/40 border border-white/5 hover:border-emerald-500/30 text-slate-300 hover:text-white transition-all text-sm font-medium"
+                      className="block px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-emerald-300 text-slate-600 hover:text-slate-900 transition-all text-sm font-medium"
                     >
                       {s.title} in {cityName}
                     </Link>
@@ -380,7 +363,7 @@ export default function ServiceCityPage({ params }: { params: { service: string;
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-4">{service.title} in Other Cities</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">{service.title} in Other Cities</h3>
                 <div className="space-y-2">
                   {allCities.filter(c => c !== cityName).slice(0, 5).map(city => {
                     const slug = city.toLowerCase().replace(/\s+/g, '-');
@@ -388,7 +371,7 @@ export default function ServiceCityPage({ params }: { params: { service: string;
                       <Link
                         key={city}
                         href={`/services/${params.service}/${slug}`}
-                        className="block px-4 py-3 rounded-xl bg-slate-900/40 border border-white/5 hover:border-emerald-500/30 text-slate-300 hover:text-white transition-all text-sm font-medium"
+                        className="block px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-emerald-300 text-slate-600 hover:text-slate-900 transition-all text-sm font-medium"
                       >
                         {service.title} in {city}
                       </Link>
