@@ -15,13 +15,13 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
     setActiveIdx(prev => (prev === idx ? null : idx));
 
   return (
-    <section className="py-24 bg-slate-950">
+    <section className="py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-slate-400 font-medium">
+          <p className="text-slate-500 font-medium">
             Clear answers for your dental implant journey.
           </p>
         </div>
@@ -37,11 +37,10 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                 key={idx}
                 className={`rounded-3xl border transition-colors duration-300 ${
                   isOpen
-                    ? 'bg-slate-800/80 border-emerald-500/30'
-                    : 'bg-slate-900/60 border-white/5 hover:border-emerald-500/20'
+                    ? 'bg-emerald-50/50 border-emerald-200'
+                    : 'bg-slate-50 border-slate-100 hover:border-emerald-200'
                 }`}
               >
-                {/* Question row — clickable */}
                 <button
                   onClick={() => toggle(idx)}
                   className="w-full flex items-center justify-between gap-4 p-6 text-left"
@@ -49,18 +48,17 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                 >
                   <span
                     className={`text-lg font-bold transition-colors duration-300 ${
-                      isOpen ? 'text-emerald-400' : 'text-white'
+                      isOpen ? 'text-emerald-600' : 'text-slate-900'
                     }`}
                   >
                     {question}
                   </span>
 
-                  {/* Icon rotates smoothly */}
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                       isOpen
                         ? 'bg-emerald-500 text-white rotate-180 shadow-lg shadow-emerald-500/20'
-                        : 'bg-emerald-500/10 text-emerald-400 rotate-0'
+                        : 'bg-emerald-50 text-emerald-500 rotate-0'
                     }`}
                   >
                     <svg
@@ -79,11 +77,6 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                   </span>
                 </button>
 
-                {/*
-                  CSS grid trick — animates grid-template-rows from 0fr → 1fr.
-                  This is buttery smooth because it animates to the ACTUAL content
-                  height, unlike the max-height hack which causes jumpiness.
-                */}
                 <div
                   style={{
                     display: 'grid',
@@ -92,7 +85,7 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                   }}
                 >
                   <div style={{ overflow: 'hidden' }}>
-                    <p className="px-6 pb-6 text-slate-400 font-medium leading-relaxed">
+                    <p className="px-6 pb-6 text-slate-500 font-medium leading-relaxed">
                       {answer}
                     </p>
                   </div>
