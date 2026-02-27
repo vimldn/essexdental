@@ -223,42 +223,42 @@ export default function ServiceCityPage({ params }: { params: { service: string;
       {/* HERO */}
       <div className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 min-h-[640px] sm:min-h-[680px] md:min-h-[720px]">
         <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt={service.title} className="w-full h-full object-cover object-center opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/60 to-white" />
+          <img src={heroImage} alt={service.title} className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/90" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full border border-slate-200 text-sm text-slate-500">
-            <Link href="/services" className="hover:text-emerald-500 transition-colors">All Services</Link>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm text-white/70 backdrop-blur-sm">
+            <Link href="/services" className="hover:text-emerald-400 transition-colors">All Services</Link>
             <span>/</span>
-            <Link href={`/services/${params.service}`} className="hover:text-emerald-500 transition-colors">{service.title}</Link>
+            <Link href={`/services/${params.service}`} className="hover:text-emerald-400 transition-colors">{service.title}</Link>
             <span>/</span>
-            <span className="text-slate-900">{cityName}</span>
+            <span className="text-white">{cityName}</span>
           </div>
 
           <div className="grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-16 items-start">
             <div className="space-y-6 pt-2">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-full border border-emerald-200 text-sm text-emerald-600">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-400/30 text-sm text-emerald-300 backdrop-blur-sm">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
                 <span>Elite Platinum Providers Available</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight drop-shadow-lg">
                 {service.title}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500 italic mt-1">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400 italic mt-1">
                   in {cityName}
                 </span>
               </h1>
 
-              <p className="text-lg text-slate-500 leading-relaxed font-medium max-w-lg">
+              <p className="text-lg text-white/80 leading-relaxed font-medium max-w-lg">
                 Access {cityName}&apos;s most experienced {service.title.toLowerCase()} specialists.
                 Choose from our comprehensive treatment options below.
               </p>
 
               <div className="flex flex-wrap gap-5 pt-1">
                 {['Free Consultation', 'No Obligation', 'Same-week Appointments'].map((label) => (
-                  <div key={label} className="flex items-center gap-2 text-sm text-slate-600 font-semibold">
-                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-xs font-black flex-shrink-0">✓</span>
+                  <div key={label} className="flex items-center gap-2 text-sm text-white/80 font-semibold">
+                    <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black flex-shrink-0">✓</span>
                     {label}
                   </div>
                 ))}
