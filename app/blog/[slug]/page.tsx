@@ -224,10 +224,10 @@ export default function ArticlePage() {
         </button>
       )}
 
-      <div className="pt-32 px-6 max-w-5xl mx-auto">
+      <div className="pt-32 pb-24 px-6 max-w-5xl mx-auto">
         <Link href="/blog" className="text-emerald-500 uppercase text-xs font-black">← Back to blog</Link>
 
-        <div className="mt-10 rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-lg">
+        <div className="mt-10 rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-lg bg-white">
           <div className="relative h-[420px] md:h-[520px]">
             {article.featuredImage && (
               <img src={article.featuredImage} alt={article['Article Title']}
