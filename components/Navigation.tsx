@@ -27,11 +27,11 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled || !isHome ? 'glass-effect py-3 shadow-md' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled || !isHome ? 'glass-effect py-3 shadow-md' : 'bg-slate-900/60 backdrop-blur-md py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           
           <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center">
+            <div className={`w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center transition-colors ${scrolled || !isHome ? 'bg-slate-50' : 'bg-white/10'}`}>
               <Image
                 src="/logo.png"
                 alt="Essex Dental Implants"
@@ -41,16 +41,16 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
                 className="object-contain"
               />
             </div>
-            <span className="text-2xl font-black text-slate-900 tracking-tight">
+            <span className={`text-2xl font-black tracking-tight transition-colors ${scrolled || !isHome ? 'text-slate-900' : 'text-white'}`}>
               Essex Dental Implants
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10 text-sm font-semibold text-slate-600">
-            <Link href="/services" className={pathname === '/services' ? 'text-emerald-500' : 'hover:text-emerald-500'}>Services</Link>
-            <Link href="/location" className={pathname === '/location' ? 'text-emerald-500' : 'hover:text-emerald-500'}>Location</Link>
-            <Link href="/blog" className={pathname === '/blog' ? 'text-emerald-500' : 'hover:text-emerald-500'}>Blog</Link>
+          <div className={`hidden md:flex items-center space-x-10 text-sm font-semibold transition-colors ${scrolled || !isHome ? 'text-slate-600' : 'text-white/80'}`}>
+            <Link href="/services" className={pathname === '/services' ? 'text-emerald-400' : 'hover:text-emerald-400'}>Services</Link>
+            <Link href="/location" className={pathname === '/location' ? 'text-emerald-400' : 'hover:text-emerald-400'}>Location</Link>
+            <Link href="/blog" className={pathname === '/blog' ? 'text-emerald-400' : 'hover:text-emerald-400'}>Blog</Link>
             <button onClick={onOpenModal} className="px-7 py-2.5 bg-emerald-500 text-white rounded-full font-bold shadow-lg shadow-emerald-500/20">
               Find a Specialist
             </button>
@@ -59,7 +59,7 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
           {/* Mobile Button */}
           <button 
             onClick={() => setIsMobileMenuOpen(true)} 
-            className="md:hidden p-2 bg-slate-100 rounded-xl text-slate-600"
+            className={`md:hidden p-2 rounded-xl transition-colors ${scrolled || !isHome ? 'bg-slate-100 text-slate-600' : 'bg-white/10 text-white'}`}
           >
             <Menu className="w-6 h-6" />
           </button>
