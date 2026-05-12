@@ -10,15 +10,16 @@ interface FAQSectionProps {
 
 export default function FAQSection({ faqs }: FAQSectionProps) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
-
-  const toggle = (idx: number) =>
-    setActiveIdx(prev => (prev === idx ? null : idx));
+  const toggle = (idx: number) => setActiveIdx((prev) => (prev === idx ? null : idx));
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+        <div className="text-center mb-14 space-y-4">
+          <div className="inline-block px-3 py-1 bg-[#e8f2fc] text-[#1a56a0] text-[10px] font-black uppercase tracking-widest rounded-full">
+            FAQ
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
             Frequently Asked Questions
           </h2>
           <p className="text-slate-500 font-medium">
@@ -35,10 +36,10 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
             return (
               <div
                 key={idx}
-                className={`rounded-3xl border transition-colors duration-300 ${
+                className={`rounded-2xl border transition-colors duration-300 ${
                   isOpen
-                    ? 'bg-emerald-50/50 border-emerald-200'
-                    : 'bg-slate-50 border-slate-100 hover:border-emerald-200'
+                    ? 'bg-[#f0f6ff] border-[#1a56a0]/25'
+                    : 'bg-slate-50 border-slate-100 hover:border-[#1a56a0]/20'
                 }`}
               >
                 <button
@@ -47,32 +48,21 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                   aria-expanded={isOpen}
                 >
                   <span
-                    className={`text-lg font-bold transition-colors duration-300 ${
-                      isOpen ? 'text-emerald-600' : 'text-slate-900'
+                    className={`text-base font-bold transition-colors duration-300 ${
+                      isOpen ? 'text-[#1a56a0]' : 'text-slate-900'
                     }`}
                   >
                     {question}
                   </span>
-
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                       isOpen
-                        ? 'bg-emerald-500 text-white rotate-180 shadow-lg shadow-emerald-500/20'
-                        : 'bg-emerald-50 text-emerald-500 rotate-0'
+                        ? 'bg-[#1a56a0] text-white rotate-180 shadow-lg shadow-blue-900/15'
+                        : 'bg-[#e8f2fc] text-[#1a56a0] rotate-0'
                     }`}
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
                 </button>
@@ -85,7 +75,7 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                   }}
                 >
                   <div style={{ overflow: 'hidden' }}>
-                    <p className="px-6 pb-6 text-slate-500 font-medium leading-relaxed">
+                    <p className="px-6 pb-6 text-slate-500 font-medium leading-relaxed text-sm">
                       {answer}
                     </p>
                   </div>
