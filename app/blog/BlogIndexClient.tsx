@@ -2,12 +2,14 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { blogIndexCrumbs } from '@/lib/breadcrumbs';
+import { IMAGES } from '@/data/images';
 
 interface PostCard {
   slug: string;
@@ -58,6 +60,19 @@ export default function BlogIndexClient({ posts }: { posts: PostCard[] }) {
             <p className="text-lg text-slate-600 leading-relaxed">
               Reference-grade guides on cost, planning, maintenance and decision-making, edited for UK private dentistry and the Essex matching panel.
             </p>
+          </div>
+
+          {/* IMAGE SLOT: blog index banner. Editorial / consult-room visual. */}
+          <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7] md:aspect-[16/5]">
+            <Image
+              src={IMAGES.blogIndex.hero.src}
+              alt={IMAGES.blogIndex.hero.alt}
+              width={IMAGES.blogIndex.hero.width}
+              height={IMAGES.blogIndex.hero.height}
+              priority
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className="flex flex-wrap gap-2 mb-8">

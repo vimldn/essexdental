@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, CheckCircle } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -10,6 +11,7 @@ import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { serviceCrumbs } from '@/lib/breadcrumbs';
 import { ServiceData } from '@/data/services';
+import { serviceImages } from '@/data/images';
 
 interface RelatedService {
   slug: string;
@@ -33,6 +35,7 @@ export default function ServicePillarClient({
   locations: LocationLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const images = serviceImages(service.slug);
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -40,43 +43,73 @@ export default function ServicePillarClient({
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
       <main id="main">
-        <section className="pt-28 pb-12 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white">
+        <section className="pt-28 pb-16 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-4">
               <Breadcrumbs items={serviceCrumbs(service)} onDark />
             </div>
-            <div className="max-w-3xl">
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#7fb9e8] mb-3">
-                {service.heroBadge}
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight mb-5">
-                {service.title} in Essex
-              </h1>
-              <p className="text-base md:text-lg text-white/75 leading-relaxed mb-7 max-w-2xl">
-                {service.heroDirectAnswer}
-              </p>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="px-6 py-3.5 bg-[#1a56a0] text-white text-sm font-semibold rounded-md hover:bg-[#1d62b8] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7fb9e8]"
-              >
-                Request a {service.shortTitle.toLowerCase()} introduction
-              </button>
+            <div className="grid lg:grid-cols-[1.1fr_minmax(0,460px)] gap-10 lg:gap-16 items-center">
+              <div>
+                <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#7fb9e8] mb-3">
+                  {service.heroBadge}
+                </span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight mb-5">
+                  {service.title} in Essex
+                </h1>
+                <p className="text-base md:text-lg text-white/75 leading-relaxed mb-7 max-w-2xl">
+                  {service.heroDirectAnswer}
+                </p>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-6 py-3.5 bg-[#1a56a0] text-white text-sm font-semibold rounded-md hover:bg-[#1d62b8] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7fb9e8]"
+                >
+                  Request a {service.shortTitle.toLowerCase()} introduction
+                </button>
+              </div>
+
+              {/* IMAGE SLOT: service pillar hero side panel. */}
+              <div className="hidden lg:block">
+                <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[5/6]">
+                  <Image
+                    src={images.heroSide.src}
+                    alt={images.heroSide.alt}
+                    width={images.heroSide.width}
+                    height={images.heroSide.height}
+                    priority
+                    sizes="(min-width: 1024px) 460px, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-3xl mx-auto px-6">
-            <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-              What this covers
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-              The clinical scope of {service.shortTitle.toLowerCase()} treatment
-            </h2>
-            <div className="space-y-5 text-slate-700 leading-relaxed">
-              {service.whatItCoversParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
+          <div className="max-w-5xl mx-auto px-6">
+            {/* IMAGE SLOT: service pillar "what this covers" banner. */}
+            <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7]">
+              <Image
+                src={images.whatCovers.src}
+                alt={images.whatCovers.alt}
+                width={images.whatCovers.width}
+                height={images.whatCovers.height}
+                sizes="(min-width: 1024px) 900px, 100vw"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="max-w-3xl mx-auto">
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+                What this covers
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+                The clinical scope of {service.shortTitle.toLowerCase()} treatment
+              </h2>
+              <div className="space-y-5 text-slate-700 leading-relaxed">
+                {service.whatItCoversParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -120,21 +153,39 @@ export default function ServicePillarClient({
         </section>
 
         <section className="py-16 bg-[#f5f8ff]">
-          <div className="max-w-3xl mx-auto px-6">
-            <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-              Pricing transparency
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-              What the Essex panel typically quotes
-            </h2>
-            <ul className="space-y-3">
-              {service.pricingNotes.map((note, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-[#1a56a0] flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <p className="text-slate-700 leading-relaxed">{note}</p>
-                </li>
-              ))}
-            </ul>
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="grid lg:grid-cols-[1.1fr_minmax(0,400px)] gap-10 items-start">
+              <div>
+                <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+                  Pricing transparency
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+                  What the Essex panel typically quotes
+                </h2>
+                <ul className="space-y-3">
+                  {service.pricingNotes.map((note, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#1a56a0] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                      <p className="text-slate-700 leading-relaxed">{note}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* IMAGE SLOT: service pillar pricing panel. */}
+              <div className="hidden lg:block">
+                <div className="relative rounded-2xl overflow-hidden border border-slate-200 aspect-[4/5]">
+                  <Image
+                    src={images.pricing.src}
+                    alt={images.pricing.alt}
+                    width={images.pricing.width}
+                    height={images.pricing.height}
+                    sizes="(min-width: 1024px) 400px, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

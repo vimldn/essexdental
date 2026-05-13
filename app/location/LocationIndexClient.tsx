@@ -2,12 +2,14 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, Globe } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { locationIndexCrumbs } from '@/lib/breadcrumbs';
+import { IMAGES } from '@/data/images';
 
 interface LocationCard {
   slug: string;
@@ -48,6 +50,19 @@ export default function LocationIndexClient({ locations }: { locations: Location
             <p className="text-lg text-slate-600 leading-relaxed">
               Twelve Essex towns with active clinician panels. Each location page covers the postcode catchment, named neighbourhoods, local NHS context and the questions specific to that area.
             </p>
+          </div>
+
+          {/* IMAGE SLOT: location index banner. Essex map / coverage visual. */}
+          <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7] md:aspect-[16/5]">
+            <Image
+              src={IMAGES.locationIndex.hero.src}
+              alt={IMAGES.locationIndex.hero.alt}
+              width={IMAGES.locationIndex.hero.width}
+              height={IMAGES.locationIndex.hero.height}
+              priority
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className="max-w-lg mb-10 relative">

@@ -151,8 +151,8 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
         <div className="p-7">
           {isSuccess ? (
             <div className="flex flex-col items-center text-center py-8 gap-4">
-              <div className="w-16 h-16 bg-[#eaf6ef] rounded-xl flex items-center justify-center">
-                <CheckCircle className="w-9 h-9 text-[#4caf7d]" />
+              <div className="w-16 h-16 bg-[#eaf1fb] rounded-xl flex items-center justify-center">
+                <CheckCircle className="w-9 h-9 text-[#1a56a0]" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-slate-900 mb-1">Request received</h3>

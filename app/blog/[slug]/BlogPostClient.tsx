@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -11,6 +12,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { blogPostCrumbs } from '@/lib/breadcrumbs';
 import { BlogPost } from '@/data/blog';
 import { siteConfig } from '@/data/site';
+import { blogImage } from '@/data/images';
 
 function formatDate(iso: string) {
   try {
@@ -41,6 +43,7 @@ export default function BlogPostClient({
   relatedLocations: LocationLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const featured = blogImage(post.slug);
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -56,6 +59,19 @@ export default function BlogPostClient({
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-5">
             {post.title}
           </h1>
+
+          {/* IMAGE SLOT: blog post featured image. */}
+          <div className="my-8 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/9]">
+            <Image
+              src={featured.src}
+              alt={featured.alt}
+              width={featured.width}
+              height={featured.height}
+              priority
+              sizes="(min-width: 768px) 768px, 100vw"
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="flex flex-wrap items-center gap-4 mb-10 text-xs text-slate-500">
             <span>{siteConfig.editorial.teamName}</span>
             <span aria-hidden="true">·</span>

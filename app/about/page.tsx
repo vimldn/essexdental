@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import PageShell from '@/components/PageShell';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SchemaBlock from '@/components/SchemaBlock';
 import { breadcrumbSchema } from '@/lib/schema';
 import { siteConfig } from '@/data/site';
 import { HOME_CRUMB } from '@/lib/breadcrumbs';
+import { IMAGES } from '@/data/images';
 
 export const metadata: Metadata = {
   title: 'About Essex Dental Implants',
@@ -28,6 +30,19 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-8">
               About {siteConfig.name}
             </h1>
+
+            {/* IMAGE SLOT: about page hero. Editorial / team / workspace visual. */}
+            <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/8]">
+              <Image
+                src={IMAGES.about.hero.src}
+                alt={IMAGES.about.hero.alt}
+                width={IMAGES.about.hero.width}
+                height={IMAGES.about.hero.height}
+                priority
+                sizes="(min-width: 768px) 768px, 100vw"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
             <div className="space-y-6 text-slate-700 leading-relaxed">
               <p>

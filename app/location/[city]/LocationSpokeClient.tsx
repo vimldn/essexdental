@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, MapPin, CheckCircle } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -10,6 +11,7 @@ import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { locationCrumbs } from '@/lib/breadcrumbs';
 import { LocationData } from '@/data/locations';
+import { locationImages } from '@/data/images';
 
 interface ServiceLink {
   slug: string;
@@ -22,26 +24,40 @@ interface NearbyLink {
   name: string;
 }
 
-function HeroLeadForm({ location }: { location: LocationData }) {
+function HeroLeadForm({ location, image }: { location: LocationData; image: { src: string; alt: string; width: number; height: number } }) {
   return (
-    <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-7 md:p-8">
-      <div className="mb-5">
-        <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">
-          Free matching
-        </span>
-        <h2 className="text-xl font-bold text-slate-900 leading-snug">
-          Request a {location.name} clinician introduction
-        </h2>
-        <p className="text-slate-500 text-sm mt-1">
-          We will reply by email with the matched clinician name and consultation slot.
+    <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+      {/* IMAGE SLOT: location spoke hero panel image. */}
+      <div className="relative w-full aspect-[4/3] border-b border-slate-100">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          priority
+          sizes="(min-width: 1024px) 380px, 100vw"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-7 md:p-8">
+        <div className="mb-5">
+          <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">
+            Free matching
+          </span>
+          <h2 className="text-xl font-bold text-slate-900 leading-snug">
+            Request a {location.name} clinician introduction
+          </h2>
+          <p className="text-slate-500 text-sm mt-1">
+            We will reply by email with the matched clinician name and consultation slot.
+          </p>
+        </div>
+        <p className="text-xs text-slate-500 leading-relaxed mb-5">
+          Postcodes covered: {location.postcodePrefixes.join(', ')}.
+        </p>
+        <p className="text-sm text-slate-700 leading-relaxed">
+          Use the introduction button above or below to open the request form. The form takes about ninety seconds. We will reply within one working day.
         </p>
       </div>
-      <p className="text-xs text-slate-500 leading-relaxed mb-5">
-        Postcodes covered: {location.postcodePrefixes.join(', ')}.
-      </p>
-      <p className="text-sm text-slate-700 leading-relaxed">
-        Use the introduction button above or below to open the request form. The form takes about ninety seconds. We will reply within one working day.
-      </p>
     </div>
   );
 }
@@ -56,6 +72,7 @@ export default function LocationSpokeClient({
   nearby: NearbyLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const images = locationImages(location.slug);
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -88,24 +105,37 @@ export default function LocationSpokeClient({
                 </button>
               </div>
               <div>
-                <HeroLeadForm location={location} />
+                <HeroLeadForm location={location} image={images.heroSide} />
               </div>
             </div>
           </div>
         </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-3xl mx-auto px-6">
-            <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-              Local context
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-              About {location.name} and the implant patients we see here
-            </h2>
-            <div className="space-y-5 text-slate-700 leading-relaxed">
-              {location.localContext.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
+          <div className="max-w-5xl mx-auto px-6">
+            {/* IMAGE SLOT: location spoke — local context banner. Town photo / clinic exterior. */}
+            <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7]">
+              <Image
+                src={images.context.src}
+                alt={images.context.alt}
+                width={images.context.width}
+                height={images.context.height}
+                sizes="(min-width: 1024px) 900px, 100vw"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="max-w-3xl mx-auto">
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+                Local context
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+                About {location.name} and the implant patients we see here
+              </h2>
+              <div className="space-y-5 text-slate-700 leading-relaxed">
+                {location.localContext.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
           </div>
         </section>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar, Shield, Sparkles, ChevronUp, CheckCircle, Users, Medal } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -10,9 +11,10 @@ import LeadFormModal from '@/components/LeadFormModal';
 import { FAQS_HOME } from '@/data/faqs';
 import { SERVICES } from '@/data/services';
 import { LOCATIONS } from '@/data/locations';
+import { IMAGES } from '@/data/images';
 
 const Tick = () => (
-  <svg className="w-3.5 h-3.5 text-[#4caf7d] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+  <svg className="w-3.5 h-3.5 text-[#1a56a0] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
   </svg>
 );
@@ -98,9 +100,10 @@ export default function HomeClient() {
 
           <div className="relative z-10 flex-1 flex items-center">
             <div className="max-w-7xl mx-auto px-6 w-full pt-28 pb-12">
-              <div className="max-w-2xl">
+              <div className="grid lg:grid-cols-[1.05fr_minmax(0,480px)] gap-10 lg:gap-16 items-center">
+                <div className="max-w-2xl">
                 <div className="animate-fade-up-1 flex items-center gap-2.5 mb-6">
-                  <span className="w-2 h-2 rounded-full bg-[#4caf7d] animate-blink flex-shrink-0" aria-hidden="true" />
+                  <span className="w-2 h-2 rounded-full bg-[#7fb9e8] animate-blink flex-shrink-0" aria-hidden="true" />
                   <span className="text-white/60 text-xs font-medium uppercase tracking-widest">
                     Independent Essex matching service
                   </span>
@@ -144,6 +147,23 @@ export default function HomeClient() {
                     </div>
                   ))}
                 </div>
+                </div>
+
+                {/* IMAGE SLOT: home hero side panel. Generated dental imagery goes here. */}
+                <div className="hidden lg:block animate-fade-up-3">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[5/6]">
+                    <Image
+                      src={IMAGES.home.heroSide.src}
+                      alt={IMAGES.home.heroSide.alt}
+                      width={IMAGES.home.heroSide.width}
+                      height={IMAGES.home.heroSide.height}
+                      priority
+                      sizes="(min-width: 1024px) 480px, 100vw"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d2750]/40 via-transparent to-transparent" aria-hidden="true" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -182,14 +202,30 @@ export default function HomeClient() {
 
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-12 reveal">
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-                How matching works
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Three steps from enquiry to consultation</h2>
-              <p className="text-slate-500 text-base max-w-xl leading-relaxed">
-                We are not a clinic, a price comparison site, or an affiliate broker. We are an editorial-team-run introduction service that matches enquiries to GDC-registered Essex implant clinicians.
-              </p>
+            <div className="grid lg:grid-cols-[1fr_minmax(0,520px)] gap-10 lg:gap-16 items-end mb-12">
+              <div className="reveal">
+                <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+                  How matching works
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Three steps from enquiry to consultation</h2>
+                <p className="text-slate-500 text-base max-w-xl leading-relaxed">
+                  We are not a clinic, a price comparison site, or an affiliate broker. We are an editorial-team-run introduction service that matches enquiries to GDC-registered Essex implant clinicians.
+                </p>
+              </div>
+
+              {/* IMAGE SLOT: home process illustration. Generated planning/CBCT visual goes here. */}
+              <div className="reveal-right hidden lg:block">
+                <div className="relative rounded-2xl overflow-hidden border border-slate-200 aspect-[5/4]">
+                  <Image
+                    src={IMAGES.home.processIllustration.src}
+                    alt={IMAGES.home.processIllustration.alt}
+                    width={IMAGES.home.processIllustration.width}
+                    height={IMAGES.home.processIllustration.height}
+                    sizes="(min-width: 1024px) 520px, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
             <div className="grid md:grid-cols-3 gap-5">
               {[
@@ -229,6 +265,18 @@ export default function HomeClient() {
 
         <section className="py-20 bg-[#f5f8ff]">
           <div className="max-w-7xl mx-auto px-6">
+            {/* IMAGE SLOT: home coverage banner. Essex map / area visual goes here. */}
+            <div className="reveal mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7] md:aspect-[16/5]">
+              <Image
+                src={IMAGES.home.coverageMap.src}
+                alt={IMAGES.home.coverageMap.alt}
+                width={IMAGES.home.coverageMap.width}
+                height={IMAGES.home.coverageMap.height}
+                sizes="(min-width: 1280px) 1280px, 100vw"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0d2750]/20 via-transparent to-[#0d2750]/20" aria-hidden="true" />
+            </div>
             <div className="mb-12 reveal">
               <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
                 Essex coverage
@@ -274,7 +322,7 @@ export default function HomeClient() {
                     'You can ask for a second introduction at any time',
                   ].map((point, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-sm bg-[#eaf6ef] flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-5 h-5 rounded-sm bg-[#eaf1fb] flex items-center justify-center flex-shrink-0 mt-0.5">
                         <Tick />
                       </div>
                       <p className="text-slate-600 text-sm leading-relaxed">{point}</p>
@@ -290,25 +338,16 @@ export default function HomeClient() {
               </div>
 
               <div className="relative reveal-right">
-                <div className="rounded-xl overflow-hidden border border-slate-200 bg-[#f5f8ff] p-10">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Registered with</p>
-                      <p className="text-sm text-slate-700 mt-1">General Dental Council (clinician-side)</p>
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Operating from</p>
-                      <p className="text-sm text-slate-700 mt-1">Editorial team based in Essex</p>
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Language</p>
-                      <p className="text-sm text-slate-700 mt-1">English (en-GB)</p>
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Pricing</p>
-                      <p className="text-sm text-slate-700 mt-1">Free to patients</p>
-                    </div>
-                  </div>
+                {/* IMAGE SLOT: home trust portrait. Generated patient/clinician portrait goes here. */}
+                <div className="rounded-xl overflow-hidden border border-slate-200 aspect-[4/5]">
+                  <Image
+                    src={IMAGES.home.trustPortrait.src}
+                    alt={IMAGES.home.trustPortrait.alt}
+                    width={IMAGES.home.trustPortrait.width}
+                    height={IMAGES.home.trustPortrait.height}
+                    sizes="(min-width: 1024px) 500px, 100vw"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="absolute -bottom-4 -right-3 lg:-right-6 px-5 py-4 bg-[#0d2750] rounded-xl border border-white/5 shadow-2xl">
                   <div className="flex items-center gap-3">
@@ -318,6 +357,10 @@ export default function HomeClient() {
                       <p className="text-[10px] text-white/40 font-medium uppercase tracking-widest">CM · CO · SS postcodes</p>
                     </div>
                   </div>
+                </div>
+                <div className="absolute -top-4 -left-3 lg:-left-6 px-4 py-3 bg-white rounded-xl border border-slate-200 shadow-xl">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0]">Registered with</p>
+                  <p className="text-sm text-slate-700 mt-1">General Dental Council</p>
                 </div>
               </div>
             </div>
@@ -329,8 +372,20 @@ export default function HomeClient() {
           subtitle="Clear answers about how Essex Dental Implants works and what to expect."
         />
 
-        <section className="py-20 bg-[#0d2750]">
-          <div className="max-w-3xl mx-auto px-6 text-center reveal">
+        <section className="relative py-20 bg-[#0d2750] overflow-hidden">
+          {/* IMAGE SLOT: home final CTA background overlay. */}
+          <div className="absolute inset-0 z-0 opacity-25" aria-hidden="true">
+            <Image
+              src={IMAGES.home.finalCtaBackground.src}
+              alt=""
+              width={IMAGES.home.finalCtaBackground.width}
+              height={IMAGES.home.finalCtaBackground.height}
+              sizes="100vw"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0d2750] via-[#0d2750]/85 to-[#0d2750]" />
+          </div>
+          <div className="relative z-10 max-w-3xl mx-auto px-6 text-center reveal">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
               Ready for a matched clinician introduction?
             </h2>

@@ -12,10 +12,22 @@ module.exports = {
       },
       colors: {
         brand: {
-          primary:   '#1a56a0',
-          secondary: '#0d2750',
-          accent:    '#4caf7d',
-          light:     '#7fb9e8',
+          50:  '#f5f8ff',
+          100: '#eaf1fb',
+          200: '#cfdcef',
+          300: '#7fb9e8',
+          400: '#4d8fcb',
+          500: '#1d62b8',
+          600: '#1a56a0',
+          700: '#134985',
+          800: '#0d2750',
+          900: '#0a1f40',
+          950: '#060e1c',
+        },
+        ink: {
+          DEFAULT: '#0d2750',
+          deep:    '#0a1f40',
+          night:   '#060e1c',
         },
       },
       keyframes: {
