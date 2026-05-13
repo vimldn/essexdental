@@ -2,12 +2,14 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { servicesIndexCrumbs } from '@/lib/breadcrumbs';
+import { serviceImage } from '@/data/images';
 
 interface ServiceCard {
   slug: string;
@@ -39,24 +41,41 @@ export default function ServicesIndexClient({ services }: { services: ServiceCar
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map((service) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}/`}
-                className="group bg-white p-7 rounded-2xl border border-slate-200 hover:border-[#1a56a0]/40 hover:shadow-md transition-all flex flex-col"
-              >
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-                  {service.shortTitle}
-                </p>
-                <h2 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-[#1a56a0] transition-colors">
-                  {service.title}
-                </h2>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6 flex-1">{service.heroDirectAnswer}</p>
-                <div className="flex items-center gap-2 text-[#1a56a0] text-sm font-semibold">
-                  Read pillar <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </Link>
-            ))}
+            {services.map((service) => {
+              const img = serviceImage(service.slug);
+              return (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}/`}
+                  className="group bg-white rounded-2xl border border-slate-200 hover:border-[#1a56a0]/40 hover:shadow-md transition-all flex flex-col overflow-hidden"
+                >
+                  {img && (
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={img.width}
+                        height={img.height}
+                        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                        className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                  <div className="p-7 flex flex-col flex-1">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+                      {service.shortTitle}
+                    </p>
+                    <h2 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-[#1a56a0] transition-colors">
+                      {service.title}
+                    </h2>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-6 flex-1">{service.heroDirectAnswer}</p>
+                    <div className="flex items-center gap-2 text-[#1a56a0] text-sm font-semibold">
+                      Read pillar <ArrowUpRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </main>

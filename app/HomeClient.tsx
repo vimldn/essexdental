@@ -11,7 +11,7 @@ import LeadFormModal from '@/components/LeadFormModal';
 import { FAQS_HOME } from '@/data/faqs';
 import { SERVICES } from '@/data/services';
 import { LOCATIONS } from '@/data/locations';
-import { IMAGES } from '@/data/images';
+import { IMAGES, serviceImage, locationImage } from '@/data/images';
 
 const Tick = () => (
   <svg className="w-3.5 h-3.5 text-[#1a56a0] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -184,19 +184,36 @@ export default function HomeClient() {
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {SERVICES.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}/`}
-                  className="reveal bg-white border border-slate-200 rounded-xl p-6 hover:border-[#1a56a0]/30 hover:shadow-md transition-all duration-250 block"
-                >
-                  <h3 className="text-base font-semibold text-slate-900 mb-2">{service.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{service.heroDirectAnswer}</p>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-[#1a56a0]">
-                    Read pillar →
-                  </p>
-                </Link>
-              ))}
+              {SERVICES.map((service) => {
+                const img = serviceImage(service.slug);
+                return (
+                  <Link
+                    key={service.slug}
+                    href={`/services/${service.slug}/`}
+                    className="reveal group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-[#1a56a0]/30 hover:shadow-md transition-all duration-250 block"
+                  >
+                    {img && (
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={img.width}
+                          height={img.height}
+                          sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw"
+                          className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h3 className="text-base font-semibold text-slate-900 mb-2">{service.title}</h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">{service.heroDirectAnswer}</p>
+                      <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-[#1a56a0]">
+                        Read pillar →
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -259,17 +276,36 @@ export default function HomeClient() {
                 Twelve Essex towns with active clinician panels. Each location page has the postcode catchment, named neighbourhoods, and the local NHS context relevant to implant work in that area.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-              {LOCATIONS.map((location) => (
-                <Link
-                  key={location.slug}
-                  href={`/location/${location.slug}/`}
-                  className="reveal bg-white border border-slate-200 rounded-xl p-5 hover:border-[#1a56a0]/35 hover:shadow-sm transition-all duration-250 block"
-                >
-                  <p className="text-sm font-semibold text-slate-900">{location.name}</p>
-                  <p className="text-xs text-slate-500 mt-1">{location.postcodePrefixes.join(' · ')}</p>
-                </Link>
-              ))}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {LOCATIONS.map((location) => {
+                const img = locationImage(location.slug);
+                return (
+                  <Link
+                    key={location.slug}
+                    href={`/location/${location.slug}/`}
+                    className="reveal group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-[#1a56a0]/35 hover:shadow-md transition-all duration-250 block"
+                  >
+                    {img && (
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={img.width}
+                          height={img.height}
+                          sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                          className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <p className="text-sm font-semibold text-slate-900 group-hover:text-[#1a56a0] transition-colors">
+                        Dental implants in {location.name}
+                      </p>
+                      <p className="text-xs text-slate-500 mt-1">{location.postcodePrefixes.join(' · ')}</p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

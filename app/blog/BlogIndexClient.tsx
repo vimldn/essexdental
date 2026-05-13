@@ -2,12 +2,14 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { blogIndexCrumbs } from '@/lib/breadcrumbs';
+import { blogImage } from '@/data/images';
 
 interface PostCard {
   slug: string;
@@ -77,27 +79,44 @@ export default function BlogIndexClient({ posts }: { posts: PostCard[] }) {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}/`}
-                className="group bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#1a56a0]/40 hover:shadow-md transition-all flex flex-col"
-              >
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-                  {post.category}
-                </p>
-                <h2 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-[#1a56a0] transition-colors leading-snug">
-                  {post.title}
-                </h2>
-                <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-1">{post.excerpt}</p>
-                <div className="flex items-center justify-between">
-                  <time className="text-xs text-slate-500" dateTime={post.lastReviewedAt}>
-                    Reviewed {formatDate(post.lastReviewedAt)}
-                  </time>
-                  <ArrowUpRight className="w-4 h-4 text-[#1a56a0]" />
-                </div>
-              </Link>
-            ))}
+            {filtered.map((post) => {
+              const img = blogImage(post.slug);
+              return (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}/`}
+                  className="group bg-white rounded-2xl border border-slate-200 hover:border-[#1a56a0]/40 hover:shadow-md transition-all flex flex-col overflow-hidden"
+                >
+                  {img && (
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={img.width}
+                        height={img.height}
+                        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                        className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col flex-1">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+                      {post.category}
+                    </p>
+                    <h2 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-[#1a56a0] transition-colors leading-snug">
+                      {post.title}
+                    </h2>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-1">{post.excerpt}</p>
+                    <div className="flex items-center justify-between">
+                      <time className="text-xs text-slate-500" dateTime={post.lastReviewedAt}>
+                        Reviewed {formatDate(post.lastReviewedAt)}
+                      </time>
+                      <ArrowUpRight className="w-4 h-4 text-[#1a56a0]" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </main>

@@ -2,12 +2,14 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, Globe } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { locationIndexCrumbs } from '@/lib/breadcrumbs';
+import { locationImage } from '@/data/images';
 
 interface LocationCard {
   slug: string;
@@ -71,26 +73,43 @@ export default function LocationIndexClient({ locations }: { locations: Location
             </p>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filtered.map((location) => (
-                <Link
-                  key={location.slug}
-                  href={`/location/${location.slug}/`}
-                  className="group bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#1a56a0]/40 hover:shadow-md transition-all"
-                >
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">
-                    {location.district}
-                  </p>
-                  <h2 className="text-lg font-bold text-slate-900 group-hover:text-[#1a56a0] transition-colors">
-                    {location.name}
-                  </h2>
-                  <p className="text-xs text-slate-500 mt-2 font-medium">
-                    {location.postcodes.join(' · ')}
-                  </p>
-                  <div className="flex items-center gap-2 text-[#1a56a0] text-sm font-semibold mt-5">
-                    Read location page <ArrowUpRight className="w-4 h-4" />
-                  </div>
-                </Link>
-              ))}
+              {filtered.map((location) => {
+                const img = locationImage(location.slug);
+                return (
+                  <Link
+                    key={location.slug}
+                    href={`/location/${location.slug}/`}
+                    className="group bg-white rounded-2xl border border-slate-200 hover:border-[#1a56a0]/40 hover:shadow-md transition-all overflow-hidden"
+                  >
+                    {img && (
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={img.width}
+                          height={img.height}
+                          sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                          className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">
+                        {location.district}
+                      </p>
+                      <h2 className="text-lg font-bold text-slate-900 group-hover:text-[#1a56a0] transition-colors">
+                        {location.name}
+                      </h2>
+                      <p className="text-xs text-slate-500 mt-2 font-medium">
+                        {location.postcodes.join(' · ')}
+                      </p>
+                      <div className="flex items-center gap-2 text-[#1a56a0] text-sm font-semibold mt-5">
+                        Read location page <ArrowUpRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
