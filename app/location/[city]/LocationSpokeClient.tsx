@@ -11,7 +11,7 @@ import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { locationCrumbs } from '@/lib/breadcrumbs';
 import { LocationData } from '@/data/locations';
-import { locationImages } from '@/data/images';
+import { locationImage } from '@/data/images';
 
 interface ServiceLink {
   slug: string;
@@ -24,21 +24,22 @@ interface NearbyLink {
   name: string;
 }
 
-function HeroLeadForm({ location, image }: { location: LocationData; image: { src: string; alt: string; width: number; height: number } }) {
+function HeroLeadForm({ location, image }: { location: LocationData; image: { src: string; alt: string; width: number; height: number } | null }) {
   return (
     <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
-      {/* IMAGE SLOT: location spoke hero panel image. */}
-      <div className="relative w-full aspect-[4/3] border-b border-slate-100">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-          priority
-          sizes="(min-width: 1024px) 380px, 100vw"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {image && (
+        <div className="relative w-full aspect-[4/3] border-b border-slate-100">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+            priority
+            sizes="(min-width: 1024px) 380px, 100vw"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
       <div className="p-7 md:p-8">
         <div className="mb-5">
           <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">
@@ -72,7 +73,7 @@ export default function LocationSpokeClient({
   nearby: NearbyLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const images = locationImages(location.slug);
+  const heroImage = locationImage(location.slug);
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -105,37 +106,24 @@ export default function LocationSpokeClient({
                 </button>
               </div>
               <div>
-                <HeroLeadForm location={location} image={images.heroSide} />
+                <HeroLeadForm location={location} image={heroImage} />
               </div>
             </div>
           </div>
         </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-5xl mx-auto px-6">
-            {/* IMAGE SLOT: location spoke — local context banner. Town photo / clinic exterior. */}
-            <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7]">
-              <Image
-                src={images.context.src}
-                alt={images.context.alt}
-                width={images.context.width}
-                height={images.context.height}
-                sizes="(min-width: 1024px) 900px, 100vw"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="max-w-3xl mx-auto">
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-                Local context
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-                About {location.name} and the implant patients we see here
-              </h2>
-              <div className="space-y-5 text-slate-700 leading-relaxed">
-                {location.localContext.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
+          <div className="max-w-3xl mx-auto px-6">
+            <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+              Local context
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              About {location.name} and the implant patients we see here
+            </h2>
+            <div className="space-y-5 text-slate-700 leading-relaxed">
+              {location.localContext.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </div>
         </section>

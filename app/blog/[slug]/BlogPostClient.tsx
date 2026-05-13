@@ -60,18 +60,19 @@ export default function BlogPostClient({
             {post.title}
           </h1>
 
-          {/* IMAGE SLOT: blog post featured image. */}
-          <div className="my-8 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/9]">
-            <Image
-              src={featured.src}
-              alt={featured.alt}
-              width={featured.width}
-              height={featured.height}
-              priority
-              sizes="(min-width: 768px) 768px, 100vw"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {featured && (
+            <div className="my-8 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/9]">
+              <Image
+                src={featured.src}
+                alt={featured.alt}
+                width={featured.width}
+                height={featured.height}
+                priority
+                sizes="(min-width: 768px) 768px, 100vw"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
           <div className="flex flex-wrap items-center gap-4 mb-10 text-xs text-slate-500">
             <span>{siteConfig.editorial.teamName}</span>
             <span aria-hidden="true">·</span>

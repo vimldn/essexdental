@@ -11,7 +11,7 @@ import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { serviceCrumbs } from '@/lib/breadcrumbs';
 import { ServiceData } from '@/data/services';
-import { serviceImages } from '@/data/images';
+import { serviceImage } from '@/data/images';
 
 interface RelatedService {
   slug: string;
@@ -35,7 +35,7 @@ export default function ServicePillarClient({
   locations: LocationLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const images = serviceImages(service.slug);
+  const heroImage = serviceImage(service.slug);
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -67,49 +67,37 @@ export default function ServicePillarClient({
                 </button>
               </div>
 
-              {/* IMAGE SLOT: service pillar hero side panel. */}
-              <div className="hidden lg:block">
-                <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[5/6]">
-                  <Image
-                    src={images.heroSide.src}
-                    alt={images.heroSide.alt}
-                    width={images.heroSide.width}
-                    height={images.heroSide.height}
-                    priority
-                    sizes="(min-width: 1024px) 460px, 100vw"
-                    className="w-full h-full object-cover"
-                  />
+              {heroImage && (
+                <div className="hidden lg:block">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[5/6]">
+                    <Image
+                      src={heroImage.src}
+                      alt={heroImage.alt}
+                      width={heroImage.width}
+                      height={heroImage.height}
+                      priority
+                      sizes="(min-width: 1024px) 460px, 100vw"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-5xl mx-auto px-6">
-            {/* IMAGE SLOT: service pillar "what this covers" banner. */}
-            <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7]">
-              <Image
-                src={images.whatCovers.src}
-                alt={images.whatCovers.alt}
-                width={images.whatCovers.width}
-                height={images.whatCovers.height}
-                sizes="(min-width: 1024px) 900px, 100vw"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="max-w-3xl mx-auto">
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-                What this covers
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-                The clinical scope of {service.shortTitle.toLowerCase()} treatment
-              </h2>
-              <div className="space-y-5 text-slate-700 leading-relaxed">
-                {service.whatItCoversParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
+          <div className="max-w-3xl mx-auto px-6">
+            <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+              What this covers
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              The clinical scope of {service.shortTitle.toLowerCase()} treatment
+            </h2>
+            <div className="space-y-5 text-slate-700 leading-relaxed">
+              {service.whatItCoversParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </div>
         </section>
@@ -153,39 +141,21 @@ export default function ServicePillarClient({
         </section>
 
         <section className="py-16 bg-[#f5f8ff]">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="grid lg:grid-cols-[1.1fr_minmax(0,400px)] gap-10 items-start">
-              <div>
-                <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-                  Pricing transparency
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-                  What the Essex panel typically quotes
-                </h2>
-                <ul className="space-y-3">
-                  {service.pricingNotes.map((note, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-[#1a56a0] flex-shrink-0 mt-0.5" aria-hidden="true" />
-                      <p className="text-slate-700 leading-relaxed">{note}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* IMAGE SLOT: service pillar pricing panel. */}
-              <div className="hidden lg:block">
-                <div className="relative rounded-2xl overflow-hidden border border-slate-200 aspect-[4/5]">
-                  <Image
-                    src={images.pricing.src}
-                    alt={images.pricing.alt}
-                    width={images.pricing.width}
-                    height={images.pricing.height}
-                    sizes="(min-width: 1024px) 400px, 100vw"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="max-w-3xl mx-auto px-6">
+            <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+              Pricing transparency
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              What the Essex panel typically quotes
+            </h2>
+            <ul className="space-y-3">
+              {service.pricingNotes.map((note, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-[#1a56a0] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <p className="text-slate-700 leading-relaxed">{note}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

@@ -2,14 +2,12 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowUpRight } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { servicesIndexCrumbs } from '@/lib/breadcrumbs';
-import { IMAGES } from '@/data/images';
 
 interface ServiceCard {
   slug: string;
@@ -38,19 +36,6 @@ export default function ServicesIndexClient({ services }: { services: ServiceCar
             <p className="text-lg text-slate-600 leading-relaxed">
               Six pillars covering the range of cases the Essex panel routinely matches. Each page explains what the treatment is, the typical price range across Essex, common edge cases, and worked clinical examples.
             </p>
-          </div>
-
-          {/* IMAGE SLOT: services index banner. Implant overview / treatment-range visual. */}
-          <div className="mb-12 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/7] md:aspect-[16/5]">
-            <Image
-              src={IMAGES.servicesIndex.hero.src}
-              alt={IMAGES.servicesIndex.hero.alt}
-              width={IMAGES.servicesIndex.hero.width}
-              height={IMAGES.servicesIndex.hero.height}
-              priority
-              sizes="(min-width: 1280px) 1280px, 100vw"
-              className="w-full h-full object-cover"
-            />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
