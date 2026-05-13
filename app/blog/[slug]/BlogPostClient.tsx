@@ -61,15 +61,16 @@ export default function BlogPostClient({
           </h1>
 
           {featured && (
-            <div className="my-8 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/9]">
+            <div className="my-8 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[4/3]">
               <Image
                 src={featured.src}
                 alt={featured.alt}
                 width={featured.width}
                 height={featured.height}
                 priority
+                quality={90}
                 sizes="(min-width: 768px) 768px, 100vw"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           )}

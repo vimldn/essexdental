@@ -151,7 +151,7 @@ export default function HomeClient() {
 
                 {/* IMAGE SLOT: home hero side panel. Generated dental imagery goes here. */}
                 <div className="hidden lg:block animate-fade-up-3">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[5/6]">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
                     <Image
                       src={IMAGES.home.heroSide.src}
                       alt={IMAGES.home.heroSide.alt}
@@ -159,7 +159,8 @@ export default function HomeClient() {
                       height={IMAGES.home.heroSide.height}
                       priority
                       sizes="(min-width: 1024px) 480px, 100vw"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
+                      quality={90}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0d2750]/40 via-transparent to-transparent" aria-hidden="true" />
                   </div>

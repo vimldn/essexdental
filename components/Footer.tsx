@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { SERVICES } from '@/data/services';
 import { LOCATIONS } from '@/data/locations';
 import { siteConfig } from '@/data/site';
@@ -13,8 +14,8 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 bg-[#1a56a0] rounded-md flex items-center justify-center font-bold text-white text-xs">
-                EDI
+              <div className="w-9 h-9 bg-white/10 rounded-md overflow-hidden flex items-center justify-center flex-shrink-0">
+                <Image src="/logo.png" alt="" width={36} height={36} className="object-contain" />
               </div>
               <span className="text-lg font-bold text-white">{siteConfig.name}</span>
             </div>

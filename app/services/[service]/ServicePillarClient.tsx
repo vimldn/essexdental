@@ -69,15 +69,16 @@ export default function ServicePillarClient({
 
               {heroImage && (
                 <div className="hidden lg:block">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[5/6]">
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
                     <Image
                       src={heroImage.src}
                       alt={heroImage.alt}
                       width={heroImage.width}
                       height={heroImage.height}
                       priority
+                      quality={90}
                       sizes="(min-width: 1024px) 460px, 100vw"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                 </div>

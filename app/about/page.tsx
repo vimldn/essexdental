@@ -32,15 +32,16 @@ export default function AboutPage() {
             </h1>
 
             {/* IMAGE SLOT: about page hero. Editorial / team / workspace visual. */}
-            <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/8]">
+            <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[4/3]">
               <Image
                 src={IMAGES.about.hero.src}
                 alt={IMAGES.about.hero.alt}
                 width={IMAGES.about.hero.width}
                 height={IMAGES.about.hero.height}
                 priority
+                quality={90}
                 sizes="(min-width: 768px) 768px, 100vw"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
             </div>
 

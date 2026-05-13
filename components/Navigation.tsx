@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { X } from './Icons';
 import { siteConfig } from '@/data/site';
@@ -55,12 +56,18 @@ export default function Navigation({ onOpenModal }: NavigationProps) {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-8">
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
             <div
-              className={`w-9 h-9 rounded-md flex items-center justify-center flex-shrink-0 text-xs font-bold ${
-                onDark ? 'bg-white/15 text-white' : 'bg-[#0d2750] text-white'
+              className={`w-9 h-9 rounded-md overflow-hidden flex items-center justify-center flex-shrink-0 ${
+                onDark ? 'bg-white/15' : 'bg-slate-100'
               }`}
-              aria-hidden="true"
             >
-              EDI
+              <Image
+                src="/logo.png"
+                alt=""
+                width={36}
+                height={36}
+                priority
+                className="object-contain"
+              />
             </div>
             <span className={`text-[15px] font-semibold tracking-tight ${onDark ? 'text-white' : 'text-slate-900'}`}>
               {siteConfig.name}

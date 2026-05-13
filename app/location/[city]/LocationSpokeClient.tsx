@@ -35,8 +35,9 @@ function HeroLeadForm({ location, image }: { location: LocationData; image: { sr
             width={image.width}
             height={image.height}
             priority
+            quality={90}
             sizes="(min-width: 1024px) 380px, 100vw"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
         </div>
       )}
