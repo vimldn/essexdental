@@ -314,20 +314,20 @@ export default function HomeClient() {
                 <div className="rounded-xl overflow-hidden border border-slate-200 bg-[#f5f8ff] p-10">
                   <div className="grid grid-cols-2 gap-6">
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Registered with</p>
-                      <p className="text-sm text-slate-700 mt-1">General Dental Council (clinician-side)</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Clinician panel</p>
+                      <p className="text-sm text-slate-700 mt-1">GDC-registered only</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Operating from</p>
-                      <p className="text-sm text-slate-700 mt-1">Editorial team based in Essex</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Coverage</p>
+                      <p className="text-sm text-slate-700 mt-1">12 Essex towns</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Language</p>
-                      <p className="text-sm text-slate-700 mt-1">English (en-GB)</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Response</p>
+                      <p className="text-sm text-slate-700 mt-1">Within 1 working day</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Pricing</p>
-                      <p className="text-sm text-slate-700 mt-1">Free to patients</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">Cost to patient</p>
+                      <p className="text-sm text-slate-700 mt-1">Free, no obligation</p>
                     </div>
                   </div>
                 </div>
