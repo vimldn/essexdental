@@ -149,20 +149,44 @@ export default function HomeClient() {
                 </div>
                 </div>
 
-                {/* IMAGE SLOT: home hero side panel. Generated dental imagery goes here. */}
+                {/* Hero collage: portrait focal + clinical detail + Essex anchor */}
                 <div className="hidden lg:block animate-fade-up-3">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
-                    <Image
-                      src={IMAGES.home.heroSide.src}
-                      alt={IMAGES.home.heroSide.alt}
-                      width={IMAGES.home.heroSide.width}
-                      height={IMAGES.home.heroSide.height}
-                      priority
-                      sizes="(min-width: 1024px) 480px, 100vw"
-                      className="w-full h-full object-cover object-center"
-                      quality={90}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d2750]/40 via-transparent to-transparent" aria-hidden="true" />
+                  <div className="grid grid-cols-5 gap-3 aspect-[5/6]">
+                    <div className="col-span-3 row-span-2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                      <Image
+                        src={IMAGES.home.heroSide.src}
+                        alt={IMAGES.home.heroSide.alt}
+                        width={IMAGES.home.heroSide.width}
+                        height={IMAGES.home.heroSide.height}
+                        priority
+                        quality={90}
+                        sizes="(min-width: 1024px) 300px, 100vw"
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0d2750]/40 via-transparent to-transparent" aria-hidden="true" />
+                    </div>
+                    <div className="col-span-2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                      <Image
+                        src="/images/services/single-tooth.jpg"
+                        alt="Single-tooth implant detail from the treatment-pillar imagery."
+                        width={1200}
+                        height={896}
+                        quality={88}
+                        sizes="(min-width: 1024px) 180px, 100vw"
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
+                    <div className="col-span-2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                      <Image
+                        src="/images/locations/chelmsford.jpg"
+                        alt="Chelmsford editorial scene representing core Essex coverage."
+                        width={1200}
+                        height={896}
+                        quality={88}
+                        sizes="(min-width: 1024px) 180px, 100vw"
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
