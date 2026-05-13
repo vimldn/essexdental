@@ -1,34 +1,35 @@
-import type { Metadata } from 'next'
-import { DM_Sans } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from 'next';
+import { DM_Sans } from 'next/font/google';
+import './globals.css';
+import { siteConfig } from '@/data/site';
+import Analytics from '@/components/Analytics';
+import ConsentBanner from '@/components/ConsentBanner';
+import AttributionTracker from '@/components/AttributionTracker';
+import SchemaBlock from '@/components/SchemaBlock';
+import {
+  organizationSchema,
+  websiteSchema,
+  editorialPersonSchema,
+} from '@/lib/schema';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-dm-sans',
   display: 'swap',
-})
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.essexdentalimplants.com'),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'Essex Dental Implants | Find Elite Dental Implant Specialists',
-    template: '%s | Essex Dental Implants',
+    default: `${siteConfig.name} | Verified Essex Implant Clinician Matching`,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    'Connecting patients with verified dental implant specialists for permanent tooth replacement solutions across the UK.',
-  keywords: [
-    'dental implants',
-    'dental implant specialist',
-    'tooth replacement',
-    'dental implants UK',
-    'implant dentist',
-    'full arch implants',
-    'all-on-4 implants',
-  ],
-  authors: [{ name: 'Essex Dental Implants' }],
-  creator: 'Essex Dental Implants',
-  publisher: 'Essex Dental Implants',
+  description: siteConfig.description,
+  alternates: { canonical: '/' },
+  authors: [{ name: siteConfig.editorial.teamName }],
+  creator: siteConfig.publisher.name,
+  publisher: siteConfig.publisher.name,
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-icon.png',
@@ -39,35 +40,32 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://www.essexdentalimplants.com',
-    title: 'Essex Dental Implants | Elite Dental Implant Specialist Network',
-    description: 'Find verified dental implant specialists across the UK. Permanent solutions. Trusted experts.',
-    siteName: 'Essex Dental Implants',
-    images: [{ url: '/icon-512x512.png', width: 512, height: 512, alt: 'Essex Dental Implants Logo' }],
+    locale: 'en_GB',
+    url: siteConfig.url,
+    title: `${siteConfig.name} | Verified Essex Implant Clinician Matching`,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [{ url: '/icon-512x512.png', width: 512, height: 512, alt: `${siteConfig.name} logo` }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Essex Dental Implants | Dental Implant Specialists',
-    description: 'Connecting patients with the top dental implant specialists across the UK.',
+    title: `${siteConfig.name} | Essex Dental Implant Matching`,
+    description: siteConfig.description,
     images: ['/icon-512x512.png'],
   },
   robots: { index: true, follow: true },
-}
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPLXLSCSS6" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BPLXLSCSS6');`,
-          }}
-        />
-      </head>
+    <html lang="en-GB">
       <body className={`${dmSans.variable} font-sans antialiased`}>
+        <SchemaBlock schemas={[organizationSchema(), websiteSchema(), editorialPersonSchema()]} />
+        <Analytics />
+        <AttributionTracker />
         {children}
+        <ConsentBanner />
       </body>
     </html>
-  )
+  );
 }
