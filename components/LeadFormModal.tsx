@@ -12,7 +12,7 @@ interface LeadFormModalProps {
 }
 
 const LEAD_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbw0QaLFaG-XujztIC0ZyJ_DXbvlP9BHc7F2wbwOq0D9bRYijhYq8Dje_l4enKWfoUVvfg/exec';
+  'https://script.google.com/macros/s/AKfycbz-B9H0JTI7a9Cgyn9z-pZXKnuiNm6acAn8Zb13N21qGRcpxy7EtVvlPAjpl6f7Hj3-RQ/exec';
 
 function getStoredAttribution() {
   if (typeof window === 'undefined') return {};
