@@ -14,6 +14,13 @@ interface LeadFormModalProps {
 const LEAD_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbz-B9H0JTI7a9Cgyn9z-pZXKnuiNm6acAn8Zb13N21qGRcpxy7EtVvlPAjpl6f7Hj3-RQ/exec';
 
+// 2026-05-18 — Fleet-wide kill switch. The honeypot + time-gate combo was
+// silently dropping legitimate autofill submissions: users saw the success
+// screen while no row reached the Sheet. Flip GUARD_ENABLED to true to
+// re-enable bot filtering once thresholds have been calibrated against
+// real audit data.
+const GUARD_ENABLED: boolean = false;
+
 function getStoredAttribution() {
   if (typeof window === 'undefined') return {};
   try {
@@ -63,7 +70,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
       };
 
       const elapsed = Date.now() - openedAtRef.current;
-      if (elements.company.value || elapsed < 1500) {
+      if (GUARD_ENABLED && (elements.company.value || elapsed < 1500)) {
         setIsSubmitting(false);
         setIsSuccess(true);
         setTimeout(() => {
