@@ -54,6 +54,9 @@ export const metadata: Metadata = {
     images: ['/icon-512x512.png'],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: 'pA7I4AlkOAaCRf7P2TPtEB-g5mRSV4u40xVW-ZlcMiw',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
