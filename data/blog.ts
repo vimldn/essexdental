@@ -255,6 +255,57 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['single-tooth', 'multiple-teeth'],
   },
+  {
+    slug: 'single-tooth-implant-cost',
+    hub: 'implant-costs',
+    draft: true,
+    title: 'What a Single Tooth Implant Costs in Essex',
+    metaTitle: 'Single Tooth Implant Cost in Essex 2026 | Guide',
+    metaDescription:
+      'What a single tooth implant costs in Essex in 2026, from the fixture, abutment and crown to extraction, bone graft and CBCT add-ons, plus finance options.',
+    excerpt:
+      'A 2026 breakdown of single tooth implant prices in Essex, what the quote should include, the add-ons that move the number, and how to pay.',
+    category: 'Pricing',
+    publishedAt: '2026-06-09',
+    lastReviewedAt: '2026-06-09',
+    paragraphs: [
+      'A single tooth implant in Essex typically costs £2,200 to £3,500 in 2026 for the complete treatment: the titanium fixture placed in the jaw, the abutment that connects to it, and the crown on top. Cheaper generic systems start around £1,800. The final figure depends on the implant system used, any extraction or bone graft, and the crown material.',
+      'A single tooth implant quote should be itemised into three clinical stages. The fixture is the screw placed in the jawbone. The abutment is the connector seated on the fixture once it has healed. The crown is the visible tooth screwed or cemented onto the abutment. A clear quote also separates the consultation, any three-dimensional imaging, and the surgical placement appointment, so you can see exactly what each element costs rather than reading a single headline number.',
+      'In Essex in 2026, mainstream premium implant systems such as Straumann, Nobel Biocare and Astra typically place a single tooth in the £2,200 to £3,500 range all-in. Generic or value systems run £1,800 to £2,200 inclusive. The difference is not only the brand. Premium systems carry decades of published survival data and a guaranteed component supply chain, which matters if the crown ever needs remaking in fifteen years and the parts still have to exist. A matched clinician should tell you in writing which system they propose and why.',
+      'Several common add-ons sit outside the headline figure. If the failing tooth is still in place, extraction adds roughly £150 to £400. Where the socket needs grafting to hold its bone volume after extraction, socket preservation adds £200 to £600. A separate bone graft or sinus lift, if the ridge is too thin or too short, adds £400 to £2,500 depending on technique. Cone-beam CT imaging, which is standard for all but the simplest cases, is £180 to £300 when itemised. Sedation, if you want it, is a further £250 to £500.',
+      'A single implant costs more upfront than a bridge or a partial denture, but the comparison changes over time. A conventional bridge means cutting down the healthy teeth on either side and is typically remade every ten to fifteen years, whereas an implant leaves the neighbouring teeth untouched and, in well-maintained cases, lasts considerably longer. On a single missing tooth the upfront premium for an implant often narrows over twenty years once replacement cycles are counted.',
+      'Single tooth implants are almost never available on the NHS, which funds implant work only in narrow reconstructive cases referred through hospital services, so in practice this is private treatment. Most matched clinicians offer finance through a third-party provider, with interest-free terms over six to twelve months common and longer terms attracting interest. Always ask for the quote in writing before agreeing to anything.',
+      'The only way to get an accurate single tooth implant price is an in-person assessment with imaging, because the add-ons that move the number depend on what the scan shows. We do not place implants ourselves. We match you, free of charge, with GDC-registered implant clinicians across Essex who provide itemised written quotes, so you can compare like for like rather than headline figures.',
+    ],
+    faqs: [
+      {
+        question: 'Does a single tooth implant quote include the crown?',
+        answer:
+          'It should, but not all do. Some clinics advertise a low headline price that covers only the fixture, with the abutment and crown quoted separately. Always confirm the figure you are given is the all-in price for the fixture, abutment and crown.',
+      },
+      {
+        question: 'Can I get a single tooth implant on the NHS?',
+        answer:
+          'Almost never. The NHS funds implants only in narrowly defined reconstructive cases, such as after oral cancer surgery or significant trauma, referred through hospital services. Routine replacement of a single missing tooth is private treatment.',
+      },
+      {
+        question: 'Why does a single implant cost more than a crown or a filling?',
+        answer:
+          'An implant replaces the whole tooth including the root. It involves minor surgery, three-dimensional imaging, premium engineered components and several appointments over months. A crown or filling restores an existing tooth, so the work and materials are far less.',
+      },
+      {
+        question: 'How cheap is too cheap for a single tooth implant?',
+        answer:
+          'A single tooth implant much below £1,800 in the UK should prompt questions about which system is used, whether the crown is included, and where the laboratory work is done. Price alone is a poor guide, so ask exactly what the figure covers.',
+      },
+      {
+        question: 'Will my quote change after the consultation?',
+        answer:
+          'It can. An accurate price depends on what the CBCT scan shows, such as whether you need an extraction, socket preservation or a bone graft. A written quote after assessment is firmer than any figure given before imaging.',
+      },
+    ],
+    relatedServiceSlugs: ['single-tooth'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(
