@@ -53,6 +53,21 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
+  // Esc-to-close and body scroll-lock while the modal is open (a11y, audit #27).
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen, onClose]);
+
   if (!shouldRender) return null;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SERVICES, SERVICES_BY_SLUG } from '@/data/services';
 import { LOCATIONS } from '@/data/locations';
+import { GUIDES } from '@/data/guides';
 import SchemaBlock from '@/components/SchemaBlock';
 import {
   breadcrumbSchema,
@@ -44,6 +45,11 @@ export default function ServicePillarPage({ params }: { params: { service: strin
           .map((slug) => SERVICES_BY_SLUG[slug])
           .filter(Boolean)
           .map((s) => ({ slug: s.slug, title: s.title, shortTitle: s.shortTitle }))}
+        relatedGuides={GUIDES.filter((g) => g.servicePillarSlugs.includes(service.slug)).map((g) => ({
+          slug: g.slug,
+          title: g.title,
+          heroBadge: g.heroBadge,
+        }))}
         locations={LOCATIONS.map((l) => ({ slug: l.slug, name: l.name, postcodes: l.postcodePrefixes }))}
       />
     </>

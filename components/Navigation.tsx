@@ -19,8 +19,9 @@ const HamburgerIcon = () => (
 
 const LINKS = [
   { href: '/services/', label: 'Services' },
+  { href: '/guides/', label: 'Guides' },
   { href: '/location/', label: 'Areas' },
-  { href: '/blog/', label: 'Guides' },
+  { href: '/blog/', label: 'Articles' },
   { href: '/about/', label: 'About' },
 ];
 

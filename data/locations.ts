@@ -762,6 +762,253 @@ export const LOCATIONS: LocationData[] = [
     metaDescription:
       'Independent dental implant matching for Leigh-on-Sea SS9. Old Leigh, Chalkwell, Belfairs covered. Verified specialists, no obligation.',
   },
+  {
+    slug: 'epping',
+    name: 'Epping',
+    postcodePrefixes: ['CM16'],
+    district: 'Epping Forest District',
+    geo: { lat: 51.6938, lng: 0.1106 },
+    heroOpener:
+      'Patients across CM16 in Epping town, Theydon Bois, Coopersale and North Weald are matched with implant clinicians whose lists suit a West Essex commuter demographic at the end of the Central line.',
+    localContext: [
+      'Epping sits within Epping Forest District and has a town population of around 12,000, with a wider catchment of commuter villages along the Central line and the M11 corridor. The town is the eastern terminus of the London Underground Central line, which gives it an unusually London-facing demographic of professionals who can reach a City clinic as easily as a local one.',
+      'Epping sits inside the Hertfordshire and West Essex Integrated Care Board, with secondary maxillofacial cover routed through Princess Alexandra Hospital in Harlow. NHS dental access across West Essex is among the most stretched in the East of England, so most implant enquiries here arrive after a long search for any NHS dentist.',
+    ],
+    whyLocal: [
+      'Because Epping is on the Central line, many patients realistically weigh a London clinic against a local one. We make the honest comparison: the clinical work and materials at a competent Epping-area clinician are equivalent to central London, and the price difference is overhead-driven rather than clinical. The convenience of local follow-up during osseointegration usually tips the balance.',
+      'The Epping demographic skews toward time-pressured professionals who value minimal-appointment plans and clear scheduling. We weight matching toward clinicians with predictable consultation availability and, where the case allows, digitally guided placement that keeps chair time down.',
+    ],
+    neighbourhoods: [
+      { name: 'Theydon Bois', note: 'CM16 south-west village on the Central line; affluent commuter demographic, single-tooth and aesthetic-led enquiries.' },
+      { name: 'Coopersale', note: 'CM16 east of Epping town; established residential, broader case mix.' },
+      { name: 'North Weald Bassett', note: 'CM16 north-east village; mixed semi-rural demographic.' },
+      { name: 'Thornwood', note: 'CM16 north of Epping toward Harlow; family residential.' },
+      { name: 'Epping Upland', note: 'CM16 north-west village; settled rural demographic.' },
+      { name: 'Loughton', note: 'IG10 (adjacent) Epping Forest town; larger clinician pool, frequently matched alongside Epping enquiries.' },
+    ],
+    localEntities: [
+      'Epping Forest District Council',
+      'Hertfordshire and West Essex Integrated Care Board',
+      'Princess Alexandra Hospital, Harlow',
+      'Epping Underground station (Central line)',
+      'General Dental Council (GDC)',
+    ],
+    faqs: [
+      {
+        question: 'Which Epping postcodes are covered for implant matching?',
+        answer:
+          'CM16 forms our core Epping footprint, including Theydon Bois, Coopersale and North Weald, with the IG10 Loughton area matched alongside.',
+      },
+      {
+        question: 'Is it worth going into London for implants instead of staying near Epping?',
+        answer:
+          'Clinically the outcome is equivalent at a competent local clinician, and the pricing difference is driven by London overhead rather than the treatment. Local follow-up during the healing months is also more practical, which is why most Epping patients stay local.',
+      },
+      {
+        question: 'How quickly can I be seen for a first consultation near Epping?',
+        answer:
+          'Most matched clinicians in the West Essex panel offer a first consultation within two weeks. Tell us if your situation is urgent following a failed restoration or trauma and we will prioritise faster availability.',
+      },
+      {
+        question: 'Do you match clinicians who offer sedation for nervous patients?',
+        answer:
+          'Yes. Several West Essex matched clinicians provide intravenous sedation in-practice. Indicate this on the matching form and we will filter the panel accordingly.',
+      },
+      {
+        question: 'Can a London commuter have appointments scheduled around work?',
+        answer:
+          'Several matched clinicians offer early, late or Saturday slots. Tell us your pattern on the matching call and we will only introduce clinicians whose hours fit.',
+      },
+    ],
+    metaTitle: 'Dental Implants in Epping | Essex Dental Implants',
+    metaDescription:
+      'Independent dental implant matching for Epping CM16, Theydon Bois and North Weald. Verified GDC-registered clinicians, no obligation.',
+  },
+  {
+    slug: 'canvey-island',
+    name: 'Canvey Island',
+    postcodePrefixes: ['SS8'],
+    district: 'Castle Point Borough',
+    geo: { lat: 51.5193, lng: 0.5836 },
+    heroOpener:
+      'Patients across SS8 on Canvey Island, from Winter Gardens and Canvey Village to Leigh Beck, are matched with implant clinicians who routinely handle the longer denture-wearing histories common in the community.',
+    localContext: [
+      'Canvey Island sits within Castle Point Borough and has a population of around 40,000 across SS8. It is a self-contained island community linked to the mainland at South Benfleet and Pitsea, with a settled, older population and a strong local identity. Demand for implants is weighted toward denture-retention conversion and replacement of long-failing bridges.',
+      'Canvey sits inside the Mid and South Essex Integrated Care Board, with secondary maxillofacial cover routed through Southend and Basildon hospitals. NHS dental access across the South Essex footprint is heavily stretched, so most Canvey implant enquiries arrive after years on bridges, partial dentures, or gaps.',
+    ],
+    whyLocal: [
+      'The island geography means many residents prefer not to travel far for follow-up, which matters for implant work where placement and restoration are separated by months of healing. We weight matching toward clinicians within a short, predictable drive across the Canvey Way or in nearby South Benfleet and Hadleigh rather than sending patients into central Southend for every visit.',
+      'The local case mix skews toward longer denture histories with more advanced ridge resorption than newer towns. We weight matching toward clinicians who routinely handle bone grafting and implant-retained overdentures rather than referring grafting out part-way through a plan.',
+    ],
+    neighbourhoods: [
+      { name: 'Winter Gardens', note: 'SS8 east of central Canvey; established residential, denture-conversion enquiries common.' },
+      { name: 'Canvey Village', note: 'SS8 central; older demographic, full-arch and overdenture interest.' },
+      { name: 'Leigh Beck', note: 'SS8 south-east; settled residential, broad case mix.' },
+      { name: 'Sunken Marsh', note: 'SS8 north-west; family and retired mix.' },
+      { name: 'South Benfleet', note: 'SS7 (adjacent mainland); larger clinician pool, frequently matched alongside Canvey enquiries.' },
+      { name: 'Hadleigh', note: 'SS7 (adjacent); established demographic, denture-retention and single-tooth work.' },
+    ],
+    localEntities: [
+      'Castle Point Borough Council',
+      'Mid and South Essex Integrated Care Board',
+      'Southend University Hospital',
+      'Basildon University Hospital',
+      'General Dental Council (GDC)',
+    ],
+    faqs: [
+      {
+        question: 'Which postcodes around Canvey Island are covered for matching?',
+        answer:
+          'SS8 forms our core Canvey footprint, with the SS7 South Benfleet and Hadleigh area on the mainland matched alongside for patients happy with a short drive off the island.',
+      },
+      {
+        question: 'Are there implant clinicians on Canvey Island itself?',
+        answer:
+          'Capacity on the island is limited. We will tell you honestly whether an SS8 option is available for your case or whether the nearest realistic match is in South Benfleet, Hadleigh or Southend, with the drive time stated before any introduction.',
+      },
+      {
+        question: 'I have worn dentures for decades; can I still have implants?',
+        answer:
+          'Often yes. Long denture histories usually involve ridge resorption that may need bone grafting before placement, or an implant-retained overdenture rather than a fixed bridge. The matched clinician assesses this via a CBCT scan and explains what is realistic.',
+      },
+      {
+        question: 'Is an implant-retained denture a good option for Canvey patients?',
+        answer:
+          'For many long-term denture wearers, yes. Two to four implants stop a loose lower or upper denture moving at a fraction of the cost of a fixed full-arch bridge. We match toward clinicians who routinely fit overdentures.',
+      },
+      {
+        question: 'Do you match clinicians who handle very anxious patients?',
+        answer:
+          'Yes. Several South Essex matched clinicians offer intravenous sedation. Indicate this on the matching form and we will filter the panel before sending an introduction.',
+      },
+    ],
+    metaTitle: 'Dental Implants on Canvey Island | Essex Dental Implants',
+    metaDescription:
+      'Independent dental implant matching for Canvey Island SS8 and nearby South Benfleet. Denture conversion and overdenture specialists, no obligation.',
+  },
+  {
+    slug: 'halstead',
+    name: 'Halstead',
+    postcodePrefixes: ['CO9'],
+    district: 'Braintree District',
+    geo: { lat: 51.9446, lng: 0.6357 },
+    heroOpener:
+      'Patients across CO9 in Halstead, Sible Hedingham, Castle Hedingham and Gosfield are matched with implant clinicians along the A131 and Colne Valley, with honest drive times to the nearest larger panels.',
+    localContext: [
+      'Halstead sits within Braintree District in the Colne Valley and has a town population of around 12,000, with a wider rural catchment across the Hedinghams, Gosfield and Earls Colne. It is a small market town without a railway station, so the practical question for implant patients is which nearby panel, Braintree, Colchester or Sudbury direction, is the right drive for two-stage treatment.',
+      'Halstead sits inside the Mid and South Essex Integrated Care Board, with secondary maxillofacial cover routed through Broomfield Hospital in Chelmsford. Rural West Suffolk and North Essex NHS dental access is thin, so most Halstead implant enquiries arrive after a long search for routine care.',
+    ],
+    whyLocal: [
+      'Halstead has few implant-focused practices inside CO9 itself, so honest matching means naming the realistic nearby options and their drive times rather than forcing a local-only filter. We tell every Halstead enquirer whether the nearest clinician is in town or a short drive toward Braintree, Colchester or Sudbury, and weight the choice around the follow-up appointments that matter during healing.',
+      'The rural demographic skews toward established and retired patients with longer restorative histories, so denture-conversion and multiple-tooth cases are more common than single aesthetic work. We weight matching toward clinicians whose grafting and overdenture experience is documented.',
+    ],
+    neighbourhoods: [
+      { name: 'Sible Hedingham', note: 'CO9 north-west village; established rural demographic, multiple-tooth and denture work.' },
+      { name: 'Castle Hedingham', note: 'CO9 north village; settled demographic, broad case mix.' },
+      { name: 'Gosfield', note: 'CO9 south village; semi-rural professional households.' },
+      { name: 'Greenstead Green', note: 'CO9 south-east hamlet on the Halstead catchment; rural demographic.' },
+      { name: 'Earls Colne', note: 'CO6 (adjacent) village toward Colchester; frequently matched alongside Halstead enquiries.' },
+      { name: 'Pebmarsh', note: 'CO9 north-east village; rural demographic.' },
+    ],
+    localEntities: [
+      'Braintree District Council',
+      'Mid and South Essex Integrated Care Board',
+      'Broomfield Hospital, Chelmsford',
+      'General Dental Council (GDC)',
+    ],
+    faqs: [
+      {
+        question: 'Are there implant clinicians inside Halstead CO9 itself?',
+        answer:
+          'A small number, with limited capacity. We will tell you whether a CO9 option is available for your case or whether the realistic match is a short drive toward Braintree or Colchester, with the drive time stated before the introduction.',
+      },
+      {
+        question: 'How far is it from Halstead to the nearest larger implant panel?',
+        answer:
+          'Braintree is around twenty minutes and Colchester around twenty-five to thirty minutes outside peak hours. We factor this into matching so we do not suggest a clinician you would struggle to reach for follow-up during the healing months.',
+      },
+      {
+        question: 'What is the typical price for a single-tooth implant near Halstead?',
+        answer:
+          'Single-tooth treatment in the area typically falls in the £2,200 to £3,400 range for placement plus the crown with a premium system. The matched clinician quotes in writing before any commitment.',
+      },
+      {
+        question: 'Can I bring my own CBCT scan from another dentist?',
+        answer:
+          'Most matched clinicians will accept a recent CBCT from another GDC-registered practice if it is current and the resolution is adequate, though they may request additional views before placement.',
+      },
+      {
+        question: 'Do you cover the Hedingham villages and Earls Colne?',
+        answer:
+          'Yes. Sible Hedingham, Castle Hedingham and the CO6 Earls Colne area all sit inside the Halstead matching catchment.',
+      },
+    ],
+    metaTitle: 'Dental Implants in Halstead | Essex Dental Implants',
+    metaDescription:
+      'Independent dental implant matching for Halstead CO9 and the Colne Valley villages. Verified clinicians, honest drive times, no obligation.',
+  },
+  {
+    slug: 'waltham-cross',
+    name: 'Waltham Cross',
+    postcodePrefixes: ['EN8'],
+    district: 'Essex and Hertfordshire border',
+    geo: { lat: 51.6857, lng: -0.0331 },
+    heroOpener:
+      'Patients around EN8 Waltham Cross and Cheshunt, on the Essex and Hertfordshire border, are matched with implant clinicians in nearby Waltham Abbey, Epping Forest and the Lea Valley, with the cross-border options explained honestly.',
+    localContext: [
+      'Waltham Cross sits on the western edge of the Essex border in the Lea Valley, immediately adjacent to Waltham Abbey in Epping Forest District. The EN8 area has a population of around 50,000 across Waltham Cross and Cheshunt, with a diverse, London-facing demographic on the Greater Anglia line into Liverpool Street and the M25 corridor.',
+      'The border position means patients here realistically consider clinicians in both Hertfordshire and Essex. Onward NHS maxillofacial cover in the area routes through Princess Alexandra Hospital in Harlow and the wider Hertfordshire and West Essex Integrated Care Board. We are an Essex matching service, so we are explicit about which nearby Essex-side options apply and when a Hertfordshire clinician would be closer.',
+    ],
+    whyLocal: [
+      'Because Waltham Cross straddles the county boundary, honest matching matters more than usual. We name the nearest Essex-side clinicians in Waltham Abbey, Loughton and Epping, give realistic drive times across the Lea Valley and M25, and tell you plainly where a Hertfordshire-side clinician would simply be closer, rather than forcing an Essex-only introduction that adds travel.',
+      'The EN8 demographic is broad, from working-age commuters to a settled older population, so the case mix spans single-tooth replacement through to denture conversion. We weight matching to clinician scope and scheduling rather than to a single demographic assumption.',
+    ],
+    neighbourhoods: [
+      { name: 'Cheshunt', note: 'EN8 north of Waltham Cross; broad demographic, single-tooth and multiple-tooth enquiries.' },
+      { name: 'Waltham Abbey', note: 'EN9 (adjacent, Essex) across the Lea; Epping Forest District, the nearest Essex-side clinician pool.' },
+      { name: 'Holdbrook', note: 'EN8 south-east near the M25; family residential.' },
+      { name: 'Bury Green', note: 'EN7 (adjacent) north of Cheshunt; established residential.' },
+      { name: 'Goffs Oak', note: 'EN7 north-west village; semi-rural demographic.' },
+      { name: 'Enfield Highway boundary', note: 'EN3 (adjacent) south; London-border residential, frequently weighing London and Essex options.' },
+    ],
+    localEntities: [
+      'Epping Forest District Council',
+      'Hertfordshire and West Essex Integrated Care Board',
+      'Princess Alexandra Hospital, Harlow',
+      'Waltham Cross railway station (Greater Anglia)',
+      'General Dental Council (GDC)',
+    ],
+    faqs: [
+      {
+        question: 'Waltham Cross is on the border; do you match Essex or Hertfordshire clinicians?',
+        answer:
+          'We are an Essex matching service, so our default is the nearest Essex-side clinicians in Waltham Abbey, Loughton and Epping. Because the boundary runs through the area, we will tell you plainly when a Hertfordshire-side clinician would be closer so you can choose on travel rather than county lines.',
+      },
+      {
+        question: 'Which postcodes are covered around Waltham Cross?',
+        answer:
+          'EN8 forms the core, with the EN9 Waltham Abbey area on the Essex side and the EN7 Cheshunt fringe matched alongside.',
+      },
+      {
+        question: 'How far is the nearest Essex-side implant clinician?',
+        answer:
+          'Waltham Abbey is minutes across the Lea Valley, with Loughton and Epping a short drive on the Central line corridor or the M25. We state the drive time for your matched clinician before any introduction.',
+      },
+      {
+        question: 'Is implant treatment here cheaper than central London?',
+        answer:
+          'Generally yes. Clinic overheads on the Essex and Hertfordshire border sit well below central London rates, and the matched clinicians quote in line with that. The clinical work and materials are equivalent.',
+      },
+      {
+        question: 'Can appointments be arranged around a London commute?',
+        answer:
+          'Several matched clinicians near the border offer early, late or Saturday slots. Tell us your pattern on the matching call and we will only introduce clinicians whose hours fit.',
+      },
+    ],
+    metaTitle: 'Dental Implants in Waltham Cross | Essex Dental Implants',
+    metaDescription:
+      'Independent dental implant matching for Waltham Cross EN8 and the Essex border. Nearby Waltham Abbey and Epping clinicians, honest cross-border advice.',
+  },
 ];
 
 export const LOCATIONS_BY_SLUG: Record<string, LocationData> = Object.fromEntries(

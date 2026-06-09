@@ -24,6 +24,12 @@ interface NearbyLink {
   name: string;
 }
 
+interface GuideLink {
+  slug: string;
+  title: string;
+  heroBadge: string;
+}
+
 function HeroLeadForm({ location, image }: { location: LocationData; image: { src: string; alt: string; width: number; height: number } | null }) {
   return (
     <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
@@ -67,10 +73,12 @@ function HeroLeadForm({ location, image }: { location: LocationData; image: { sr
 export default function LocationSpokeClient({
   location,
   services,
+  guides,
   nearby,
 }: {
   location: LocationData;
   services: ServiceLink[];
+  guides: GuideLink[];
   nearby: NearbyLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -213,6 +221,37 @@ export default function LocationSpokeClient({
             </div>
           </div>
         </section>
+
+        {guides.length > 0 && (
+          <section className="py-16 bg-[#f5f8ff]">
+            <div className="max-w-5xl mx-auto px-6">
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
+                Plan your treatment
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+                Guides for {location.name} implant patients
+              </h2>
+              <p className="text-slate-600 leading-relaxed mb-8 max-w-2xl">
+                Before you enquire, these guides cover what implants cost, whether you are likely to be suitable, and how to choose a clinician with confidence.
+              </p>
+              <div className="grid sm:grid-cols-3 gap-4">
+                {guides.map((g) => (
+                  <Link
+                    key={g.slug}
+                    href={`/guides/${g.slug}/`}
+                    className="group bg-white p-5 rounded-xl border border-slate-200 hover:border-[#1a56a0]/40 hover:shadow-sm transition-all"
+                  >
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">{g.heroBadge}</p>
+                    <h3 className="text-base font-bold text-slate-900 group-hover:text-[#1a56a0] transition-colors">{g.title}</h3>
+                    <div className="flex items-center gap-2 text-[#1a56a0] text-xs font-semibold mt-4">
+                      Open guide <ArrowUpRight className="w-3.5 h-3.5" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <FAQSection
           faqs={location.faqs}

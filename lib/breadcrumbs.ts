@@ -29,8 +29,19 @@ export function locationCrumbs(location: { slug: string; name: string }): Breadc
   ];
 }
 
+export function guidesIndexCrumbs(): Breadcrumb[] {
+  return [HOME_CRUMB, { name: 'Guides', url: `${siteConfig.url}/guides/` }];
+}
+
+export function guideCrumbs(guide: { slug: string; title: string }): Breadcrumb[] {
+  return [
+    ...guidesIndexCrumbs(),
+    { name: guide.title, url: `${siteConfig.url}/guides/${guide.slug}/` },
+  ];
+}
+
 export function blogIndexCrumbs(): Breadcrumb[] {
-  return [HOME_CRUMB, { name: 'Guides', url: `${siteConfig.url}/blog/` }];
+  return [HOME_CRUMB, { name: 'Articles', url: `${siteConfig.url}/blog/` }];
 }
 
 export function blogPostCrumbs(post: { slug: string; title: string }): Breadcrumb[] {

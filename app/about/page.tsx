@@ -3,7 +3,7 @@ import Image from 'next/image';
 import PageShell from '@/components/PageShell';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SchemaBlock from '@/components/SchemaBlock';
-import { breadcrumbSchema } from '@/lib/schema';
+import { breadcrumbSchema, editorialPersonSchema } from '@/lib/schema';
 import { siteConfig } from '@/data/site';
 import { HOME_CRUMB } from '@/lib/breadcrumbs';
 import { IMAGES } from '@/data/images';
@@ -20,7 +20,7 @@ const crumbs = [HOME_CRUMB, { name: 'About', url: `${siteConfig.url}/about/` }];
 export default function AboutPage() {
   return (
     <>
-      <SchemaBlock schemas={[breadcrumbSchema(crumbs)]} />
+      <SchemaBlock schemas={[breadcrumbSchema(crumbs), editorialPersonSchema()]} />
       <PageShell>
         <div className="pt-28 pb-20">
           <div className="max-w-3xl mx-auto px-6">

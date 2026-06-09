@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LOCATIONS, LOCATIONS_BY_SLUG } from '@/data/locations';
 import { SERVICES } from '@/data/services';
+import { GUIDES_BY_SLUG } from '@/data/guides';
 import SchemaBlock from '@/components/SchemaBlock';
 import {
   breadcrumbSchema,
@@ -43,6 +44,12 @@ export default function LocationSpokePage({ params }: { params: { city: string }
     .slice(0, 4)
     .map((l) => ({ slug: l.slug, name: l.name }));
 
+  // Location pages link up to the nearest hubs: cost, suitability, choosing.
+  const guides = ['implant-costs', 'am-i-suitable-for-implants', 'choosing-an-implant-dentist']
+    .map((slug) => GUIDES_BY_SLUG[slug])
+    .filter(Boolean)
+    .map((g) => ({ slug: g.slug, title: g.title, heroBadge: g.heroBadge }));
+
   return (
     <>
       <SchemaBlock
@@ -59,6 +66,7 @@ export default function LocationSpokePage({ params }: { params: { city: string }
           title: s.title,
           shortTitle: s.shortTitle,
         }))}
+        guides={guides}
         nearby={nearby}
       />
     </>

@@ -25,13 +25,21 @@ interface LocationLink {
   postcodes: readonly string[];
 }
 
+interface GuideLink {
+  slug: string;
+  title: string;
+  heroBadge: string;
+}
+
 export default function ServicePillarClient({
   service,
   relatedServices,
+  relatedGuides,
   locations,
 }: {
   service: ServiceData;
   relatedServices: RelatedService[];
+  relatedGuides: GuideLink[];
   locations: LocationLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -222,7 +230,30 @@ export default function ServicePillarClient({
           subtitle="Common questions from Essex patients about this treatment, with specific figures where they apply."
         />
 
-        <section className="py-16 bg-white">
+        {relatedGuides.length > 0 && (
+          <section className="py-16 bg-white">
+            <div className="max-w-5xl mx-auto px-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">Guides for this treatment</h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {relatedGuides.map((g) => (
+                  <Link
+                    key={g.slug}
+                    href={`/guides/${g.slug}/`}
+                    className="group bg-[#f5f8ff] p-5 rounded-xl border border-[#1a56a0]/15 hover:border-[#1a56a0]/40 hover:shadow-sm transition-all"
+                  >
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">{g.heroBadge}</p>
+                    <h3 className="text-base font-bold text-slate-900 group-hover:text-[#1a56a0] transition-colors">{g.title}</h3>
+                    <div className="flex items-center gap-2 text-[#1a56a0] text-xs font-semibold mt-3">
+                      Open guide <ArrowUpRight className="w-3.5 h-3.5" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <section className="py-16 bg-[#f5f8ff]">
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">Related treatments</h2>
             <div className="grid md:grid-cols-3 gap-5">

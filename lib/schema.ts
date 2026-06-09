@@ -5,7 +5,7 @@ import { BlogPost } from '@/data/blog';
 
 const orgId = `${siteConfig.url}/#organization`;
 const websiteId = `${siteConfig.url}/#website`;
-const authorId = `${siteConfig.url}/about/#editorial`;
+const authorId = `${siteConfig.url}/about/#author`;
 
 export function organizationSchema() {
   return {
@@ -41,7 +41,10 @@ export function editorialPersonSchema() {
     '@type': 'Organization',
     '@id': authorId,
     name: siteConfig.editorial.teamName,
+    url: `${siteConfig.url}/about/`,
     parentOrganization: { '@id': orgId },
+    description:
+      'Editorial team for Essex Dental Implants. Clinical claims are checked against current General Dental Council guidance, NHS sources, and published clinical literature.',
   };
 }
 
@@ -112,19 +115,60 @@ export function locationServiceSchema(location: LocationData) {
   };
 }
 
-export function articleSchema(post: BlogPost) {
+interface ArticleInput {
+  url: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+}
+
+// Generic Article builder used by both blog spokes and guide hubs.
+export function articleSchemaFor({ url, headline, description, datePublished, dateModified }: ArticleInput) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': `${siteConfig.url}/blog/${post.slug}/#article`,
+    '@id': `${url}#article`,
+    headline,
+    description,
+    datePublished,
+    dateModified,
+    author: { '@id': authorId },
+    publisher: { '@id': orgId },
+    mainEntityOfPage: url,
+    inLanguage: 'en-GB',
+  };
+}
+
+export function articleSchema(post: BlogPost) {
+  return articleSchemaFor({
+    url: `${siteConfig.url}/blog/${post.slug}/`,
     headline: post.title,
     description: post.metaDescription,
     datePublished: post.publishedAt,
     dateModified: post.lastReviewedAt,
+  });
+}
+
+// MedicalWebPage adds the YMYL signal Google looks for on health content:
+// an author/reviewer entity, dates, and an "about" medical procedure.
+export function medicalWebPageSchema({ url, name, description, datePublished, dateModified }: { url: string; name: string; description: string; datePublished: string; dateModified: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    '@id': `${url}#medicalwebpage`,
+    url,
+    name,
+    description,
+    datePublished,
+    dateModified,
+    isPartOf: { '@id': websiteId },
     author: { '@id': authorId },
+    reviewedBy: { '@id': authorId },
     publisher: { '@id': orgId },
-    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}/`,
+    lastReviewed: dateModified,
     inLanguage: 'en-GB',
+    about: { '@type': 'MedicalProcedure', name: 'Dental implant treatment' },
   };
 }
 

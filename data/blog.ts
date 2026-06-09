@@ -7,6 +7,11 @@ export interface BlogPost {
   metaDescription: string;
   excerpt: string;
   category: string;
+  /** Parent hub slug (see data/guides.ts). Every spoke belongs to one hub. */
+  hub: string;
+  /** Draft spokes 404, and are excluded from /blog, hub spoke-grids and the
+   *  sitemap until the publisher flips them live. */
+  draft: boolean;
   publishedAt: string;
   lastReviewedAt: string;
   paragraphs: string[];
@@ -18,6 +23,8 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'dental-implant-cost-essex',
+    hub: 'implant-costs',
+    draft: false,
     title: 'Dental Implant Cost in Essex 2026: What to Expect',
     metaTitle: 'Dental Implant Cost in Essex 2026 | Price Guide',
     metaDescription:
@@ -55,6 +62,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'implants-vs-dentures-uk',
+    hub: 'implants-vs-alternatives',
+    draft: false,
     title: 'Dental Implants vs Dentures in the UK: Which Is Right For You?',
     metaTitle: 'Dental Implants vs Dentures UK | Comparison Guide',
     metaDescription:
@@ -92,6 +101,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'cbct-3d-planning-for-dental-implants',
+    hub: 'implant-process-and-timeline',
+    draft: false,
     title: 'CBCT and 3D Planning for Dental Implants in the UK',
     metaTitle: 'CBCT 3D Planning for Implants UK | What to Expect',
     metaDescription:
@@ -129,6 +140,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'caring-for-dental-implants',
+    hub: 'implant-aftercare',
+    draft: false,
     title: 'Caring For Your Dental Implants: A Practical Guide',
     metaTitle: 'How To Care For Dental Implants | UK Maintenance Guide',
     metaDescription:
@@ -166,6 +179,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'implants-after-failed-bridge-or-crown',
+    hub: 'implants-vs-alternatives',
+    draft: false,
     title: 'Implants After a Failed Bridge or Crown: When They Make Sense',
     metaTitle: 'Implants After A Failed Bridge Or Crown | UK Guide',
     metaDescription:
@@ -203,6 +218,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'eating-with-dental-implants',
+    hub: 'implant-aftercare',
+    draft: false,
     title: 'Eating With Dental Implants: What to Expect Through Healing',
     metaTitle: 'Eating With Dental Implants | Healing Timeline UK',
     metaDescription:

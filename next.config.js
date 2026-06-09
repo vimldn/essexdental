@@ -32,14 +32,19 @@ const KEPT_LOCATION_SLUGS = [
   'rayleigh',
   'maldon',
   'leigh-on-sea',
+  'epping',
+  'canvey-island',
+  'halstead',
+  'waltham-cross',
 ];
 
+// Reactivated 2026-06-09: epping, canvey-island, halstead now have full town
+// pages (high-impression towns). Removed from the retired-redirect list so the
+// pages render instead of 308ing to /location/.
 const RETIRED_LOCATION_SLUGS = [
   'braintree',
   'burnham-on-crouch',
-  'canvey-island',
   'chigwell',
-  'epping',
   'frinton-on-sea',
   'grays',
   'harwich',
@@ -57,7 +62,6 @@ const RETIRED_LOCATION_SLUGS = [
   'coggeshall',
   'dedham',
   'great-dunmow',
-  'halstead',
   'manningtree',
   'pitsea',
   'thaxted',

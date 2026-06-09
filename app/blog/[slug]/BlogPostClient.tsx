@@ -33,12 +33,20 @@ interface LocationLink {
   name: string;
 }
 
+interface HubLink {
+  slug: string;
+  title: string;
+  shortTitle: string;
+}
+
 export default function BlogPostClient({
   post,
+  hub,
   relatedServices,
   relatedLocations,
 }: {
   post: BlogPost;
+  hub: HubLink | null;
   relatedServices: ServiceLink[];
   relatedLocations: LocationLink[];
 }) {
@@ -81,6 +89,16 @@ export default function BlogPostClient({
             <span aria-hidden="true">·</span>
             <time dateTime={post.lastReviewedAt}>Last reviewed {formatDate(post.lastReviewedAt)}</time>
           </div>
+
+          {hub && (
+            <p className="mb-8 text-sm text-slate-600 bg-[#f5f8ff] border border-[#1a56a0]/15 rounded-xl px-5 py-4">
+              Part of our guide to{' '}
+              <Link href={`/guides/${hub.slug}/`} className="font-semibold text-[#1a56a0] underline">
+                {hub.title.toLowerCase()}
+              </Link>
+              .
+            </p>
+          )}
 
           <div className="space-y-5 text-slate-700 leading-relaxed text-base">
             {post.paragraphs.map((p, i) => (

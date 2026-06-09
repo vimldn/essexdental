@@ -6,9 +6,9 @@ import { blogIndexCrumbs } from '@/lib/breadcrumbs';
 import BlogIndexClient from './BlogIndexClient';
 
 export const metadata: Metadata = {
-  title: 'Implant Guides | Essex Dental Implants',
+  title: 'Dental Implant Articles | Essex Dental Implants',
   description:
-    'UK-focused dental implant guides on pricing, planning, maintenance and decision-making, edited for the Essex matching panel.',
+    'In-depth dental implant articles on pricing, planning, maintenance and decision-making, edited for the Essex matching panel. Part of our implant guides.',
   alternates: { canonical: '/blog/' },
 };
 
@@ -17,7 +17,7 @@ export default function BlogIndexPage() {
     <>
       <SchemaBlock schemas={[breadcrumbSchema(blogIndexCrumbs())]} />
       <BlogIndexClient
-        posts={BLOG_POSTS.map((p) => ({
+        posts={BLOG_POSTS.filter((p) => !p.draft).map((p) => ({
           slug: p.slug,
           title: p.title,
           excerpt: p.excerpt,
