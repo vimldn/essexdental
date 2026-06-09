@@ -162,38 +162,6 @@ export default function GuideHubClient({
           </section>
         )}
 
-        {/* Topic roadmap (display only) */}
-        <section className="py-14 bg-[#f5f8ff]">
-          <div className="max-w-3xl mx-auto px-6">
-            <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
-              What this hub covers
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-              The full {guide.shortTitle.toLowerCase()} series
-            </h2>
-            <p className="text-slate-600 leading-relaxed mb-6">
-              We publish this series in stages. Topics below without a link yet are in the editorial queue and go live as they are reviewed.
-            </p>
-            <ul className="space-y-2.5">
-              {guide.plannedSpokeTitles.map((topic, i) => {
-                const live = liveSpokes.find((s) => s.title === topic);
-                return (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="text-[#1a56a0] text-sm font-semibold mt-0.5 w-5 flex-shrink-0">{i + 1}.</span>
-                    {live ? (
-                      <Link href={`/blog/${live.slug}/`} className="text-slate-700 underline hover:text-[#1a56a0]">
-                        {topic}
-                      </Link>
-                    ) : (
-                      <span className="text-slate-500">{topic}</span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </section>
-
         {/* Feeds: service pillars + adjacent hubs */}
         <section className="py-16 bg-white">
           <div className="max-w-5xl mx-auto px-6">
