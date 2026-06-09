@@ -154,6 +154,60 @@ export const IMAGES = {
       width: 1200, height: 896,
     },
   } as Record<string, ImageSlot>,
+  // Guide hubs reuse the existing brand-generated implant imagery, each mapped
+  // to the most relevant visual with guide-specific alt text. No stock.
+  guides: {
+    'implant-costs': {
+      src: '/images/blog/dental-implant-cost-essex.jpg',
+      alt: 'Cost overview for dental implant treatment in Essex.',
+      width: 1200, height: 896,
+    },
+    'types-of-dental-implants': {
+      src: '/images/services/single-tooth.jpg',
+      alt: 'A single dental implant fixture and crown, one of the main implant types.',
+      width: 1200, height: 896,
+    },
+    'implant-process-and-timeline': {
+      src: '/images/blog/cbct-3d-planning-for-dental-implants.jpg',
+      alt: 'CBCT scan and digital planning used in the dental implant process.',
+      width: 1200, height: 896,
+    },
+    'bone-grafting-and-sinus-lifts': {
+      src: '/images/services/bone-grafting.jpg',
+      alt: 'CBCT cross-section used to plan bone grafting before implant placement.',
+      width: 1200, height: 896,
+    },
+    'full-arch-all-on-4': {
+      src: '/images/services/full-arch.jpg',
+      alt: 'A full-arch zirconia bridge supported on four to six dental implants.',
+      width: 1200, height: 896,
+    },
+    'implants-vs-alternatives': {
+      src: '/images/blog/implants-vs-dentures-uk.jpg',
+      alt: 'Dental implants compared side by side with dentures.',
+      width: 1200, height: 896,
+    },
+    'implant-aftercare': {
+      src: '/images/blog/caring-for-dental-implants.jpg',
+      alt: 'Implant maintenance tools laid out for daily home care.',
+      width: 1200, height: 896,
+    },
+    'implant-risks-and-success': {
+      src: '/images/blog/implants-after-failed-bridge-or-crown.jpg',
+      alt: 'A failed bridge alongside an implant replacement, illustrating implant risk and recovery.',
+      width: 1200, height: 896,
+    },
+    'am-i-suitable-for-implants': {
+      src: '/images/services/immediate-implants.jpg',
+      alt: 'A surgical guide used to assess and plan implant placement.',
+      width: 1200, height: 896,
+    },
+    'choosing-an-implant-dentist': {
+      src: '/images/services/implant-dentures.jpg',
+      alt: 'Implant-retained restoration representing the choice of an experienced clinician.',
+      width: 1200, height: 896,
+    },
+  } as Record<string, ImageSlot>,
 } as const;
 
 export function serviceImage(slug: string): ImageSlot | null {
@@ -166,4 +220,8 @@ export function locationImage(slug: string): ImageSlot | null {
 
 export function blogImage(slug: string): ImageSlot | null {
   return IMAGES.blog[slug] ?? null;
+}
+
+export function guideImage(slug: string): ImageSlot | null {
+  return IMAGES.guides[slug] ?? null;
 }

@@ -4,6 +4,7 @@ import { GUIDES, GUIDES_BY_SLUG } from '@/data/guides';
 import { BLOG_POSTS } from '@/data/blog';
 import { SERVICES_BY_SLUG } from '@/data/services';
 import { siteConfig } from '@/data/site';
+import { guideImage } from '@/data/images';
 import SchemaBlock from '@/components/SchemaBlock';
 import {
   breadcrumbSchema,
@@ -74,6 +75,7 @@ export default function GuideHubPage({ params }: { params: { slug: string } }) {
       />
       <GuideHubClient
         guide={guide}
+        heroImage={guideImage(guide.slug)}
         liveSpokes={liveSpokes}
         services={services}
         adjacentHubs={adjacentHubs}

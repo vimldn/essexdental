@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { GUIDES } from '@/data/guides';
 import { BLOG_POSTS } from '@/data/blog';
+import { guideImage } from '@/data/images';
 import SchemaBlock from '@/components/SchemaBlock';
 import { breadcrumbSchema } from '@/lib/schema';
 import { guidesIndexCrumbs } from '@/lib/breadcrumbs';
@@ -20,6 +21,7 @@ export default function GuidesIndexPage() {
     heroBadge: g.heroBadge,
     heroDirectAnswer: g.heroDirectAnswer,
     liveCount: BLOG_POSTS.filter((p) => p.hub === g.slug && !p.draft).length,
+    image: guideImage(g.slug),
   }));
 
   return (
