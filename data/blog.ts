@@ -356,6 +356,56 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['single-tooth'],
   },
+  {
+    slug: 'who-can-have-dental-implants',
+    hub: 'am-i-suitable-for-implants',
+    draft: true,
+    title: 'Who Can Have Dental Implants? Suitability Explained',
+    metaTitle: 'Who Can Have Dental Implants? Suitability Guide',
+    metaDescription:
+      'Who can have dental implants: the bone, gum health, age, smoking and medical factors that decide candidacy, and how suitability is actually assessed.',
+    excerpt:
+      'A plain-English overview of who is suitable for dental implants, covering bone, gum health, age, smoking and medical factors, and how candidacy is confirmed.',
+    category: 'Patient Guide',
+    publishedAt: '2026-06-10',
+    lastReviewedAt: '2026-06-10',
+    paragraphs: [
+      'Most adults with one or more missing teeth are suitable for dental implants. The questions that really decide it are whether you have enough jawbone to hold a fixture, whether your gums are healthy, and whether any medical condition or medication slows healing. Age is rarely a barrier on its own, and only an assessment with a scan can confirm it.',
+      'Suitability comes down to three clinical factors. The first is bone. An implant is a titanium screw that has to be anchored in the jaw, so there needs to be enough bone height and width to hold it securely. Where bone has been lost after an extraction or long-term gum disease, a bone graft or sinus lift can often rebuild it, so thin bone is frequently a reason for an extra step rather than a flat refusal. The second is gum health: active gum disease has to be brought under control before any implant is placed, because the same bacteria that loosen natural teeth will attack an implant. The third is general healing capacity, which is where your overall health and medications come in.',
+      'A number of medical conditions affect candidacy without ruling it out. Well-controlled diabetes is usually compatible with implant treatment, while poorly controlled blood sugar slows healing and raises the risk of failure, so clinicians often want to see stable readings first. Osteoporosis itself is not a barrier, but some bone-protecting medicines, particularly bisphosphonates and similar drugs, change how the jaw heals and need to be disclosed and discussed before any surgery. Blood thinners, a history of head and neck radiotherapy, and conditions that suppress the immune system all matter to planning. None of these is an automatic no. Each is a reason for careful assessment and, where needed, liaison with your doctor.',
+      'Lifestyle plays a larger part than many people expect. Smoking is the single biggest modifiable risk: studies report roughly double the failure rate in smokers, because nicotine restricts the blood supply that healing bone relies on. You do not have to have quit for good to be a candidate, but most clinicians will ask you to stop for a period around surgery, and stopping altogether gives the best odds. Heavy clenching or grinding can overload an implant, which is usually managed with a night guard rather than treated as a barrier. Good daily cleaning and a willingness to attend hygienist appointments are part of being suitable too, because an implant lasts only as long as the gum and bone around it stay healthy.',
+      'Age is rarely the deciding factor. There is no upper age limit for dental implants; healthy people in their seventies, eighties and beyond have them successfully, and general fitness for minor surgery matters far more than the number itself. The more common age-related limit sits at the younger end. Implants are generally not placed until the jaw has finished growing, usually around eighteen, because a fixture set in a still-developing jaw can end up out of position as the surrounding bone changes. For a teenager who has lost a tooth, a temporary solution is normally used until growth is complete.',
+      'The only way to know for certain is an in-person assessment with three-dimensional imaging. A cone-beam CT scan shows the exact bone volume and the position of the nerves and the sinus, which a visual examination cannot, and it is this scan that turns a general yes into a specific plan. The NHS funds implants only in narrow reconstructive cases referred through hospital services, so for most people this is private treatment. We do not place implants ourselves and we have no clinic to fill. We match you, free of charge, with GDC-registered implant clinicians across Essex who assess suitability properly and set out the findings in writing, so you can understand your options rather than be sold a single answer. Where bone or a medical condition complicates the picture, our guide to implant suitability covers the individual situations in more detail.',
+    ],
+    faqs: [
+      {
+        question: 'Can I have implants if I have gum disease?',
+        answer:
+          'Not until it is treated and stable. The bacteria that cause gum disease will attack an implant in the same way they loosen natural teeth, so a clinician will bring the gums under control first. Once your gum health is settled and you keep up good cleaning, gum disease in the past does not rule out implants.',
+      },
+      {
+        question: 'Is there an age limit for dental implants?',
+        answer:
+          'There is no upper age limit. Healthy people in their seventies and eighties have implants successfully, and fitness for minor surgery matters more than age. The usual limit is at the younger end: implants are generally not placed until the jaw has finished growing, around eighteen, so that the fixture does not end up out of position.',
+      },
+      {
+        question: 'Can I have dental implants if I have diabetes?',
+        answer:
+          'Usually yes, if the diabetes is well controlled. Stable blood sugar allows normal healing, so clinicians often want to see recent readings before treatment. Poorly controlled diabetes slows healing and raises the risk of failure, which is a reason to get it under control first rather than an outright barrier.',
+      },
+      {
+        question: 'Does smoking stop me from having implants?',
+        answer:
+          'It does not automatically rule them out, but it is the single biggest modifiable risk, with studies reporting roughly double the failure rate in smokers. Most clinicians ask you to stop for a period around surgery, and stopping for good gives the best chance of long-term success.',
+      },
+      {
+        question: 'What if I do not have enough bone for an implant?',
+        answer:
+          'Short or thin bone is often an extra step rather than a dead end. A bone graft or sinus lift can rebuild enough volume to place an implant in many cases. A CBCT scan shows exactly how much bone you have, which is why an accurate answer needs an in-person assessment with imaging.',
+      },
+    ],
+    relatedServiceSlugs: ['single-tooth'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(

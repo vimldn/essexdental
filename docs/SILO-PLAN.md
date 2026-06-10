@@ -155,7 +155,13 @@ Until 1-3 exist, the writer task stays disabled (pre-flight guard logs a handoff
 | H6 vs alternatives | 2 / 10 | vs-dentures + failed-bridge posts exist |
 | H7 Aftercare | 2 / 10 | caring + eating posts exist |
 | H8 Risks | 0 / 10 | 1 draft parked (dental-implant-success-rates) |
-| H9 Suitability | 0 / 10 | new hub |
+| H9 Suitability | 0 / 10 | 1 draft parked (who-can-have-dental-implants) |
 | H10 Choosing/abroad | 0 / 10 | new hub |
 
-Totals: 10 hubs built, 100 spokes (6 
+Totals: 10 hubs built, 100 spokes (6 live + 3 draft parked, ~91 to write).
+## Slug rules (writer: follow on every spoke)
+
+Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 chars.
+Do NOT: include a year/date; reuse or near-duplicate an existing slug; use a
+reserved head term or the parent hub's head term; keyword-stuff or repeat a word;
+use stop words (a/the/to/for). Ne
