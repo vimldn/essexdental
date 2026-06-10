@@ -306,6 +306,56 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['single-tooth'],
   },
+  {
+    slug: 'dental-implant-success-rates',
+    hub: 'implant-risks-and-success',
+    draft: true,
+    title: 'Dental Implant Success Rates: What the Evidence Shows',
+    metaTitle: 'Dental Implant Success Rates UK | The Evidence',
+    metaDescription:
+      'What the long-term evidence really says about dental implant success rates, the difference between survival and success, and the factors that move the odds.',
+    excerpt:
+      'What the long-term evidence shows about dental implant success rates, why survival and success are not the same, and the factors that change the odds.',
+    category: 'Safety',
+    publishedAt: '2026-06-10',
+    lastReviewedAt: '2026-06-10',
+    paragraphs: [
+      'Mainstream dental implants are one of the most predictable treatments in modern dentistry. Independent long-term studies of established implant systems consistently report ten-year survival in the region of 90 to 95 percent, and the NHS describes implants as a safe, well-established treatment when carried out by an experienced clinician. Success depends far more on your general health, the planning behind the case and your aftercare than on the brand of implant used.',
+      'It helps to separate two terms that often get blurred. Survival means the implant is still in place and doing its job. Success is a stricter measure that also requires healthy surrounding bone and gum, no pain or looseness, and a well-fitting restoration on top. A study quoting 97 percent survival and one quoting 92 percent success can describe the same group of patients measured against different bars. When you read a headline figure, it is worth asking which of the two it refers to and over how many years, because a five-year number and a fifteen-year number are not comparable.',
+      'The widely cited 90 to 95 percent ten-year figure comes from long-term clinical studies and systematic reviews of established systems, not from any single clinic. Manufacturers such as Straumann and Nobel Biocare publish multi-year survival data on their own fixtures, which is one practical reason a premium system with decades of evidence behind it is often preferred over an unbranded fixture with little published follow-up. The honest summary is that for a healthy patient with adequate bone, treated by an experienced clinician, a well-placed single implant has a very high chance of still being in service a decade later. No reputable clinician should promise a 100 percent outcome, and a guarantee framed that way is a warning sign rather than a reassurance.',
+      'Several factors move the odds in ways that are well documented. Smoking is the single largest modifiable risk, with studies reporting roughly double the failure rate in smokers because nicotine restricts the blood supply that healing bone depends on. Uncontrolled diabetes, active gum disease and poor oral hygiene all raise the risk, as does heavy clenching or grinding that overloads the implant. Bone matters too: implants in the lower jaw tend to survive at slightly higher rates than those in the upper jaw, where the bone is softer and the sinus sits close to the back teeth, which is why some upper cases need a graft or sinus lift first. None of these factors is automatically a barrier. Most are about assessment and preparation rather than a simple yes or no.',
+      'The part of the equation that patients have the most control over, after their own health, is who does the work. Implant dentistry is not a recognised speciality on its own, so experience varies widely between clinicians who all describe themselves as implant dentists. Careful case selection, three-dimensional CBCT planning, the right number and position of fixtures, and a clean surgical technique are what turn good published averages into a good individual outcome. This is the reason an independent matching service exists. We do not place implants ourselves, and we have no clinic to fill. We match you, free of charge, with GDC-registered implant clinicians across Essex so you can compare experience and written treatment plans rather than headline percentages.',
+      'When you weigh up success-rate claims, treat any figure without a timescale or a source with caution, and be wary of clinics advertising near-perfect outcomes on the cheapest fixtures. The meaningful questions to ask at a consultation are how many cases like yours the clinician has treated, what system they propose and why, and what their own protocol is if an implant does not integrate. A clinician who answers those plainly, and itemises the plan in writing, is giving you far better evidence of a likely good outcome than any number on a website. To understand how the broader picture of risk, safety and long-term success fits together, our guide to implant risks, safety and success sets out the warning signs and how complications are managed.',
+    ],
+    faqs: [
+      {
+        question: 'Are dental implants really 95 percent successful?',
+        answer:
+          'For a healthy patient with adequate bone treated by an experienced clinician, long-term studies of established systems report ten-year survival in the region of 90 to 95 percent. That is an average across many patients, not a guarantee for any single case, and the figure falls when significant risk factors such as smoking or uncontrolled diabetes are present.',
+      },
+      {
+        question: 'What is the difference between implant survival and implant success?',
+        answer:
+          'Survival simply means the implant is still in place. Success is stricter and also requires healthy bone and gum around it, no pain or movement, and a well-fitting restoration. Two studies can report different numbers for the same patients because they are measuring against different definitions, so it is worth checking which one a figure refers to.',
+      },
+      {
+        question: 'Do implants last longer in the lower or upper jaw?',
+        answer:
+          'Implants in the lower jaw tend to survive at slightly higher rates because the bone there is denser. The upper jaw has softer bone and the sinus cavity sits close to the back teeth, which is why some upper cases need a bone graft or sinus lift before placement. With proper planning, upper-jaw implants are still highly predictable.',
+      },
+      {
+        question: 'Can a dental implant fail years after it has settled in?',
+        answer:
+          'Yes, although it is uncommon. Early failure happens in the first weeks if the implant does not fuse with the bone. Late failure, years later, is usually driven by peri-implantitis, a gum-disease-like infection around the implant, or by overload from grinding. Good hygiene and regular hygienist maintenance are the main defences.',
+      },
+      {
+        question: 'Does the brand of implant affect the success rate?',
+        answer:
+          'Clinician skill and patient health matter more than the brand, but the system is not irrelevant. Premium systems carry decades of published survival data and a guaranteed supply of replacement components, which matters if a part ever needs remaking in fifteen years. An unbranded fixture with little long-term evidence is a bigger unknown.',
+      },
+    ],
+    relatedServiceSlugs: ['single-tooth'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(
