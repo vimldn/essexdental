@@ -406,6 +406,56 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['single-tooth'],
   },
+  {
+    slug: 'full-arch-implant-cost',
+    hub: 'implant-costs',
+    draft: true,
+    title: 'What Full-Arch and All-on-4 Implants Cost in Essex',
+    metaTitle: 'All-on-4 and Full-Arch Implant Cost in Essex',
+    metaDescription:
+      'What full-arch dental implants cost in Essex in 2026, covering All-on-4 and All-on-6 prices, bridge materials, grafting add-ons, finance and whole-mouth costs.',
+    excerpt:
+      'A 2026 breakdown of full-arch implant prices in Essex, covering All-on-4 and All-on-6, the bridge materials that move the cost, and how to pay.',
+    category: 'Pricing',
+    publishedAt: '2026-06-11',
+    lastReviewedAt: '2026-06-11',
+    paragraphs: [
+      'Full-arch dental implants in Essex typically cost £15,000 to £22,000 per arch for an All-on-4 in 2026, and around £18,000 to £26,000 per arch for an All-on-6. That figure replaces a whole jaw of teeth and covers the implants, the surgery, the imaging and a fixed bridge of new teeth. The definitive bridge material and any bone grafting are what move the number most.',
+      'A full-arch quote should be itemised rather than handed over as a single headline figure, because it pays for several distinct stages. The first is the consultation and cone-beam CT planning that maps your bone before anything is placed. The second is the surgical day itself, which often includes removing any failing teeth, placing the four or six implants, and fitting a fixed temporary bridge you wear straight away. The third is the definitive bridge, made and fitted months later once the implants have fused with the bone. A clear quote separates these stages so you can see what the provisional teeth cost against the final restoration, and whether review appointments, adjustments and the final fit are included or billed on top.',
+      'The main structural choice that moves the price is how many implants carry the arch. All-on-4 uses four implants per jaw, two placed upright at the front and two angled at the back to avoid the sinus and make the most of the bone you already have, which is what keeps both the implant count and the cost down. All-on-6 uses six implants to spread the load further and is often chosen where the bone allows it or where a heavier bridge is planned. In Essex in 2026 the step up from four implants to six typically adds £2,500 to £4,500 per arch. Neither option is automatically better, and the right number depends on your bone volume and the bridge being built, which is a clinical decision made only after a scan.',
+      'After the implant count, the definitive bridge material is the biggest single driver of cost. An acrylic bridge on a titanium frame sits at the lower end of the range. It is lighter and straightforward to repair, but the acrylic teeth wear over the years and may need replacing. A full zirconia bridge sits at the upper end. It resists wear and staining far better and looks closest to natural teeth, but it costs more and is harder to modify once made. Many Essex clinicians fit an acrylic provisional bridge first and then a definitive bridge once the implants have fully integrated, so any headline figure you are quoted should make clear which material the final bridge uses and whether the provisional is included.',
+      'Several costs can sit outside the headline per-arch figure. Bone grafting or a sinus lift, where the ridge is too thin or too short, adds £400 to £2,500 depending on technique, although full-arch planning with angled implants is often designed specifically to reduce the need for it. Sedation on the surgical day, if you want it, is a further £250 to £500. Treating both jaws roughly doubles the single-arch figure, so a full-mouth All-on-4 case commonly runs £30,000 to £44,000. Full-arch implants are not available on the NHS, which funds implant work only in narrow reconstructive cases referred through hospital services, so in practice this is private treatment. Most matched clinicians offer finance through a third-party provider, with interest-free terms over six to twelve months common and longer terms attracting interest.',
+      'The only way to get an accurate full-arch price is an in-person assessment with a CBCT scan, because the implant count, the bridge material and any grafting all depend on what that scan shows. It is also worth understanding how a low overseas headline price compares once travel, follow-up and any remedial work are counted, a point our guide to dental implant cost in Essex weighs up across treatment types, while our full-arch and All-on-4 treatment page explains what the journey itself involves. We do not place implants ourselves. We match you, free of charge, with GDC-registered implant clinicians across Essex who provide itemised written quotes, so you can compare like for like rather than headline figures.',
+    ],
+    faqs: [
+      {
+        question: 'Is All-on-4 cheaper than replacing each tooth with its own implant?',
+        answer:
+          'Yes, considerably. Placing an individual implant for every missing tooth in a full arch would need far more fixtures and far more surgery. All-on-4 carries a complete fixed bridge on just four implants per jaw, which is why it is the more affordable route to fixed teeth for a whole arch.',
+      },
+      {
+        question: 'Does the full-arch price include the final fixed teeth?',
+        answer:
+          'It should, but always confirm it. A complete quote covers the implants, the surgery, a temporary bridge worn during healing and the definitive bridge fitted later. Some headline prices cover only the surgical stage and the provisional teeth, with the final bridge quoted separately, so ask exactly what the figure includes.',
+      },
+      {
+        question: 'Why does a zirconia bridge cost more than an acrylic one?',
+        answer:
+          'Zirconia is a far harder, more wear-resistant material than acrylic, and milling a full-arch bridge from it takes more laboratory work and more expensive materials. It resists staining and looks closest to natural teeth, which is why it sits at the upper end of the range, whereas an acrylic bridge on a titanium frame is lighter, cheaper and easier to repair.',
+      },
+      {
+        question: 'Are full-arch implants available on the NHS?',
+        answer:
+          'Almost never. The NHS funds implants only in narrowly defined reconstructive cases, such as after oral cancer surgery or significant trauma, referred through hospital services. Replacing a full arch of teeth with All-on-4 or All-on-6 is private treatment.',
+      },
+      {
+        question: 'How much does it cost to do both the upper and lower jaw?',
+        answer:
+          'Treating both arches roughly doubles the single-arch figure, so a full-mouth All-on-4 case in Essex commonly falls in the £30,000 to £44,000 range in 2026. The exact figure depends on the implant count per jaw, the bridge material chosen and any grafting, all of which are confirmed after a CBCT scan.',
+      },
+    ],
+    relatedServiceSlugs: ['full-arch'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(
