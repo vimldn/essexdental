@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowUpRight, CheckCircle } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import FAQSection from '@/components/FAQSection';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { SpokeHero } from '@/components/SpokeHero';
 import { guideCrumbs } from '@/lib/breadcrumbs';
 import { GuideData } from '@/data/guides';
 
@@ -30,27 +30,25 @@ interface HubLink {
   shortTitle: string;
 }
 
-interface HeroImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-
 export default function GuideHubClient({
   guide,
-  heroImage,
   liveSpokes,
   services,
   adjacentHubs,
 }: {
   guide: GuideData;
-  heroImage: HeroImage | null;
   liveSpokes: SpokeLink[];
   services: PillarLink[];
   adjacentHubs: HubLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const guideWords =
+    guide.keyPoints.join(' ').trim().split(/\s+/).length +
+    guide.sections.reduce(
+      (sum, s) => sum + s.paragraphs.join(' ').trim().split(/\s+/).length,
+      0,
+    );
+  const readMins = Math.max(3, Math.round(guideWords / 200));
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -58,47 +56,30 @@ export default function GuideHubClient({
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
       <main id="main">
-        <section className="pt-28 pb-16 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="pt-28 pb-12 bg-white">
+          <div className="max-w-3xl mx-auto px-6">
             <div className="mb-4">
-              <Breadcrumbs items={guideCrumbs(guide)} onDark />
+              <Breadcrumbs items={guideCrumbs(guide)} />
             </div>
-            <div className="grid lg:grid-cols-[1.1fr_minmax(0,460px)] gap-10 lg:gap-16 items-center">
-              <div>
-                <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#7fb9e8] mb-3">
-                  {guide.heroBadge}
-                </span>
-                <h1 className="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-5">
-                  {guide.title}
-                </h1>
-                <p className="text-base md:text-lg text-white/80 leading-relaxed mb-7 max-w-2xl">
-                  {guide.heroDirectAnswer}
-                </p>
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="px-6 py-3.5 bg-[#1a56a0] text-white text-sm font-semibold rounded-md hover:bg-[#1d62b8] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7fb9e8]"
-                >
-                  Request a clinician introduction
-                </button>
-              </div>
-
-              {heroImage && (
-                <div className="hidden lg:block">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
-                    <Image
-                      src={heroImage.src}
-                      alt={heroImage.alt}
-                      width={heroImage.width}
-                      height={heroImage.height}
-                      priority
-                      quality={90}
-                      sizes="(min-width: 1024px) 460px, 100vw"
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
+            <h1 className="sr-only">{guide.title}</h1>
+            <SpokeHero
+              title={guide.title}
+              hubName="Guide"
+              hubSlug={guide.slug}
+              readMins={readMins}
+            />
+            <p className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0]">
+              {guide.heroBadge}
+            </p>
+            <p className="mt-4 text-base md:text-lg text-slate-700 leading-relaxed">
+              {guide.heroDirectAnswer}
+            </p>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="mt-7 px-6 py-3.5 bg-[#1a56a0] text-white text-sm font-semibold rounded-md hover:bg-[#1d62b8] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7fb9e8]"
+            >
+              Request a clinician introduction
+            </button>
           </div>
         </section>
 

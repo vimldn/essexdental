@@ -2,17 +2,15 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight } from '@/components/Icons';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import FAQSection from '@/components/FAQSection';
 import LeadFormModal from '@/components/LeadFormModal';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { SpokeHero } from '@/components/SpokeHero';
 import { blogPostCrumbs } from '@/lib/breadcrumbs';
 import { BlogPost } from '@/data/blog';
 import { siteConfig } from '@/data/site';
-import { blogImage } from '@/data/images';
 
 function formatDate(iso: string) {
   try {
@@ -51,7 +49,8 @@ export default function BlogPostClient({
   relatedLocations: LocationLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const featured = blogImage(post.slug);
+  const wordCount = post.paragraphs.join(' ').trim().split(/\s+/).length;
+  const readMins = Math.max(3, Math.round(wordCount / 200));
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -63,25 +62,16 @@ export default function BlogPostClient({
           <div className="mb-4">
             <Breadcrumbs items={blogPostCrumbs(post)} />
           </div>
+          <h1 className="sr-only">{post.title}</h1>
+          <div className="my-6">
+            <SpokeHero
+              title={post.title}
+              hubName={hub ? hub.title : null}
+              hubSlug={post.hub}
+              readMins={readMins}
+            />
+          </div>
           <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">{post.category}</p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-5">
-            {post.title}
-          </h1>
-
-          {featured && (
-            <div className="my-8 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[4/3]">
-              <Image
-                src={featured.src}
-                alt={featured.alt}
-                width={featured.width}
-                height={featured.height}
-                priority
-                quality={90}
-                sizes="(min-width: 768px) 768px, 100vw"
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          )}
           <div className="flex flex-wrap items-center gap-4 mb-10 text-xs text-slate-500">
             <span>{siteConfig.editorial.teamName}</span>
             <span aria-hidden="true">·</span>
