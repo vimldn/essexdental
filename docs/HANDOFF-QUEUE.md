@@ -69,3 +69,11 @@ Newest entries at the bottom. One dated block per writer run.
 - link gate: check-links.mjs OK, 22 slugs, 0 broken
 - git: committed to main; push attempted (note state below)
 - buffer: 6 parked drafts (H1 single-tooth-cost + full-arch-cost, H8 success-rates, H9 who-can-have, H10 consultation-questions, H5 full-arch-explained); 6 live spokes, 12 written toward 100
+
+## 2026-06-12 03:35 — essexdental-implant-writer (essexdental)
+- Sites: essexdental: wrote 1 new H8 draft spoke (signs-of-failing-dental-implant), updated SILO-PLAN section 9 tracker
+- Staged files: data/blog.ts, docs/SILO-PLAN.md (committed b42d26a)
+- Live flips this run: none
+- tsc: pass
+- Commit prompt / git state: commit b42d26a on main, push failed (no GitHub credentials in sandbox); stale .git/index.lock + HEAD.lock removed this run (0-byte, no live git process)
+- Status: PENDING PUSH
