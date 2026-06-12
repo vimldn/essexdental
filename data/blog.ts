@@ -456,6 +456,107 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['full-arch'],
   },
+  {
+    slug: 'implant-consultation-questions',
+    hub: 'choosing-an-implant-dentist',
+    draft: true,
+    title: 'Questions to Ask at Your Implant Consultation',
+    metaTitle: 'Questions to Ask at an Implant Consultation',
+    metaDescription:
+      'Key questions to ask at a dental implant consultation, covering the implant system, the full written cost, the experience of the clinician, the plan and aftercare.',
+    excerpt:
+      'The questions worth asking at a dental implant consultation, from the implant system and total cost to clinician experience and what happens if it fails.',
+    category: 'Choosing a Clinician',
+    publishedAt: '2026-06-11',
+    lastReviewedAt: '2026-06-11',
+    paragraphs: [
+      'A good implant consultation should leave you with a written treatment plan, a clear total cost and an honest view of the risks. The questions worth asking cover the implant system being used, the experience of the clinician, exactly what the price includes, how long treatment will take, and what happens if something goes wrong. Walking in with that list keeps the conversation about your case rather than a sales pitch.',
+      'Start with the implant system and the materials. Ask which implant brand the clinician proposes and why, because the established systems have decades of published data and a guaranteed supply of matching parts, while some budget systems do not. Ask whether the crown or bridge is being made from porcelain, zirconia or acrylic, and whether the laboratory work is done in the UK. It is fair to ask what happens in ten years if a component needs replacing, since a mainstream system makes spare parts and future repairs far easier to source than an obscure one.',
+      'Then ask directly about experience and registration. Every dentist placing implants in the UK must be registered with the General Dental Council, and you can check any name and registration number on the GDC online register yourself, free of charge. Ask how many implant cases the clinician places each year, how long they have been doing implant work, and what postgraduate implant training they have completed. For anything complex, such as a sinus lift or a full arch, ask whether they handle that case type routinely or refer it on. A confident clinician will answer these questions plainly rather than take offence.',
+      'Get the money in writing and itemised. Ask for a written quotation that separates the consultation, any scans, the implant placement, the abutment, the final crown or bridge and any bone grafting, so you can see what is and is not included. Ask whether the price covers follow-up appointments and the temporary tooth while you heal, and whether finance is available and on what terms. Our guide to choosing an implant dentist explains why a vague all-in figure is a warning sign, and the cost of treatment is set out in detail on the relevant pillar so you can sense-check the numbers you are quoted.',
+      'Cover the plan, the timeline and the alternatives. A proper consultation should include an examination and a three-dimensional CBCT scan before any firm plan is set, because the scan shows the bone and the position of the nerves and sinus that a visual check cannot. Ask how many visits the whole course will take, how long the healing phase is, and what you will wear in the meantime. Ask what the alternatives are, including a bridge, a denture or doing nothing, and why an implant is being recommended over them. If only one option is ever presented, that is worth questioning.',
+      'Finally, ask about risk, success and what happens if it fails. Ask what the realistic success rate is for your case and what could lower it, such as smoking, gum disease or grinding. Ask who you contact if there is a problem after surgery and out of hours, what any warranty or guarantee covers, and who pays if an implant fails early. This is also where an independent introduction helps. We do not place implants and we own no clinic, so we have no incentive to push one provider. We match you, free of charge, with GDC-registered implant clinicians across Essex, including in and around Chelmsford, who will give you the written plan and the straight answers these questions are designed to draw out.',
+    ],
+    faqs: [
+      {
+        question: 'How many questions should I ask at an implant consultation?',
+        answer:
+          'There is no set number. Focus on the five areas that matter: the implant system and materials, clinician experience and registration, the full itemised cost, the treatment plan and timeline, and what happens if the implant fails. A good clinician will welcome the questions and answer them clearly.',
+      },
+      {
+        question: 'Should I get the treatment plan and cost in writing?',
+        answer:
+          'Yes. Always ask for a written, itemised plan that breaks down the consultation, scans, implant, abutment, crown or bridge and any grafting separately, along with the finance terms. A clear written quotation lets you compare options properly, and a reluctance to put it in writing is a reason to be cautious.',
+      },
+      {
+        question: 'How can I check the experience and registration of an implant dentist?',
+        answer:
+          'Every dentist in the UK must be registered with the General Dental Council, and you can search any name or registration number on the GDC online register for free. Beyond registration, ask how many implant cases they place each year, how long they have done implant work, and what postgraduate implant training they hold.',
+      },
+      {
+        question: 'What should a thorough implant consultation include?',
+        answer:
+          'A clinical examination, a review of your medical history and, before any firm plan, a three-dimensional CBCT scan that shows the bone volume and the position of the nerves and sinus. It should also set out the alternatives to an implant and an honest view of the risks, not just a single recommended option.',
+      },
+      {
+        question: 'Is it worth getting a second opinion before treatment?',
+        answer:
+          'Often, yes, particularly for complex or full-arch cases or where the quotes you receive vary widely. A second opinion costs little against the price of treatment and can confirm whether the proposed plan, implant system and timeline are reasonable. An independent matching service can introduce you to more than one clinician so you can compare.',
+      },
+    ],
+    relatedLocationSlugs: ['chelmsford'],
+  },
+  {
+    slug: 'full-arch-implants-explained',
+    hub: 'full-arch-all-on-4',
+    draft: true,
+    title: 'Full-Arch and All-on-4 Dental Implants Explained',
+    metaTitle: 'Full-Arch and All-on-4 Implants Explained',
+    metaDescription:
+      'A plain guide to full-arch and All-on-4 dental implants, how a few implants replace a whole arch of teeth with one fixed bridge, who they suit and what to expect.',
+    excerpt:
+      'What full-arch and All-on-4 dental implants are, how four to six implants carry a whole jaw of fixed teeth, and who the treatment suits.',
+    category: 'Treatment Types',
+    publishedAt: '2026-06-12',
+    lastReviewedAt: '2026-06-12',
+    paragraphs: [
+      'Full-arch dental implants replace a whole jaw of missing or failing teeth with one fixed bridge carried on four to six implants, rather than placing a separate implant for every tooth. All-on-4 is the best known version, using four implants per arch to hold a complete set of fixed teeth that you do not take out to clean.',
+      'Full-arch treatment is designed for people who have lost, or are about to lose, most or all of the teeth in a jaw. Instead of a removable denture that sits on the gum, a full-arch bridge is fixed to implants anchored in the bone, so the teeth stay put when you eat and speak. The term covers several configurations, but they share one principle: a small number of implants spread the load of a whole arch of teeth, which is far more economical in surgery and cost than giving every tooth its own implant. Because the bridge is supported by bone-anchored implants rather than resting on the gum, it also helps preserve the jawbone that a conventional denture cannot stimulate.',
+      'All-on-4 is a specific full-arch technique, and the name describes the method: four implants carry a complete fixed arch. Two are placed upright at the front of the jaw, where the bone is usually denser, and two are angled towards the back. Tilting the rear implants lets the clinician anchor them in available bone while avoiding the sinus in the upper jaw and the nerve in the lower jaw, which often means good bone can be used without a graft. The All-on-4 protocol was developed and trademarked by the implant manufacturer Nobel Biocare, and similar four-implant approaches are now offered on other established implant systems. In many cases the four implants achieve enough initial stability for a fixed temporary bridge to be fitted the same day or within a few days, which is where the idea of teeth in a day comes from. Published clinical follow-up of the technique reports high implant survival over ten years, commonly in the region of the mid-nineties per cent in well-maintained cases, though individual outcomes depend on bone quality, general health and aftercare.',
+      'All-on-4 is not the only option. Where the bone allows, or where a longer or heavier bridge is planned, a clinician may recommend six implants per arch, often called All-on-6, to spread the load further. There are also implant-retained overdentures, which clip onto a smaller number of implants but can still be removed for cleaning, sitting between a conventional denture and a fixed full-arch bridge. The right number of implants and the right type of restoration are clinical decisions that depend on a three-dimensional scan of your bone, not a fixed rule, and our full-arch and All-on-4 guide sets out how these configurations compare in more detail.',
+      'The main appeal of a fixed full-arch bridge is that it behaves much more like natural teeth than a removable denture. It does not move when you bite, it needs no adhesive, and it restores far more chewing strength, which widens the range of foods you can eat comfortably. Because the implants carry chewing forces into the jaw, they also slow the bone loss that continues under a denture and changes the shape of the face over time. The trade-offs are real, though. It is surgery, it costs considerably more than a denture upfront, and a fixed bridge has to be cleaned thoroughly around and under the framework every day to keep the gum and implants healthy. For some people, particularly where budget or medical history rules out extensive surgery, a well-made denture or a removable implant-retained overdenture remains the more sensible choice.',
+      'Treatment runs in stages. It starts with a consultation and a cone-beam CT scan that maps the bone before anything is planned, followed by the surgical day, when any failing teeth are removed, the implants are placed and a fixed provisional bridge is usually fitted so you are not left without teeth. The implants then fuse with the bone over several months, a process called osseointegration, after which the definitive bridge is made and fitted. That final bridge can be acrylic on a titanium frame or full zirconia, a choice that affects both appearance and cost. Full-arch work is private rather than NHS treatment in almost all cases, and because the price depends on the implant count, the bridge material and any grafting, the only reliable figure comes from an in-person assessment. Our guide to dental implant cost in Essex explains how those numbers are built up.',
+      'Full-arch implants are a significant decision, both clinically and financially, so it is worth comparing more than one written plan before committing. We do not place implants and we own no clinic, so we have no reason to steer you towards a particular provider. We match you, free of charge, with GDC-registered implant clinicians across Essex who assess your suitability properly with a scan and provide an itemised written quote, so you can weigh up replacing a full arch with confidence rather than on a headline price alone.',
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between full-arch implants and All-on-4?',
+        answer:
+          'Full-arch implants is the umbrella term for replacing a whole jaw of teeth with a fixed bridge on implants. All-on-4 is one specific way of doing that, using four implants per arch with the back two angled. All-on-4 is therefore a type of full-arch treatment, not a separate thing.',
+      },
+      {
+        question: 'Will I have teeth on the same day as the surgery?',
+        answer:
+          'Often, yes. If the implants are stable enough on the day, a fixed temporary bridge is commonly fitted straight away or within a few days, so you do not leave without teeth. The definitive bridge is made and fitted later, once the implants have fused with the bone over several months.',
+      },
+      {
+        question: 'Do full-arch implants stay in the mouth permanently?',
+        answer:
+          'A fixed full-arch bridge is not removed by the patient. It stays in place when you eat, speak and sleep, and you clean it in the mouth. Your clinician or hygienist can unscrew it for a thorough professional clean or maintenance, but day to day it functions like a fixed set of teeth. An implant-retained overdenture, by contrast, clips on and is taken out for cleaning.',
+      },
+      {
+        question: 'Are full-arch implants better than a full denture?',
+        answer:
+          'They are more stable and stronger for chewing, do not need adhesive and help preserve the jawbone, but they cost considerably more and involve surgery. A well-made denture or a removable implant-retained overdenture can be the better choice where budget, medical history or cleaning ability point that way. It is a clinical decision made case by case after an assessment.',
+      },
+      {
+        question: 'How long do full-arch implants last?',
+        answer:
+          'Published follow-up studies report high implant survival over ten years and beyond in well-maintained cases. The implants themselves are designed to last many years, while the bridge they carry can wear and may need repair or replacement over time, especially an acrylic bridge. Daily cleaning, not smoking and regular professional maintenance all influence how long the result lasts.',
+      },
+    ],
+    relatedServiceSlugs: ['full-arch'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(
