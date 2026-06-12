@@ -557,6 +557,56 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['full-arch'],
   },
+  {
+    slug: 'signs-of-failing-dental-implant',
+    hub: 'implant-risks-and-success',
+    draft: true,
+    title: 'Ten Signs of a Failing Dental Implant',
+    metaTitle: 'Signs of a Failing Dental Implant | What to Watch For',
+    metaDescription:
+      'The warning signs of a failing dental implant, from bleeding gums to looseness, what tends to cause them, and why acting early gives the best chance of saving it.',
+    excerpt:
+      'How to recognise the warning signs of a failing dental implant, what usually sits behind them, and why prompt assessment gives the best chance of saving the implant.',
+    category: 'Safety',
+    publishedAt: '2026-06-12',
+    lastReviewedAt: '2026-06-12',
+    paragraphs: [
+      'The clearest warning signs of a failing dental implant are pain or discomfort that persists or returns after healing, any feeling of movement, gums around the implant that bleed, swell or recede, a bad taste or odour that will not clear, and difficulty chewing on that side. None of these proves the implant is lost, but every one of them justifies a prompt appointment, because problems caught early are usually manageable and problems left for months often are not.',
+      'In the first weeks after placement, some tenderness, minor swelling and bruising are a normal part of healing and settle steadily. What should not happen is pain that worsens after the first week, throbbing that keeps you awake, swelling that grows rather than shrinks, or any sensation that the implant itself shifts when touched. These early signs can mean the implant is not fusing with the bone, a process called osseointegration that the whole treatment depends on. An implant that fails to integrate is uncomfortable but rarely an emergency, and removing it early is a far smaller event than most patients fear. The site is usually left to heal and can often be re-treated later.',
+      'Once an implant has been in service for months or years, the signs shift. Gums that bleed when you brush around the implant are the earliest and most reversible signal, much as they are around natural teeth. Redness, puffiness, a gum line creeping down the implant so that metal becomes visible, pus or a persistent bad taste, and a crown that suddenly feels high or loose when you bite all warrant assessment. It is worth knowing that a loose crown and a loose implant are very different problems. A crown or its retaining screw can work loose while the implant below remains solid, and tightening or recementing it is routine. Genuine movement of the implant itself is a serious sign, and chewing on it in the meantime makes matters worse. For upper back implants, new sinus pressure or congestion on one side is also worth mentioning to your dentist.',
+      'Behind most late problems sits inflammation of the tissues around the implant. The milder, reversible form, peri-implant mucositis, affects only the gum. Left unmanaged it can progress to peri-implantitis, where the bone supporting the implant starts to be lost, and that bone does not regrow on its own. The drivers are familiar: plaque building up where brushing misses, smoking, poorly controlled diabetes, untreated gum disease elsewhere in the mouth, and heavy clenching or grinding that mechanically overloads the implant. The NHS advises that implants need the same daily cleaning discipline and regular professional care as natural teeth, and the small minority of implants that run into trouble are disproportionately those that miss out on both.',
+      'If you notice any of these signs, the right move is an examination rather than watchful waiting. Whoever placed the implant should normally see you first, and you are entitled to a second opinion if you want one. Assessment is straightforward: the clinician will probe gently around the implant, check the crown and screw, and take an X-ray or CBCT scan to see the bone level. Caught at the mucositis stage, treatment is usually professional cleaning and improved home care. Established peri-implantitis may need deeper cleaning or minor surgery to access the implant surface. Where an implant genuinely cannot be saved, it is removed, the site heals, and bone grafting can usually rebuild the area so a replacement implant is possible later. If you would rather have an independent route to an experienced clinician, we are a free matching service, we do not place implants ourselves, and we can match you with GDC-registered implant dentists across Essex for an assessment or second opinion.',
+      'Prevention is mostly unglamorous consistency: brushing twice daily including around the implant, cleaning the spaces with interdental brushes or floss designed for implants, keeping hygienist appointments, not smoking, and wearing a night guard if you grind. Implants cannot decay, which lulls some patients into treating them as maintenance-free, but the gum and bone around them remain living tissue with the same vulnerabilities as ever. For the wider picture of how complications arise, how often they occur and how they are managed, our guide to implant risks, safety and success sets out the evidence in full.',
+    ],
+    faqs: [
+      {
+        question: 'Is it normal for a dental implant to hurt months after placement?',
+        answer:
+          'No. A healed, healthy implant should be comfortable and feel much like a natural tooth. Pain that appears or returns months after placement suggests infection, bone loss or a mechanical problem such as a loose component, and it should be examined promptly rather than managed with painkillers alone.',
+      },
+      {
+        question: 'Can a failing dental implant be saved?',
+        answer:
+          'Often, if it is caught early. Gum inflammation around an implant is usually reversible with professional cleaning and better home care, and a loose crown or screw is a routine repair. Once significant bone has been lost or the implant itself is mobile, saving it becomes much harder, which is why early assessment matters so much.',
+      },
+      {
+        question: 'How do I tell whether the crown or the implant is loose?',
+        answer:
+          'You usually cannot tell reliably at home, and the distinction matters. A loose crown or retaining screw is common and easily fixed while the implant stays solid in the bone. A loose implant means the bond with the bone has failed. Either way, stop chewing on it and book an examination so the cause can be confirmed with an X-ray.',
+      },
+      {
+        question: 'What does a dental implant infection feel like?',
+        answer:
+          'Early on it may cause no pain at all, just gums that bleed when brushed, look red or puffy, or produce a bad taste. More established infection can bring swelling, pus, tenderness and visible gum recession around the implant. Because the early stage is often painless, bleeding around an implant is worth taking seriously even when it does not hurt.',
+      },
+      {
+        question: 'If my implant fails, can I have another one?',
+        answer:
+          'Usually, yes. A failed implant is removed, the site is allowed to heal, and any lost bone can typically be rebuilt with grafting before a new implant is placed. The clinician will also want to understand why the first one failed, for example smoking, gum disease or overload, so the same problem does not repeat.',
+      },
+    ],
+    relatedServiceSlugs: ['bone-grafting'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(

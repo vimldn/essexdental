@@ -154,11 +154,11 @@ Until 1-3 exist, the writer task stays disabled (pre-flight guard logs a handoff
 | H5 Full-arch | 0 / 10 | 1 draft parked (full-arch-implants-explained) |
 | H6 vs alternatives | 2 / 10 | vs-dentures + failed-bridge posts exist |
 | H7 Aftercare | 2 / 10 | caring + eating posts exist |
-| H8 Risks | 0 / 10 | 1 draft parked (dental-implant-success-rates) |
+| H8 Risks | 0 / 10 | 2 draft parked (dental-implant-success-rates, signs-of-failing-dental-implant) |
 | H9 Suitability | 0 / 10 | 1 draft parked (who-can-have-dental-implants) |
 | H10 Choosing/abroad | 0 / 10 | 1 draft parked (implant-consultation-questions) |
 
-Totals: 10 hubs built, 100 spokes (6 live + 6 draft parked, ~88 to write).
+Totals: 10 hubs built, 100 spokes (6 live + 7 draft parked, ~87 to write).
 ## Slug rules (writer: follow on every spoke)
 
 Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 chars.
