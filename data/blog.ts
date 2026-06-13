@@ -607,6 +607,57 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['bone-grafting'],
   },
+  {
+    slug: 'implants-with-gum-disease',
+    hub: 'am-i-suitable-for-implants',
+    draft: true,
+    title: 'Can You Have Dental Implants With Gum Disease?',
+    metaTitle: 'Dental Implants With Gum Disease | What to Know',
+    metaDescription:
+      'Whether you can have dental implants with gum disease, why active disease must be treated first, how stabilised cases proceed, and what assessment involves.',
+    excerpt:
+      'What gum disease means for implant suitability: why active disease is treated first, how stabilised periodontitis cases proceed, and what the assessment checks.',
+    category: 'Patient Guide',
+    publishedAt: '2026-06-13',
+    lastReviewedAt: '2026-06-13',
+    paragraphs: [
+      'You can have dental implants after gum disease, but not during it. Active periodontitis has to be treated and stabilised before any implant is placed, because the same bacteria that loosen natural teeth will attack the tissue around an implant. With the disease under control and enough bone remaining, implants remain a realistic option for most patients, and an assessment with a scan confirms it.',
+      'Gum disease and implants are in direct conflict for one simple reason. Periodontitis is a bacterial infection that destroys the bone and ligament holding teeth in place, and an implant placed into an infected mouth inherits that same bacterial environment. Around an implant the equivalent condition is called peri-implantitis, and it tends to progress faster than gum disease around a natural tooth because an implant lacks the ligament and blood supply that give natural teeth some defence. No careful clinician will place a fixture while active infection is present, and a clinic willing to skip that step is a warning sign rather than a convenience.',
+      'Treating the gum disease first is therefore a fixed stage of the journey, not an optional extra. Stabilisation usually means a course of professional deep cleaning below the gumline, strict daily cleaning at home, and in more advanced cases targeted gum treatment from a dentist with periodontal experience. The NHS describes gum disease as very common and emphasises that it can be managed well with professional treatment and good daily hygiene. Once pockets have shrunk, bleeding has stopped and the disease is demonstrably stable over follow-up visits, implant planning can begin. Depending on severity, expect this phase to take a few months rather than weeks.',
+      'The second consequence of gum disease is bone loss, and this is what shapes the treatment plan more than the infection itself. Periodontitis dissolves the bone that an implant would anchor into, so long-standing disease often leaves the ridge thinner or shorter than placement requires. That is rarely a flat refusal. A bone graft or sinus lift can usually rebuild enough volume, adding a healing stage and cost to the plan but keeping implants achievable. The CBCT scan taken at assessment shows precisely how much bone remains and whether grafting is needed before, or at the same time as, placement.',
+      'A history of periodontitis does carry a higher long-term risk of peri-implantitis than an implant placed in a mouth that never had gum disease, and an honest clinician will say so plainly. What the evidence also shows is that the risk is managed rather than fixed: well-maintained patients with treated gum disease keep implants for many years. The conditions are strict daily cleaning around the implant, regular hygienist maintenance, and not smoking, since smoking both drives gum disease and roughly doubles implant failure risk. If you are weighing this up alongside other health factors, our guide on whether you are a suitable implant candidate covers bone, age, smoking and medical conditions together.',
+      'Assessment is where the general picture becomes a personal answer. A GDC-registered implant clinician will measure gum pockets, chart any bleeding, take a CBCT scan to map remaining bone, and review your medical history before proposing anything. The realistic outcomes are a plan that starts with gum treatment and re-assessment, a plan that adds grafting to rebuild lost bone, or in well-stabilised cases a straightforward placement plan. What you should not accept is a same-day promise made without periodontal measurements, because suitability with a gum disease history cannot be judged by looking.',
+      'We do not place implants or treat gum disease ourselves. We match you, free of charge, with GDC-registered implant clinicians across Essex who will assess your gum health honestly, treat or refer the periodontal side first where needed, and give you a written, itemised plan, so you can compare your options rather than being sold a single answer.',
+    ],
+    faqs: [
+      {
+        question: 'Can implants be placed while I still have active gum disease?',
+        answer:
+          'No. Active periodontitis has to be treated and shown to be stable before placement, because implants placed into an infected mouth carry a much higher risk of early failure and peri-implantitis. Treating the gums first is a standard stage of the treatment plan, not an optional extra.',
+      },
+      {
+        question: 'How long after gum treatment can I have an implant?',
+        answer:
+          'It depends on how severe the disease was and how well it responds. Clinicians generally want to see stable pockets and no bleeding over at least one or two follow-up reviews, which typically means a few months between starting gum treatment and implant placement. Cases needing bone grafting take longer.',
+      },
+      {
+        question: 'Will gum disease have destroyed too much bone for implants?',
+        answer:
+          'Sometimes it reduces bone below what placement needs, but that is usually a reason for a bone graft or sinus lift rather than a refusal. A CBCT scan at assessment shows exactly how much bone remains and whether rebuilding is needed first.',
+      },
+      {
+        question: 'Are implants more likely to fail if I have had gum disease?',
+        answer:
+          'A periodontitis history raises the long-term risk of peri-implantitis compared with patients who never had gum disease, but well-maintained patients keep implants for many years. Strict daily cleaning, regular hygienist visits and not smoking are what keep the risk down.',
+      },
+      {
+        question: 'Should I just have my loose teeth out and implants fitted instead?',
+        answer:
+          'Not as a first step. Teeth that can be saved with gum treatment are usually worth saving, and extracting teeth does not remove the disease from the mouth. A proper assessment weighs which teeth are saveable against which are failing, then sequences gum treatment, any extractions and implants in the right order.',
+      },
+    ],
+    relatedServiceSlugs: ['bone-grafting'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(
