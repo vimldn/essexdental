@@ -661,7 +661,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'turkey-dental-implants',
     hub: 'choosing-an-implant-dentist',
-    draft: true,
+    draft: false,
     title: 'Turkey Dental Implants: What to Weigh Up',
     metaTitle: 'Turkey Dental Implants: What to Weigh Up',
     metaDescription:
