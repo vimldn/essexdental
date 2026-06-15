@@ -658,6 +658,110 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedServiceSlugs: ['bone-grafting'],
   },
+  {
+    slug: 'turkey-dental-implants',
+    hub: 'choosing-an-implant-dentist',
+    draft: true,
+    title: 'Turkey Dental Implants: What to Weigh Up',
+    metaTitle: 'Turkey Dental Implants: What to Weigh Up',
+    metaDescription:
+      'What to weigh before getting dental implants in Turkey: the real cost gap, aftercare and continuity, GDC and NHS limits, and how to lower the risk.',
+    excerpt:
+      'What to weigh up before choosing dental implants in Turkey: the genuine cost saving, the aftercare and recourse gaps, and how to compare it fairly with UK treatment.',
+    category: 'Choosing a Clinician',
+    publishedAt: '2026-06-13',
+    lastReviewedAt: '2026-06-13',
+    paragraphs: [
+      'Turkey dental implants can cost a fraction of UK prices, which is why so many patients consider them. The trade you are weighing is rarely the surgery itself, which is often competent, but the aftercare, the continuity of care, and the recourse you have if something goes wrong months later. Cost, accountability and follow-up are what to balance.',
+      'The price gap is real and largely structural rather than a sign of poor work. Lower clinical wages, lower premises and laboratory costs, a favourable exchange rate, and high-volume clinics built around international patients all push the headline figure down. Many Turkish clinics package a full arch of fixed teeth, flights and a hotel into a single price that undercuts a single UK arch. The surgery is frequently carried out by experienced clinicians on mainstream implant systems. The saving is genuine, so the honest question is not whether Turkey is cheaper, because it is, but what the lower price does and does not include once you are home.',
+      'A package price is rarely the whole cost of treatment. Implant work is not a single event: it runs over months, from placement through osseointegration to the definitive restoration, and a one-week trip cannot contain all of it. Revision visits, adjustments and the management of any complication usually fall outside the original quote. If a crown needs remaking or an implant fails to integrate, a second trip with its own flights and time off work is the real comparison, not the first invoice. Treatment built around speed, such as several implants and a full set of teeth fitted in a few days, can also compress clinical stages that are normally spaced out for good reason.',
+      'Aftercare is the weakest point of treatment abroad, and it is the point NHS guidance singles out. The NHS advises anyone considering treatment abroad to be clear in advance about the risks and about how aftercare will be coordinated when they return. The difficulty is practical: the clinician who placed your implants is in another country, your UK dentist did not plan the case and may be reluctant to take on its maintenance, and routine NHS dentistry does not exist to finish or repair private work done overseas. The NHS will assess and stabilise an urgent problem, but it will not normally remake or replace self-funded treatment, so a complication can leave you paying twice.',
+      'Recourse is the other half of the picture. Every dentist working in the UK must be registered with the General Dental Council, and you can check any name or registration number free on the GDC online register, which gives you a regulator to turn to if standards slip. The GDC has been clear that its remit stops at the UK border: it cannot investigate or act on treatment carried out abroad, and it cannot guarantee that another country has regulation as strict as the standards it sets at home. If something goes wrong with work done overseas, pursuing a complaint or a refund across borders is difficult and often impractical. The GDC has reported that around one in twenty UK adults sought dental care abroad in the past year, so this is a mainstream choice rather than a fringe one, which is exactly why the protection gap is worth understanding before you book.',
+      'None of this means Turkey is the wrong choice for everyone, but it does mean the decision should rest on total cost and continuity, not the headline figure. If you are seriously considering it, get a written treatment plan that names the implant system and the materials, confirm what aftercare is offered and who provides it once you are home, and ask in advance whether a UK clinician will agree to maintain the work. Factor in return trips for the stages that cannot be done in one visit, and be wary of any clinic promising a complete result in a few days or guaranteeing an outcome, since no responsible clinician can promise an implant will never fail. Full-arch cases, which is what most Turkish packages sell, carry the most clinical stages and so the most that can need following up later.',
+      'It is also worth getting at least one UK assessment before you commit, so you are comparing like with like rather than a foreign package price against an unknown. We do not place implants and we own no clinic, so we have no reason to talk you into or out of anything. We match you, free of charge, with GDC-registered implant clinicians across Essex who will assess your case and give you an itemised written quote, which is the only fair way to see what the gap between treatment abroad and treatment at home actually is. Our guide to choosing an implant dentist and implants abroad sets the wider decision out in more detail.',
+    ],
+    faqs: [
+      {
+        question: 'How much cheaper are dental implants in Turkey than the UK?',
+        answer:
+          'Turkey packages are typically advertised at a fraction of UK prices, and a full arch of fixed teeth abroad can cost less than a single arch in the UK. The saving is real, but it usually covers the first trip only. Revision visits, repairs and managing any complication often fall outside the headline figure, so the true comparison is the total cost once aftercare and any return trips are counted.',
+      },
+      {
+        question: 'What are the main risks of getting dental implants in Turkey?',
+        answer:
+          'The surgery itself is frequently competent, so the main risks sit around it: limited aftercare once you are home, clinical stages compressed into a few days, and difficulty getting problems put right across borders. NHS guidance highlights aftercare and complications as the areas to plan for before travelling. Ill-fitting restorations, infection and implants that fail to integrate are the issues most often reported after treatment abroad.',
+      },
+      {
+        question: 'Will an NHS or UK dentist fix implants done in Turkey if there is a problem?',
+        answer:
+          'Not as a matter of course. The NHS will assess and stabilise an urgent problem such as infection or pain, but it does not exist to finish or replace self-funded private work done overseas. A UK private dentist may agree to maintain or repair the work, though many are cautious about taking on a case they did not plan, and that work is charged privately. Confirm who will provide aftercare before you travel.',
+      },
+      {
+        question: 'Can I complain to the GDC about dental work done abroad?',
+        answer:
+          'No. The General Dental Council regulates dentists working in the UK, and you can raise a complaint about a UK-registered dentist, but the GDC has been clear that it cannot investigate or act on treatment carried out abroad. Pursuing a refund or a complaint through another country\'s system is difficult, which is one practical reason aftercare and recourse matter as much as the price.',
+      },
+      {
+        question: 'How can I reduce the risk if I do go to Turkey for implants?',
+        answer:
+          'Get a written plan that names the implant system and materials, confirm exactly what aftercare is included and who provides it once you are home, and ask a UK clinician in advance whether they will maintain the work. Budget for return trips for the stages that cannot be done in one visit, and treat any promise of a guaranteed result, or a complete full arch in a few days, with caution.',
+      },
+    ],
+    relatedServiceSlugs: ['full-arch'],
+  },
+  {
+    slug: 'paying-for-implants-monthly',
+    hub: 'implant-costs',
+    draft: true,
+    title: 'Paying for Dental Implants in Monthly Instalments',
+    metaTitle: 'Paying for Implants Monthly | UK Finance Guide',
+    metaDescription:
+      'How to pay for dental implants in monthly instalments in Essex: 0% interest-free credit, longer interest-bearing plans, credit checks, deposits and what to check.',
+    excerpt:
+      'How paying for dental implants monthly works in Essex, from interest-free credit to longer plans, who qualifies, and what to read before you sign.',
+    category: 'Pricing',
+    publishedAt: '2026-06-15',
+    lastReviewedAt: '2026-06-15',
+    paragraphs: [
+      'Yes, most people pay for dental implants in monthly instalments rather than a single lump sum. The majority of implant clinicians in Essex offer patient finance through a third-party lender, with interest-free terms over six to twelve months common and longer interest-bearing plans available over two to five years. Approval depends on a credit check, and because routine implants are private treatment, finance is simply the usual way to spread the cost.',
+      'Implants are almost never funded by the NHS, which pays for implant work only in narrow reconstructive cases such as after oral cancer surgery or significant trauma, referred through hospital services. In practice that makes implant treatment a private cost, and the sums are not small. A single tooth typically runs £2,200 to £3,500, an implant-supported bridge for several teeth £5,500 to £8,500, and a full-arch reconstruction £15,000 to £22,000 per arch. Monthly finance exists to turn those figures into a manageable payment rather than a barrier.',
+      'The most attractive option is interest-free credit, usually advertised as 0% APR. The total price is divided into equal monthly payments, commonly over six, ten or twelve months, and you repay exactly the headline figure with nothing added. A deposit is often required up front, and the interest-free window is shorter than on interest-bearing plans because the practice, rather than you, effectively absorbs the cost of the credit. For patients who can clear the balance within a year, interest-free credit is the cheapest way to pay monthly.',
+      'For larger cases, or where a year is too short, longer interest-bearing plans spread the cost over two to five years. The monthly payment is lower because it is stretched across more instalments, but interest is applied, so the total you repay is higher than the cash price. How much higher depends on the annual percentage rate (APR) and the length of the term, both of which the lender must set out in writing before you agree. As a general rule, the longer the term, the lower the monthly figure and the larger the total cost of borrowing.',
+      'Patient finance in the UK is regulated consumer credit, overseen by the Financial Conduct Authority. The dental practice usually acts as an introducer or credit broker rather than the lender itself, passing your application to an authorised finance provider. That means an affordability assessment and a credit check, often a soft search first that does not affect your credit file, followed by a hard search once you proceed. Approval is not automatic, and the rate offered can depend on your circumstances, so the figure you are quoted should always be confirmed for your own application.',
+      'Because implant treatment runs over several months, it helps to understand how the money maps onto the stages. Some plans take a deposit at the start and begin monthly payments straight away, while others release funds to the practice as treatment progresses. If your plan changes after the consultation, for example because a scan shows you need an extraction or a bone graft, the finance agreement may need adjusting, so it is worth asking how variations are handled before signing.',
+      'Before you commit to any plan, read the figures rather than the marketing. Check the total amount repayable, not just the monthly payment, along with the APR, the length of the term, the deposit, and whether you can settle early without a penalty. Ask what happens if treatment is delayed or revised, and make sure the credit agreement names the same all-in price as the written clinical quote. We are not financial advisers and cannot tell you which plan to take, but a reputable clinician will give you the terms in writing and the time to read them, and any pressure to sign on the day is a warning sign.',
+      'Finance matters most where the bill is largest, which is full-arch work such as All-on-4. A reconstruction of an entire arch is the case where spreading the cost over several years makes the difference between treatment being possible or not, and it is worth weighing the monthly figure against the long-term value rather than the headline price alone. Our full-arch treatment pillar explains what that work involves and where the cost comes from.',
+      'If you are declined, or interest-bearing terms do not suit you, there are alternatives. Some patients use a larger deposit with a shorter interest-free balance, a standalone medical loan from their own bank, or a dental insurance policy that contributes toward the restoration even if it will not cover the whole cost. The first step is an accurate written quote, because the finance only makes sense once you know the real number. We do not place implants and we are not a lender. We match you, free of charge, with GDC-registered implant clinicians across Essex who provide itemised written quotes and set out their own finance options, and our Essex dental implant cost guide explains what those figures should include.',
+    ],
+    faqs: [
+      {
+        question: 'Can I get 0% finance on dental implants?',
+        answer:
+          'Often yes. Many Essex implant clinicians offer interest-free credit, usually over six to twelve months, where you repay the exact cash price in equal monthly instalments with nothing added. A deposit is commonly required, the interest-free window is shorter than on longer plans, and approval still depends on a credit check.',
+      },
+      {
+        question: 'Do I need a credit check or a deposit to pay monthly?',
+        answer:
+          'Usually both. Patient finance is regulated consumer credit, so the lender carries out an affordability assessment and a credit check, often a soft search first that does not affect your file and a hard search once you proceed. Many plans, particularly interest-free ones, also ask for a deposit up front.',
+      },
+      {
+        question: 'Can I spread the cost of All-on-4 or full-arch implants over several years?',
+        answer:
+          'Yes. Larger cases are commonly financed over two to five years on an interest-bearing plan. The monthly payment is lower because it is spread across more instalments, but interest applies, so the total repaid is higher than the cash price. The lender must set out the APR and total repayable in writing before you agree.',
+      },
+      {
+        question: 'What happens if I am declined for dental finance?',
+        answer:
+          'Being declined by one provider is not the end of the road. Options include a larger deposit with a shorter interest-free balance, a standalone medical loan from your own bank, or a dental insurance policy that contributes toward the restoration. Start with an accurate written quote so you know the figure you actually need to fund.',
+      },
+      {
+        question: 'Is it cheaper to pay through the NHS or insurance instead?',
+        answer:
+          'Rarely. The NHS funds implants only in narrow reconstructive cases referred through hospital services, so routine implant treatment is private. UK dental insurance seldom covers elective implants in full, though some policies contribute toward the restoration, so it is worth checking your policy wording before assuming any cover.',
+      },
+    ],
+    relatedServiceSlugs: ['full-arch'],
+  },
 ];
 
 export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(
