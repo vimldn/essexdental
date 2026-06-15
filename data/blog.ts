@@ -258,7 +258,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'single-tooth-implant-cost',
     hub: 'implant-costs',
-    draft: true,
+    draft: false,
     title: 'What a Single Tooth Implant Costs in Essex',
     metaTitle: 'Single Tooth Implant Cost in Essex 2026 | Guide',
     metaDescription:
@@ -266,8 +266,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       'A 2026 breakdown of single tooth implant prices in Essex, what the quote should include, the add-ons that move the number, and how to pay.',
     category: 'Pricing',
-    publishedAt: '2026-06-09',
-    lastReviewedAt: '2026-06-09',
+    publishedAt: '2026-06-15',
+    lastReviewedAt: '2026-06-15',
     paragraphs: [
       'A single tooth implant in Essex typically costs £2,200 to £3,500 in 2026 for the complete treatment: the titanium fixture placed in the jaw, the abutment that connects to it, and the crown on top. Cheaper generic systems start around £1,800. The final figure depends on the implant system used, any extraction or bone graft, and the crown material.',
       'A single tooth implant quote should be itemised into three clinical stages. The fixture is the screw placed in the jawbone. The abutment is the connector seated on the fixture once it has healed. The crown is the visible tooth screwed or cemented onto the abutment. A clear quote also separates the consultation, any three-dimensional imaging, and the surgical placement appointment, so you can see exactly what each element costs rather than reading a single headline number.',
@@ -768,4 +768,4 @@ export const BLOG_POSTS_BY_SLUG: Record<string, BlogPost> = Object.fromEntries(
   BLOG_POSTS.map((p) => [p.slug, p])
 );
 
-export const BLOG_SLUGS = BLOG_POSTS.map((p) => p.slug);
+export const BLOG_SLUGS = BLOG_POSTS.map((p) => p.slug)
