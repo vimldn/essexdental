@@ -147,7 +147,7 @@ Until 1-3 exist, the writer task stays disabled (pre-flight guard logs a handoff
 
 | Hub | Spokes live | Notes |
 |---|---|---|
-| H1 Cost | 2 / 10 | 2 live (cost, single-tooth-implant-cost) + 2 draft parked (full-arch-implant-cost, paying-for-implants-monthly) |
+| H1 Cost | 2 / 10 | 2 live (cost, single-tooth-implant-cost) + 5 draft parked (full-arch-implant-cost, paying-for-implants-monthly, nhs-and-insurance-implant-cover, what-affects-implant-cost, bone-graft-and-sinus-lift-cost) |
 | H2 Types | 0 / 10 | new hub |
 | H3 Process | 1 / 10 | CBCT post exists |
 | H4 Grafting | 0 / 10 | new hub |
@@ -158,9 +158,10 @@ Until 1-3 exist, the writer task stays disabled (pre-flight guard logs a handoff
 | H9 Suitability | 0 / 10 | 2 draft parked (who-can-have-dental-implants, implants-with-gum-disease) |
 | H10 Choosing/abroad | 1 / 10 | 1 live (turkey-dental-implants) + 1 draft parked (implant-consultation-questions) |
 
-Totals: 10 hubs built, 100 spokes (8 live + 8 draft parked, ~84 to write).
+Totals: 10 hubs built, 100 spokes (8 live + 11 draft parked, ~81 to write).
 ## Slug rules (writer: follow on every spoke)
 
 Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 chars.
 Do NOT: include a year/date; reuse or near-duplicate an existing slug; use a
 reserved head term or the parent hub's head term; keyword-stuff or repeat a word;
+use stop 
