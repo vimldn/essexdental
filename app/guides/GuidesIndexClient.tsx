@@ -28,8 +28,8 @@ export default function GuidesIndexClient({ hubs }: { hubs: HubCard[] }) {
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
       <main id="main">
-        <section className="pt-28 pb-14 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white">
-          <div className="max-w-3xl mx-auto px-6">
+        <section className="min-h-[360px] pt-28 pb-14 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white flex items-center">
+          <div className="max-w-3xl mx-auto px-6 w-full">
             <div className="mb-4">
               <Breadcrumbs items={guidesIndexCrumbs()} onDark />
             </div>
@@ -37,14 +37,14 @@ export default function GuidesIndexClient({ hubs }: { hubs: HubCard[] }) {
               Dental implant guides
             </h1>
             <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              Ten plain-English guides to dental implant treatment in Essex and the UK: cost, types, the process, grafting, full-arch, the alternatives, aftercare, risks, suitability, and choosing a clinician. Written and reviewed by our editorial team against current GDC and NHS guidance.
+              Clear, practical guides for Essex patients comparing implant costs, treatment routes, suitability and long-term care before booking a consultation.
             </p>
           </div>
         </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-5">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {hubs.map((hub) => (
                 <Link
                   key={hub.slug}
@@ -80,7 +80,8 @@ export default function GuidesIndexClient({ hubs }: { hubs: HubCard[] }) {
         </section>
 
         <section className="py-16 bg-[#0d2750] text-white">
-          <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Prefer to talk it through?</h2>
             <p className="text-white/70 leading-relaxed mb-8">
               Free, independent matching to verified Essex implant clinicians. Tell us the case in ninety seconds.
@@ -91,6 +92,7 @@ export default function GuidesIndexClient({ hubs }: { hubs: HubCard[] }) {
             >
               Request an introduction
             </button>
+            </div>
           </div>
         </section>
       </main>

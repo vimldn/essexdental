@@ -12,6 +12,110 @@ import { blogPostCrumbs } from '@/lib/breadcrumbs';
 import { BlogPost } from '@/data/blog';
 import { siteConfig } from '@/data/site';
 
+function renderInline(text: string) {
+  const regex = /\[([^\]]+)\]\(((?:\/|https?:\/\/)[^)]+)\)/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let key = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    const href = match[2];
+    if (href.startsWith('http')) {
+      nodes.push(
+        <a
+          key={key++}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-[#1a56a0] underline underline-offset-2"
+        >
+          {match[1]}
+        </a>,
+      );
+      lastIndex = regex.lastIndex;
+      continue;
+    }
+    nodes.push(
+      <Link key={key++} href={href} className="font-semibold text-[#1a56a0] underline underline-offset-2">
+        {match[1]}
+      </Link>,
+    );
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes.length > 0 ? nodes : text;
+}
+
+function renderContentBlock(block: NonNullable<BlogPost['content']>[number], index: number) {
+  switch (block.type) {
+    case 'answer':
+      return (
+        <div key={index} className="my-8 rounded-2xl border border-[#1a56a0]/20 bg-[#eef6ff] p-5">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">Direct answer</p>
+          <p className="text-base leading-relaxed text-slate-800">{renderInline(block.text)}</p>
+        </div>
+      );
+    case 'h2':
+      return (
+        <h2 key={index} className="text-2xl md:text-3xl font-bold tracking-tight text-slate-950 mt-12 mb-4 border-b border-slate-200 pb-3">
+          {renderInline(block.text)}
+        </h2>
+      );
+    case 'h3':
+      return (
+        <h3 key={index} className="text-xl font-bold text-slate-900 mt-8 mb-3">
+          {renderInline(block.text)}
+        </h3>
+      );
+    case 'list':
+      return (
+        <ul key={index} className="space-y-3 my-6">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex gap-3 text-slate-700 leading-relaxed">
+              <span className="mt-2 h-2 w-2 rounded-full bg-[#1a56a0] shrink-0" />
+              <span>{renderInline(item)}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    case 'note':
+      return (
+        <div key={index} className="my-8 rounded-2xl border border-[#1a56a0]/15 bg-[#f5f8ff] p-5">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-2">{block.heading}</p>
+          <p className="text-sm leading-relaxed text-slate-700">{renderInline(block.body)}</p>
+        </div>
+      );
+    case 'p':
+    default:
+      return (
+        <p key={index} className="text-slate-700 leading-relaxed">
+          {renderInline(block.text)}
+        </p>
+      );
+  }
+}
+
+function BlogCta({ onClick }: { onClick: () => void }) {
+  return (
+    <div className="my-10 p-7 rounded-2xl bg-[#0d2750] text-white">
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7fb9e8] mb-2">Request an introduction</p>
+      <h2 className="text-xl font-bold leading-snug mb-3">
+        Looking for a verified Essex implant clinician?
+      </h2>
+      <p className="text-white/70 text-sm leading-relaxed mb-5">
+        Free, independent matching to GDC-registered implant clinicians across Essex. Tell us the case in ninety seconds.
+      </p>
+      <button
+        onClick={onClick}
+        className="px-6 py-3 bg-[#1a56a0] text-white text-sm font-semibold rounded-md hover:bg-[#1d62b8] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7fb9e8]"
+      >
+        Request an introduction
+      </button>
+    </div>
+  );
+}
+
 function formatDate(iso: string) {
   try {
     return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -49,8 +153,18 @@ export default function BlogPostClient({
   relatedLocations: LocationLink[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const wordCount = post.paragraphs.join(' ').trim().split(/\s+/).length;
+  const bodyText = post.content
+    ? post.content.map((block) => ('text' in block ? block.text : 'items' in block ? block.items.join(' ') : `${block.heading} ${block.body}`)).join(' ')
+    : post.paragraphs.join(' ');
+  const wordCount = bodyText.trim().split(/\s+/).length;
   const readMins = Math.max(3, Math.round(wordCount / 200));
+  const firstH2Index = post.content?.findIndex((block) => block.type === 'h2') ?? -1;
+  const nextH2Index = firstH2Index >= 0
+    ? post.content?.findIndex((block, index) => index > firstH2Index && block.type === 'h2') ?? -1
+    : -1;
+  const ctaInsertIndex = post.content
+    ? (nextH2Index >= 0 ? nextH2Index : post.content.length)
+    : -1;
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
@@ -58,7 +172,7 @@ export default function BlogPostClient({
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
       <main id="main" className="pt-28 pb-20">
-        <article className="max-w-3xl mx-auto px-6">
+        <article className="max-w-3xl mx-auto px-6 mb-12 md:mb-16">
           <div className="mb-4">
             <Breadcrumbs items={blogPostCrumbs(post)} />
           </div>
@@ -80,20 +194,17 @@ export default function BlogPostClient({
             <time dateTime={post.lastReviewedAt}>Last reviewed {formatDate(post.lastReviewedAt)}</time>
           </div>
 
-          {hub && (
-            <p className="mb-8 text-sm text-slate-600 bg-[#f5f8ff] border border-[#1a56a0]/15 rounded-xl px-5 py-4">
-              Part of our guide to{' '}
-              <Link href={`/guides/${hub.slug}/`} className="font-semibold text-[#1a56a0] underline">
-                {hub.title.toLowerCase()}
-              </Link>
-              .
-            </p>
-          )}
-
-          <div className="space-y-5 text-slate-700 leading-relaxed text-base">
-            {post.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+          <div className="space-y-5 text-base">
+            {post.content
+              ? post.content.flatMap((block, i) => (
+                i === ctaInsertIndex
+                  ? [<BlogCta key="intro-cta" onClick={() => setIsModalOpen(true)} />, renderContentBlock(block, i)]
+                  : [renderContentBlock(block, i)]
+              ))
+              : post.paragraphs.map((p, i) => <p key={i} className="text-slate-700 leading-relaxed">{p}</p>)}
+            {post.content && ctaInsertIndex === post.content.length && (
+              <BlogCta onClick={() => setIsModalOpen(true)} />
+            )}
           </div>
 
           {(relatedServices.length > 0 || relatedLocations.length > 0) && (
@@ -103,7 +214,7 @@ export default function BlogPostClient({
                 {relatedServices.map((s) => (
                   <li key={s.slug}>
                     <Link href={`/services/${s.slug}/`} className="text-sm text-slate-700 underline hover:text-[#1a56a0]">
-                      {s.title} pillar
+                      {s.title}
                     </Link>
                   </li>
                 ))}
@@ -117,22 +228,6 @@ export default function BlogPostClient({
               </ul>
             </div>
           )}
-
-          <div className="mt-12 p-7 rounded-2xl bg-[#0d2750] text-white">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#7fb9e8] mb-2">Request an introduction</p>
-            <h2 className="text-xl font-bold leading-snug mb-3">
-              Looking for a verified Essex implant clinician?
-            </h2>
-            <p className="text-white/70 text-sm leading-relaxed mb-5">
-              Free, independent matching to GDC-registered implant clinicians across Essex. Tell us the case in ninety seconds.
-            </p>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="px-6 py-3 bg-[#1a56a0] text-white text-sm font-semibold rounded-md hover:bg-[#1d62b8] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7fb9e8]"
-            >
-              Request an introduction
-            </button>
-          </div>
         </article>
 
         {post.faqs && post.faqs.length > 0 && (

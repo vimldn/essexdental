@@ -38,20 +38,23 @@ export default function LocationIndexClient({ locations }: { locations: Location
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
-      <main id="main" className="pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-4">
-            <Breadcrumbs items={locationIndexCrumbs()} />
-          </div>
-          <div className="max-w-3xl mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-5">
+      <main id="main">
+        <section className="min-h-[360px] pt-28 pb-14 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white flex items-center">
+          <div className="max-w-3xl mx-auto px-6 w-full">
+            <div className="mb-4">
+              <Breadcrumbs items={locationIndexCrumbs()} onDark />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-5">
               Essex implant matching panel coverage
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Twelve Essex towns with active clinician panels. Each location page covers the postcode catchment, named neighbourhoods, local NHS context and the questions specific to that area.
+            <p className="text-base md:text-lg text-white/80 leading-relaxed">
+              Find Essex towns covered by the matching panel, with local pages for postcode catchments, nearby neighbourhoods and area-specific implant questions.
             </p>
           </div>
+        </section>
 
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-lg mb-10 relative">
             <label htmlFor="location-search" className="sr-only">
               Search by town or postcode
@@ -113,6 +116,7 @@ export default function LocationIndexClient({ locations }: { locations: Location
             </div>
           )}
         </div>
+        </section>
       </main>
 
       <Footer />

@@ -32,7 +32,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = BLOG_POSTS_BY_SLUG[params.slug];
-  if (!post || post.draft) notFound();
+  const allowDraftPreview = process.env.NODE_ENV !== 'production';
+  if (!post || (post.draft && !allowDraftPreview)) notFound();
 
   const relatedServices = (post.relatedServiceSlugs ?? [])
     .map((slug) => SERVICES_BY_SLUG[slug])

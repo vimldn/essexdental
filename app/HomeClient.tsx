@@ -168,7 +168,7 @@ export default function HomeClient() {
                     <div className="col-span-2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                       <Image
                         src="/images/services/single-tooth.jpg"
-                        alt="Single-tooth implant detail from the treatment-pillar imagery."
+                        alt="Single-tooth implant detail."
                         width={1200}
                         height={896}
                         quality={88}
@@ -232,7 +232,7 @@ export default function HomeClient() {
                       <h3 className="text-base font-semibold text-slate-900 mb-2">{service.title}</h3>
                       <p className="text-slate-600 text-sm leading-relaxed">{service.heroDirectAnswer}</p>
                       <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-[#1a56a0]">
-                        Read pillar →
+                        Read more →
                       </p>
                     </div>
                   </Link>

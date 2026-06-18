@@ -48,20 +48,23 @@ export default function BlogIndexClient({ posts }: { posts: PostCard[] }) {
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
-      <main id="main" className="pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-4">
-            <Breadcrumbs items={blogIndexCrumbs()} />
-          </div>
-          <div className="max-w-3xl mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-5">
-              Dental implant guides for Essex patients
+      <main id="main">
+        <section className="min-h-[360px] pt-28 pb-14 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white flex items-center">
+          <div className="max-w-3xl mx-auto px-6 w-full">
+            <div className="mb-4">
+              <Breadcrumbs items={blogIndexCrumbs()} onDark />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-5">
+              Dental implant articles
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Reference-grade guides on cost, planning, maintenance and decision-making, edited for UK private dentistry and the Essex matching panel.
+            <p className="text-base md:text-lg text-white/80 leading-relaxed">
+              Detailed implant articles for patients comparing quotes, planning treatment, weighing risks and preparing for long-term maintenance.
             </p>
           </div>
+        </section>
 
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap gap-2 mb-8">
             {categories.map((c) => (
               <button
@@ -119,6 +122,7 @@ export default function BlogIndexClient({ posts }: { posts: PostCard[] }) {
             })}
           </div>
         </div>
+        </section>
       </main>
 
       <Footer />

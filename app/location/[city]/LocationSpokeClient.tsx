@@ -212,9 +212,9 @@ export default function LocationSpokeClient({
                   <p className="text-sm font-semibold text-slate-900 group-hover:text-[#1a56a0] transition-colors">
                     {service.shortTitle} in {location.name}
                   </p>
-                  <p className="text-xs text-slate-500 mt-2">Read the {service.title.toLowerCase()} pillar</p>
+                  <p className="text-xs text-slate-500 mt-2">Read about {service.title.toLowerCase()}</p>
                   <div className="flex items-center gap-2 text-[#1a56a0] text-xs font-semibold mt-4">
-                    Read pillar <ArrowUpRight className="w-3.5 h-3.5" />
+                    Read more <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
                 </Link>
               ))}

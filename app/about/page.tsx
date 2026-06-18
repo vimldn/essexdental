@@ -22,15 +22,23 @@ export default function AboutPage() {
     <>
       <SchemaBlock schemas={[breadcrumbSchema(crumbs), editorialPersonSchema()]} />
       <PageShell>
-        <div className="pt-28 pb-20">
-          <div className="max-w-3xl mx-auto px-6">
+        <section className="min-h-[360px] pt-28 pb-14 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white flex items-center">
+          <div className="max-w-3xl mx-auto px-6 w-full">
             <div className="mb-4">
-              <Breadcrumbs items={crumbs} />
+              <Breadcrumbs items={crumbs} onDark />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-5">
               About {siteConfig.name}
             </h1>
+            <p className="text-base md:text-lg text-white/80 leading-relaxed">
+              What the matching service does, how clinician introductions work, and how our editorial standards separate patient guidance from clinical treatment.
+            </p>
+          </div>
+        </section>
 
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl mx-auto">
             {/* IMAGE SLOT: about page hero. Editorial / team / workspace visual. */}
             <div className="mb-10 relative rounded-2xl overflow-hidden border border-slate-200 aspect-[4/3]">
               <Image
@@ -63,7 +71,7 @@ export default function AboutPage() {
                 Content on this site is written by our editorial team. Where a piece concerns clinical detail (procedure, materials, regulatory context), the underlying clinical claims are checked against current General Dental Council guidance, NHS sources, and published clinical literature.
               </p>
               <p>
-                We do not fabricate case studies, testimonials, statistics, or clinician credentials. Worked examples on service pillar pages are anonymised case sketches drawn from matched-clinician reports; identifying details are removed and fees are representative.
+                We do not fabricate case studies, testimonials, statistics, or clinician credentials. Worked examples on treatment pages are anonymised case sketches drawn from matched-clinician reports; identifying details are removed and fees are representative.
               </p>
               <p>
                 The last-reviewed date on every content page is real and updated when the page is materially edited or factually reviewed.
@@ -110,7 +118,8 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-        </div>
+          </div>
+        </section>
       </PageShell>
     </>
   );

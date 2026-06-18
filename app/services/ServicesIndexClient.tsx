@@ -51,8 +51,8 @@ export default function ServicesIndexClient({
       <Navigation onOpenModal={() => setIsModalOpen(true)} />
 
       <main id="main">
-        <section className="pt-28 pb-14 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white">
-          <div className="max-w-3xl mx-auto px-6">
+        <section className="min-h-[360px] pt-28 pb-14 bg-gradient-to-b from-[#0d2750] to-[#0a1f40] text-white flex items-center">
+          <div className="max-w-3xl mx-auto px-6 w-full">
             <div className="mb-4">
               <Breadcrumbs items={servicesIndexCrumbs()} onDark />
             </div>
@@ -60,10 +60,10 @@ export default function ServicesIndexClient({
               Dental implants in Essex
             </h1>
             <p className="text-base md:text-lg text-white/80 leading-relaxed mb-4">
-              Dental implants replace missing teeth with titanium fixtures placed in the jawbone, restored with a crown, bridge, or denture. We are an independent matching service that connects Essex patients with verified, GDC-registered implant clinicians across the county, free to the patient.
+              Compare the main implant treatment routes we match across Essex, from one missing tooth to full-arch replacement.
             </p>
             <p className="text-base md:text-lg text-white/80 leading-relaxed mb-7">
-              The six treatment pillars below cover the range of cases the panel routinely matches, from a single tooth to a full arch. Each explains what the treatment is, the typical price range across Essex, common edge cases, and anonymised worked examples.
+              Each page explains the treatment, typical private price range, common edge cases and what to ask before a consultation.
             </p>
             <button
               onClick={() => setIsModalOpen(true)}
@@ -107,7 +107,7 @@ export default function ServicesIndexClient({
                       </h3>
                       <p className="text-sm text-slate-600 leading-relaxed mb-6 flex-1">{service.heroDirectAnswer}</p>
                       <div className="flex items-center gap-2 text-[#1a56a0] text-sm font-semibold">
-                        Read pillar <ArrowUpRight className="w-4 h-4" />
+                        Read more <ArrowUpRight className="w-4 h-4" />
                       </div>
                     </div>
                   </Link>
@@ -118,7 +118,8 @@ export default function ServicesIndexClient({
         </section>
 
         <section className="py-16 bg-[#f5f8ff]">
-          <div className="max-w-3xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl">
             <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
               How matching works
             </span>
@@ -146,17 +147,18 @@ export default function ServicesIndexClient({
                 </li>
               ))}
             </ul>
+            </div>
           </div>
         </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-5xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-6">
             <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-[#1a56a0] mb-3">
               Start with a guide
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Understand implants before you commit</h2>
             <p className="text-slate-600 leading-relaxed mb-8 max-w-2xl">
-              Ten plain-English guides covering cost, types, the process, grafting, full-arch, the alternatives, aftercare, risks, suitability and choosing a clinician.
+              Start with practical guides that explain the decisions patients usually need to make before comparing quotes or booking a consultation.
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {guides.map((g) => (
@@ -208,7 +210,8 @@ export default function ServicesIndexClient({
         />
 
         <section className="py-16 bg-[#0d2750] text-white">
-          <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Request a clinician introduction</h2>
             <p className="text-white/70 leading-relaxed mb-8">
               Free, independent matching to verified Essex implant clinicians. Tell us the case in ninety seconds and we will introduce a clinician whose experience fits.
@@ -219,6 +222,7 @@ export default function ServicesIndexClient({
             >
               Request an introduction
             </button>
+            </div>
           </div>
         </section>
       </main>

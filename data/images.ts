@@ -153,6 +153,11 @@ export const IMAGES = {
       alt: 'Foods commonly raised by patients during implant recovery.',
       width: 1200, height: 896,
     },
+    'bone-graft-and-sinus-lift-cost': {
+      src: '/images/services/bone-grafting.jpg',
+      alt: 'CBCT cross-section view used to plan implant bone grafting and sinus lifts.',
+      width: 1200, height: 896,
+    },
   } as Record<string, ImageSlot>,
   // Guide hubs reuse the existing brand-generated implant imagery, each mapped
   // to the most relevant visual with guide-specific alt text. No stock.

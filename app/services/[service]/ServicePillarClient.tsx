@@ -270,7 +270,7 @@ export default function ServicePillarClient({
                     {related.title}
                   </h3>
                   <div className="flex items-center gap-2 text-[#1a56a0] text-xs font-semibold mt-4">
-                    Read pillar <ArrowUpRight className="w-3.5 h-3.5" />
+                    Read more <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
                 </Link>
               ))}

@@ -22,7 +22,7 @@ export default function NotFound() {
           <ul className="space-y-3">
             <li>
               <Link href="/services/" className="text-[#1a56a0] underline">
-                All implant treatment pillars
+                All implant treatments
               </Link>
             </li>
             <li>
