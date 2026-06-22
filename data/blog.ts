@@ -1318,7 +1318,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'signs-of-failing-dental-implant',
     hub: 'implant-risks-and-success',
-    draft: true,
+    draft: false,
     title: 'Ten Signs of a Failing Dental Implant',
     metaTitle: 'Signs of a Failing Dental Implant | What to Watch For',
     metaDescription:
@@ -1326,8 +1326,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       'How to recognise the warning signs of a failing dental implant, what usually sits behind them, and why prompt assessment gives the best chance of saving the implant.',
     category: 'Safety',
-    publishedAt: '2026-06-12',
-    lastReviewedAt: '2026-06-12',
+    publishedAt: '2026-06-22',
+    lastReviewedAt: '2026-06-22',
     paragraphs: [
       'The clearest warning signs of a failing dental implant are pain or discomfort that persists or returns after healing, any feeling of movement, gums around the implant that bleed, swell or recede, a bad taste or odour that will not clear, and difficulty chewing on that side. None of these proves the implant is lost, but every one of them justifies a prompt appointment, because problems caught early are usually manageable and problems left for months often are not.',
       'In the first weeks after placement, some tenderness, minor swelling and bruising are a normal part of healing and settle steadily. What should not happen is pain that worsens after the first week, throbbing that keeps you awake, swelling that grows rather than shrinks, or any sensation that the implant itself shifts when touched. These early signs can mean the implant is not fusing with the bone, a process called osseointegration that the whole treatment depends on. An implant that fails to integrate is uncomfortable but rarely an emergency, and removing it early is a far smaller event than most patients fear. The site is usually left to heal and can often be re-treated later.',
