@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   verification: {
-    google: 'pA7I4AlkOAaCRf7P2TPtEB-g5mRSV4u40xVW-ZlcMiw',
+    google: 'LtqLKA_UgmMYMLl83sQJFYUPbwXry583VVanCAzs7ZE',
   },
 };
 
