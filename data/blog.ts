@@ -296,6 +296,96 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedServiceSlugs: ['single-tooth', 'full-arch', 'bone-grafting'],
   },
   {
+    slug: 'dental-implant-recovery-timeline-what-to-expect-essex',
+    hub: 'implant-process-and-timeline',
+    draft: false,
+    title: 'Dental Implant Recovery Timeline: What to Expect in Essex',
+    metaTitle: 'Dental Implant Recovery Timeline | What to Expect in Essex',
+    metaDescription:
+      'A realistic recovery timeline after dental implant surgery in Essex: the first 24 to 48 hours, the first week, soft-tissue healing, osseointegration and the final crown.',
+    excerpt:
+      'A stage-by-stage recovery timeline after dental implant placement, from the first 24 to 48 hours through soft-tissue healing and osseointegration to the final crown, with the normal signs and the warning signs to report.',
+    category: 'Patient Guide',
+    publishedAt: '2026-06-27',
+    lastReviewedAt: siteConfig.editorial.lastReviewedAt,
+    paragraphs: [
+      'Recovery after dental implant placement happens in stages rather than all at once. The first 24 to 48 hours are about controlling bleeding and swelling, the first week is about protecting the wound while the gum starts to close, soft-tissue healing settles over the following few weeks, and the implant then bonds to the bone over the next few months before the final crown is fitted. Every timeframe varies from patient to patient, so treat these as typical patterns rather than fixed dates.',
+      'The surgery itself is usually shorter than people expect, but the healing is longer. That is normal. Most of the timeline is your body working quietly in the background, not time spent in the dental chair.',
+      'These timeframes assume a straightforward single implant in healthy bone. Extractions on the same day, bone grafting, sinus lifts and full-arch treatment can all extend recovery, and your clinician should tell you in advance which pattern applies to your case.',
+    ],
+    content: [
+      { type: 'answer', text: 'After dental implant surgery, most patients find the first 24 to 48 hours involve some bleeding, swelling and soreness that then settle. Soft tissue usually heals over a few weeks, while the implant bonds with the jawbone over roughly three to six months before the final crown is fitted. These timeframes are typical and vary by patient, so follow the written aftercare from your own clinician and report anything that worsens instead of improving.' },
+      { type: 'p', text: 'This guide sets out a realistic recovery timeline after dental implant placement so you can tell the difference between normal healing and a problem worth reporting. It assumes a single implant in reasonable bone. It sits under the wider [dental implant process and timeline](/guides/implant-process-and-timeline/) guide, which covers the consultation, scan and surgery stages that come before recovery begins.' },
+      { type: 'p', text: 'Healing is individual. Age, general health, smoking, whether a tooth was removed on the same day, and whether grafting was carried out all change how quickly the site settles. The pattern below is common, but your clinician knows your case and their written instructions always take priority over a general timeline.' },
+
+      { type: 'h2', text: 'The First 24 to 48 Hours' },
+      { type: 'p', text: 'The first day or two are mainly about protecting the blood clot at the surgical site and keeping swelling under control. Some oozing of blood, mild swelling, bruising and tenderness around the area are a normal part of early healing. Most patients manage discomfort with the pain relief their clinician recommends, rest, and soft, cool food rather than hot or hard meals.' },
+      { type: 'p', text: 'Swelling often peaks around the second or third day rather than immediately, so a face that looks more swollen on day two than on the evening of surgery is not automatically a bad sign. Gentle use of a cold compress on the cheek in short spells can help in the first day, if your clinician advises it.' },
+      { type: 'list', items: [
+        'Avoid rinsing, spitting forcefully or poking the site, so the clot is not disturbed.',
+        'Stick to soft, lukewarm food and chew on the opposite side of the mouth.',
+        'Do not smoke, because it reduces blood supply and slows healing at the implant site.',
+        'Avoid alcohol, strenuous exercise and very hot drinks for the first day.',
+        'Take any prescribed antibiotics or mouthwash exactly as instructed.',
+      ] },
+      { type: 'note', heading: 'When to call sooner', body: 'Bleeding that will not settle with gentle pressure, pain that becomes severe rather than easing, or swelling that keeps growing after the first two to three days should be checked promptly rather than waited out.' },
+
+      { type: 'h2', text: 'The First Week' },
+      { type: 'p', text: 'Over the first week the gum begins to close and the early discomfort usually fades day by day. Many patients are back to normal daily activities within a few days, even though the area still needs care. If stitches were placed, they may be the dissolving type or may need removing at a short review appointment, which your clinician will arrange.' },
+      { type: 'p', text: 'This is not the week to test the implant. Even when the area feels comfortable, the bone and gum underneath are still healing. Keep chewing away from the site, continue cleaning the rest of your mouth normally, and clean around the surgical area only as gently as you were told. The NHS notes that implants are placed surgically and need time to heal, and that this is usually private treatment carried out in stages, which is set out in its [dental treatments guidance](https://www.nhs.uk/live-well/healthy-teeth-and-gums/dental-treatments/).' },
+      { type: 'p', text: 'A temporary tooth is often provided so you are not left with a visible gap during healing, especially at the front of the mouth. If you have one, treat it carefully. It is there for appearance and to protect the space, not for heavy chewing, and it may need small adjustments as the gum settles.' },
+
+      { type: 'h2', text: 'Soft-Tissue Healing Over the First Few Weeks' },
+      { type: 'p', text: 'Over the following two to three weeks the soft tissue continues to mature. Tenderness usually keeps reducing, the gum shape around the site stabilises, and most patients find eating becomes steadily easier. This is a good point to confirm with your clinician when you can return to normal brushing around the implant and which cleaning tools to use.' },
+      { type: 'p', text: 'It is worth knowing that surface comfort and deeper healing are not the same thing. The gum can feel settled while the implant is still bonding to the bone underneath, which is why the next phase matters even when nothing hurts. The Association of Dental Implantology explains that an implant is a root replacement that integrates with the jawbone, in its [overview of dental implantology](https://www.adi.org.uk/resources/what_is_dental_implantology), and that integration is the part that takes time.' },
+
+      { type: 'h2', text: 'Osseointegration: The Months Before the Final Crown' },
+      { type: 'p', text: 'Osseointegration is the process where the jawbone bonds to the surface of the implant. You do not feel it happening, which can make the waiting period seem unnecessary, but it is the stage the whole treatment depends on. The implant has to become stable enough to carry biting forces before the final crown or bridge is fitted.' },
+      { type: 'p', text: 'For a straightforward single implant, this commonly takes around three to four months, and sometimes up to six. Upper-jaw sites, grafted sites, sinus lifts, smoking and some medical histories can extend it. Your clinician may check the implant is stable before moving on to impressions or a digital scan for the final tooth.' },
+      { type: 'p', text: 'Once integration is confirmed, the laboratory makes the definitive crown, bridge or denture attachment, and a short appointment fits it. From that point the implant is used like a natural tooth, and your attention shifts from healing to long-term cleaning, which is covered in the guide on [caring for your dental implants](/blog/caring-for-dental-implants/).' },
+
+      { type: 'h2', text: 'Normal Healing Versus Warning Signs' },
+      { type: 'p', text: 'Distinguishing normal recovery from a problem is mostly about direction of travel. Normal healing improves over time: discomfort eases, swelling reduces after the first few days, and the area feels steadily more settled. A problem tends to move the other way, getting worse when it should be getting better.' },
+      { type: 'list', items: [
+        'Normal: mild soreness, some swelling and bruising that peak early then fade, and slight oozing on the first day.',
+        'Normal: a temporary tooth that feels slightly different and needs minor adjustment.',
+        'Worth reporting: pain that worsens after the first few days or throbbing that disturbs sleep.',
+        'Worth reporting: swelling that keeps growing, fever, a bad taste, discharge or bleeding that will not settle.',
+        'Worth reporting: any sense that the implant or temporary tooth moves when touched.',
+      ] },
+      { type: 'p', text: 'These are early-stage signals. The separate guide to the [signs of a failing dental implant](/blog/signs-of-failing-dental-implant/) covers what to watch for later, once an implant has been in service for months or years. If anything concerns you during recovery, it is always reasonable to contact the clinician who placed the implant rather than wait for the next scheduled appointment.' },
+
+      { type: 'h2', text: 'Aftercare Habits That Help Recovery' },
+      { type: 'p', text: 'Good habits during recovery do not speed up biology, but they do remove the obstacles that slow it down. Keeping the rest of the mouth clean, eating softer food while the site is tender, and protecting the area from pressure all give the implant the best chance to integrate without interruption.' },
+      { type: 'list', items: [
+        'Follow the written aftercare from your clinician before any general advice you read online.',
+        'Avoid smoking and vaping during healing, since both reduce blood supply to the site.',
+        'Keep up gentle, thorough cleaning of the rest of your mouth while the wound settles.',
+        'Eat softer food early on and reintroduce harder textures gradually as comfort allows.',
+        'Attend review appointments so the clinician can check healing and the temporary tooth.',
+      ] },
+      { type: 'p', text: 'Recovery is not a race. A slightly slower, well-protected healing phase is usually a better foundation than rushing back to hard food and heavy chewing. We do not place implants ourselves; we are a free matching service that introduces you to GDC-registered implant clinicians across Essex, who set the aftercare plan and review your healing in person.' },
+    ],
+    faqs: [
+      {
+        question: 'How long does it take to recover from dental implant surgery?',
+        answer:
+          'The initial soreness and swelling usually settle within the first week, and many patients return to normal activities within a few days. Full bonding of the implant to the bone, called osseointegration, typically takes around three to six months before the final crown is fitted. These are typical timeframes and vary from patient to patient.',
+      },
+      {
+        question: 'Is swelling normal after implant surgery?',
+        answer:
+          'Some swelling, bruising and tenderness are a normal part of early healing and often peak around the second or third day before fading. Swelling that keeps growing after that, along with fever, spreading pain or discharge, should be reported to your clinician promptly rather than waited out.',
+      },
+      {
+        question: 'When can I eat normally after a dental implant?',
+        answer:
+          'Most patients keep to soft, lukewarm food for the first days and reintroduce firmer textures gradually as comfort allows. Heavy chewing directly on the implant site is usually avoided until the clinician confirms the area has healed, which depends on the individual case.',
+      },
+    ],
+    relatedServiceSlugs: ['single-tooth', 'multiple-teeth', 'immediate-implants'],
+  },
+  {
     slug: 'caring-for-dental-implants',
     hub: 'implant-aftercare',
     draft: false,
