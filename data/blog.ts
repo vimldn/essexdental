@@ -2448,7 +2448,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'implant-vs-bridge-cost',
     hub: 'implant-costs',
-    draft: true,
+    draft: false,
     title: 'Dental Implant vs Bridge: Comparing the Cost in Essex',
     metaTitle: 'Implant vs Bridge Cost in Essex | Which Is Better Value?',
     metaDescription:
