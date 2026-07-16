@@ -203,7 +203,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
                   name="fullName"
                   type="text"
                   autoComplete="name"
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-md text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-md text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
                 />
               </div>
               <div>
@@ -216,7 +216,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-md text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-md text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
                 />
               </div>
               <div>
@@ -229,7 +229,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
                   name="phone"
                   type="tel"
                   autoComplete="tel"
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-md text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-md text-base text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -242,7 +242,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
                     id="lf-location"
                     name="location"
                     defaultValue=""
-                    className="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-md text-sm text-slate-800 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
+                    className="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-md text-base text-slate-800 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
                   >
                     <option value="" disabled>
                       Select…
@@ -264,7 +264,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
                     id="lf-treatment"
                     name="treatment"
                     defaultValue=""
-                    className="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-md text-sm text-slate-800 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
+                    className="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-md text-base text-slate-800 focus:outline-none focus:border-[#1a56a0] focus:bg-white focus:ring-2 focus:ring-[#1a56a0]/20 transition-all"
                   >
                     <option value="" disabled>
                       Select…
